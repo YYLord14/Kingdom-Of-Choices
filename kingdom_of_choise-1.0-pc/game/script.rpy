@@ -1217,20 +1217,20 @@ label dialog31:
     hide image Çiftçi
     jump random_dialog
 label dialog32:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
-    Çiftçi "Saygı değer Kralım bir mağranın içinde Mavi şapkalı mantar bulduk bize ekonomik destek sağlarsanız onları sizin için toplayabiliriz."
+      show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    Muhafız_Başı "Efendim bir grup iyi asker sizin hizmetinize girmek istiyorlar. Belli bir ücret karşılığında tabii."
     $ dialog_count += 1
     menu:
-        "Böyle saçma işlerle huzuruma bir daha çıkma!":
-            $ People -= 1
+        "Evet çağır onları.":
+            $ Economy -= 3
+            $ assassin_leagu_minicard = 1
             $ check_bars()
 
-        "Tamam destediği sağlıyorum.":
-            $ Economy -= 1
-            $ People += 1
+        "Hayır ,muhafızlarım gayet yeterli.":
             $ check_bars()
-    hide image Çiftçi
+    hide image Muhafız_Başı
     jump random_dialog
+  
 label dialog33:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     Çiftçi "Saygı değer Kralım bana güneydeki arsalarınızı verirseniz onları sizin için ekebilirim."
@@ -2490,20 +2490,7 @@ label dialog116:
             $ check_bars()
     hide image Hizmetçi_Başı
     jump random_dialog
-label dialog117:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
-    Muhafız_Başı "Efendim bir grup iyi asker sizin hizmetinize girmek istiyorlar. Belli bir ücret karşılığında tabii."
-    $ dialog_count += 1
-    menu:
-        "Evet çağır onları.":
-            $ Economy -= 3
-            $ assassin_leagu_minicard = 1
-            $ check_bars()
 
-        "Hayır ,muhafızlarım gayet yeterli.":
-            $ check_bars()
-    hide image Muhafız_Başı
-    jump random_dialog
 label random_dialog: # bu label daima dialog label larından sonra olacak şekilde yerleştirilmedilir
     $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
     jump expression chosen_dialog  # Yeni seçilen diyaloga git
