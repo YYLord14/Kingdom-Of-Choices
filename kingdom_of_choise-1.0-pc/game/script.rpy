@@ -92,56 +92,104 @@ transform bar_animation:
 screen bars():
     vbox:
         xalign 1.0  # Sağ tarafa hizalar
-        yalign 0.5  # Ortalar
-        spacing 2  # Çubuklar arası boşluk
+        yalign 0.4  # Ortalar
+        spacing 5  # Çubuklar arası boşluk
 
-        text "Sağlık" xalign 0.5  # Barın üstüne isim ekler
-        bar:
-            value Health
-            range 10
-            xsize 500
-            ysize 40
-            at bar_animation
+        text "Sağlık" xalign 0.5  
+        frame:  #herşeyin oturtulcağı yeri ayarlar.
+            background None
+            xsize 400  
+            ysize 30
+            bar:
+                value Health
+                range 10
+                xsize 400
+                ysize 30
+                left_bar Frame("#cc0000") #Dolan barı kırmızı gösterir.
+                right_bar Frame("#00000000")
+                align (0, 0.5)
+                at bar_animation
+            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5) #Kenarlık gösterir.
 
         text "Din" xalign 0.5
-        bar:
-            value Religion
-            range 10
-            xsize 500
-            ysize 40
-            at bar_animation
+        frame:
+            background None
+            xsize 400  
+            ysize 30
+            bar:
+                value Religion
+                range 10
+                xsize 400
+                ysize 30
+                left_bar Frame("#cc0000")
+                right_bar Frame("#00000000")
+                align (0, 0.5)
+                at bar_animation
+            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
         text "Siyaset" xalign 0.5
-        bar:
-            value Politics
-            range 10
-            xsize 500
-            ysize 40
-            at bar_animation
+        frame:
+            background None
+            xsize 400  
+            ysize 30
+            bar:
+                value Politics
+                range 10
+                xsize 400
+                ysize 30
+                left_bar Frame("#cc0000")
+                right_bar Frame("#00000000")
+                align (0, 0.5)
+                at bar_animation
+            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
         text "Askeri" xalign 0.5
-        bar:
-            value Military
-            range 10
-            xsize 500
-            ysize 40
-            at bar_animation
+        frame:
+            background None
+            xsize 400  
+            ysize 30
+            bar:
+                value Military
+                range 10
+                xsize 400
+                ysize 30
+                left_bar Frame("#cc0000")
+                right_bar Frame("#00000000")
+                align (0, 0.5)
+                at bar_animation
+            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
         text "Ekonomi" xalign 0.5
-        bar:
-            value Economy
-            range 10
-            xsize 500
-            ysize 40
-            at bar_animation
+        frame:
+            background None
+            xsize 400  
+            ysize 30
+            bar:
+                value Economy
+                range 10
+                xsize 400
+                ysize 30
+                left_bar Frame("#cc0000")
+                right_bar Frame("#00000000")
+                align (0, 0.5)
+                at bar_animation
+            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
         text "Halk" xalign 0.5
-        bar:
-            value People
-            range 10
-            xsize 500
-            ysize 40
-            at bar_animation
+        frame:
+            background None
+            xsize 400
+            ysize 30
+            bar:
+                value People
+                range 10
+                xsize 400
+                ysize 30
+                left_bar Frame("#cc0000")
+                right_bar Frame("#00000000")
+                align (0, 0.5)
+                at bar_animation
+            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
 init:#Tanımlamalar
     $ game_over_triggered = False
