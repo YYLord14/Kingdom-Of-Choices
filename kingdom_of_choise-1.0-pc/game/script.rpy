@@ -87,7 +87,7 @@ screen dialog_counter():
 
 
 transform bar_animation:
-    ease 0.5 xsize 500  # Barların geçişlerini akışkan hale getirmek
+    ease 0.5 xsize 400  # Barların geçişlerini akışkan hale getirmek
 
 screen bars():
     vbox:
