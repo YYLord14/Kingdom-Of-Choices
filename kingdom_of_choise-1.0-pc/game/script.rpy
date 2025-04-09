@@ -1,8 +1,10 @@
+# Define ile karakterleri tanımlıyoruz
+
 define Kütüphaneci = Character("Kütüphaneci")
 define Demirci = Character("Demirci")
 define Baş_İmam = Character("Baş İmam")
 define Ozan = Character("Ozan")
-define Muhafız_Başı = Character("Muhafız Başı")  # define ile karakterleri tanımlıyoruz
+define Muhafız_Başı = Character("Muhafız Başı")  
 define Kadı = Character("Kadı")
 define Asker = Character("Asker")
 define Çiftçi = Character("Çiftçi")
@@ -14,6 +16,8 @@ define Büyücü = Character("Büyücü")
 define Otacı = Character("Otacı")
 define Şifacı = Character("Şifacı")
 define Hizmetçi_Başı = Character("Hizmetçi Başı")
+
+#image ile karakterlere bir resim atıyoruz
 
 init:
     image Asker:
@@ -27,13 +31,13 @@ init:
         zoom 0.7
     image Baş_İmam:
         "bas_imam.png"
-        zoom 0.7
+        zoom 0.6
     image Ozan:
         "ozan.png"
         zoom 0.7
     image Muhafız_Başı:
         "muhafız_basi.png"
-        zoom 0.7                               
+        zoom 0.7
 init:
     image Kadı:
         "Kadı.png"
@@ -41,21 +45,23 @@ init:
     image Soylu:
         "soylu.png"
         zoom 0.8
+        yalign 0.5
     image Yerel_Bakan:
         "yerel_bakan.png"
-        zoom 0.7
+        zoom 0.55
+        yalign 0.2
     image Çiftçi:
         "çiftçi.png"
-        zoom 1.2
+        zoom 0.8
     image Büyücü:
         "büyücü.png"
-        zoom 0.8
+        zoom 0.7
     image Gizemli_Adam:
         "gizemli_adam.png"
         zoom 0.7
     image Şifacı:
         "şifacı.png"
-        zoom 0.7
+        zoom 1.3
     image Zengin_Tüccar:
         "zengin_tüccar.png"
         zoom 0.7
@@ -70,16 +76,24 @@ init:
         "game_start_bgd.png"
         size(config.screen_width, config.screen_height)
     
-
-init:
+init: # Başlangıç değerleri
     $ Health = 5
     $ Religion = 5
     $ Politics = 5
     $ Military = 5
     $ Economy = 5
     $ People = 5
+
+#Keymapler
+init python:
+    config.keymap['game_menu']=['K_ESCAPE']
+
 # Diyalog sayısının başlatılması
 default dialog_count = 0
+
+#Esc tuşunu dinler
+screen key_listener():
+    key "game_menu" action ShowMenu("game_menu")
 
 # Diyalog sayısını gösterecek ekran
 screen dialog_counter():
@@ -96,7 +110,7 @@ screen bars():
         spacing 5  # Çubuklar arası boşluk
 
         text "Sağlık" xalign 0.5  
-        frame:  #herşeyin oturtulcağı yeri ayarlar.
+        frame:
             background None
             xsize 400  
             ysize 30
@@ -105,11 +119,11 @@ screen bars():
                 range 10
                 xsize 400
                 ysize 30
-                left_bar Frame("#cc0000") #Dolan barı kırmızı gösterir.
+                left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
                 align (0, 0.5)
                 at bar_animation
-            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5) #Kenarlık gösterir.
+            add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
         text "Din" xalign 0.5
         frame:
@@ -201,7 +215,7 @@ init:#Tanımlamalar
     $ assassin_leagu_minicard = 0
     $ holy_relics_minicard = 0
     $ superior_political_science_book_minicard = 0
-    $ spoils_of_war_minicard = 0
+    $ spoils_of_ar_minicard = 0
     $ royal_guard_minicard = 0
     $ silk_trade_income_minicard = 0
     $ blue_cap_mushroom_minicard = 0
@@ -330,7 +344,7 @@ label game_over:
 
     elif Politics <= 0:
         
-        show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+        show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
         Yerel_Bakan "Kralım meclis üyeleri sizi sattı."
         menu:
             "Nasıl olur?":
@@ -355,7 +369,7 @@ label game_over:
                         return  
     elif Politics >= 10:
         
-        show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+        show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
         Yerel_Bakan "Kralım artık zamanın doldu."
         menu:
             "Ne oluyor?":
@@ -430,7 +444,7 @@ label game_over:
                         return
     elif Economy <= 0:
         
-        show Soylu at Position(xalign=0.5, yalign=0.5)
+        show Soylu at Position(xalign=0.5, yalign=0.3)
         Soylu "Efendim hazinemiz tükendi borcumuz olan dış ülkeler yağmaya başladı."
         menu:
             "Olamaz!":
@@ -456,7 +470,7 @@ label game_over:
                         return 
     elif Economy >= 10:
         
-        show Soylu at Position(xalign=0.5, yalign=0.5)
+        show Soylu at Position(xalign=0.5, yalign=0.3)
         Soylu "Kralım artık sizi başımızda istemiyoruz."
         menu:
             "Ne saçmalıyorsun sen?":
@@ -659,9 +673,9 @@ label minicard:
             jump game_over
 
     elif Economy <= 0:
-        if spoils_of_war_minicard > 0:
+        if spoils_of_ar_minicard > 0:
             $ Economy += 3
-            $ spoils_of_war_minicard -= 1
+            $ spoils_of_ar_minicard -= 1
             $ check_bars()
             return
         elif silk_trade_income_minicard > 0:
@@ -703,15 +717,15 @@ label minicard:
             return
         elif holy_relics_minicard > 0:
             $ People -= 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ holy_relics_minicard -= 1
             $ check_bars()
             return
         elif royal_guard_minicard > 0:
             $ People -= 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ royal_guard_minicard -= 1
             $ check_bars()
             return
-        elif :
+        else :
             jump game_over
 
 init python:# Barların kontrol edilmesi
@@ -782,11 +796,19 @@ label start:
         "audio/Rite_of_the_Fading_Light.mp3"] loop
     show screen bars
     scene startbcg
+    show screen key_listener
     show screen dialog_counter
     $ character_alive=True
     while True:
-        $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
-        jump expression chosen_dialog
+
+        if renpy.pause(0.1, hard=True) == "escape":
+            hide screen bars
+            hide screen dialog_counter
+            show screen game_menu
+
+        else:
+            $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
+            jump expression chosen_dialog
 
 label card1: 
     show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
@@ -796,40 +818,40 @@ label card1:
             $ check_bars()
         "Ödemeyi kabul ediyorum":
             $ Economy -= 4
-            knight_of_swan_clan_minicard = 1
+            $ knight_of_swan_clan_minicard = 1
             $ check_bars() #knight of the swan minikart
     hide image Gizemli_Adam
 label card2:
-    show Büyücü at Position(xalign=0.5, yalign=0.8)
+    show Büyücü at Position(xalign=0.5, yalign=0.5)
     Büyücü "Biraz paraya ihtiyacım var elimdeki sağlık iksirini seninle paylaşabilirim ne dersin."
     menu:
         "Kabul ediyorum":
             $ Economy -= 2
             $ Religion -= 2 # Sağlık iksiri mini kartı
-            health_potion_minicard = 1
+            $ health_potion_minicard = 1
             $ check_bars()
         "İksirlere inanmıyorum":
             $ check-bars()
     hide image Büyücü
 label card3:
-    show Büyücü at Position(xalign=0.5, yalign=0.8)
+    show Büyücü at Position(xalign=0.5, yalign=0.5)
     Büyücü "Biraz paraya ihtiyacım var sana zor zamanlarda yardım edecek bir şeyler öğretebilirim"
     menu:
         "Kabul ediyorum":
             $ Economy -= 2
             $ Religion -= 2
-            black_magic_minicard = 1
+            $ black_magic_minicard = 1
             $ check_bars() #Kara büyü kartı
         "Benim büyü ile işim olmaz":
             $ check_bars()
     hide image Büyücü
 label card4:
-    show Soylu at Position(xalign=0.5, yalign=0.6)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Aquila Kralı elinizdeki mevcut hazine ile zor zamanlar için bir tahıl ambarı açmalısınız."
     menu:
         "Mantıklı açıyorum":
             $ Economy -= 3
-            granary_warehouse_minicard = 1
+            $ granary_warehouse_minicard = 1
             $ check_bars()
         "Hazineyi kullanmak istemiyorum":
             $ check_bars()
@@ -840,7 +862,7 @@ label card5:
     menu:
         "Evet çağır onları":
             $ Economy -= 3
-            assassin_leagu_minicard = 1
+            $ assassin_leagu_minicard = 1
             $ check_bars()
         "Hayır ihtiyacım yok":
             $ check_bars()
@@ -851,7 +873,7 @@ label card6:
     menu:
         "Ordumla yola çıkıyorum hemen":
             $ Military -= 2
-            holy_relics_minicard = 1
+            $ holy_relics_minicard = 1
             $ check_bars()
         "Yeterli gücüm yok maalesef":
             $ check_bars()
@@ -861,7 +883,7 @@ label card7:
     Kütüphaneci "Kralım babanızın kütüphanesinde eski bir kitap buldum belki işinize yarayabilir."
     menu:
         "Ver bakalım":
-            superior_political_science_book_minicard = 1
+            $ superior_political_science_book_minicard = 1
             $ check_bars()
         "Sende kalsın":
             $ check_bars()
@@ -871,7 +893,7 @@ label card8:
     Muhafız_Başı "Efendim Krallığınız Yargea ile olan savaşı kazandı gelen ganimeti ne yapalım"
     menu:
         "Zor günler için ayıralım":
-            spoils_of_war_minicard = 1
+            $ spoils_of_war_minicard = 1
             $ check_bars()
         "Bir kısmını orduya bir kısmını hazineye dağıt":
             $ Military += 1
@@ -885,7 +907,7 @@ label card9:
     menu:
         "Tamam ücretlerini ben karşılayacağım":
             $ Economy -= 3
-            royal_guard_minicard = 1
+            $ royal_guard_minicard = 1
             $ check_bars()
         "Şuan böyle bir tehdit yok":
             $ check_bars()
@@ -897,7 +919,7 @@ label card10:
         "Kabul ediyorum destek vereceğim.":
             $ Economy -= 2
             $ Military -= 2
-            silk_trade_income_minicard = 1
+            $ silk_trade_income_minicard = 1
             $ check_bars()
         "Ben bir Kralım sana ihtiyacım yok":
             $ check_bars()
@@ -912,17 +934,17 @@ label card11:
         "Tamam destek veriyorum":
             $ Economy -= 1
             $ People += 1
-            blue_cap_mushroom_minicard = 1
+            $ blue_cap_mushroom_minicard = 1
             $ check_bars()
     hide image Çiftçi
 label card12:
-    show Büyücü at Position(xalign=0.5, yalign=0.8)
+    show Büyücü at Position(xalign=0.5, yalign=0.5)
     Büyücü "Biraz paraya ihtiyacım var elimdeki sadakat iksirini seninle paylaşabilirim ne dersin. "
     menu:
         "Kabul ediyorum":
             $ Economy -= 2
             $ Religion -= 2
-            loyalty_potion_minicard = 1
+            $ loyalty_potion_minicard = 1
             $ check_bars()
         "İksirlere inanmıyorum renkli su":
             $ Religion += 1
@@ -1054,7 +1076,7 @@ label dialog7:
     hide image Zengin_Tüccar
     jump random_dialog
 label dialog8:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Kralım ülkenin bütçesinin büyük bir kısmı askeriye ye harcanıyor inşaatları arttıralım."
     $ dialog_count += 1
     menu:
@@ -1068,7 +1090,7 @@ label dialog8:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog9:
-    show Soylu at Position(xalign=0.5, yalign=0.6)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Yeterli sayıda kölem yok yenilerini nerden bulabilirim"
     $ dialog_count += 1
     menu:
@@ -1424,20 +1446,20 @@ label dialog31:
     hide image Çiftçi
     jump random_dialog
 label dialog32:
-      show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
-    Muhafız_Başı "Efendim bir grup iyi asker sizin hizmetinize girmek istiyorlar. Belli bir ücret karşılığında tabii."
+    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    Çiftçi "Saygı değer Kralım bir mağranın içinde Mavi şapkalı mantar bulduk bize ekonomik destek sağlarsanız onları sizin için toplayabiliriz."
     $ dialog_count += 1
     menu:
-        "Evet çağır onları.":
-            $ Economy -= 3
-            $ assassin_leagu_minicard = 1
+        "Böyle saçma işlerle huzuruma bir daha çıkma!":
+            $ People -= 1
             $ check_bars()
 
-        "Hayır ,muhafızlarım gayet yeterli.":
+        "Tamam destediği sağlıyorum.":
+            $ Economy -= 1
+            $ People += 1
             $ check_bars()
-    hide image Muhafız_Başı
+    hide image Çiftçi
     jump random_dialog
-  
 label dialog33:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     Çiftçi "Saygı değer Kralım bana güneydeki arsalarınızı verirseniz onları sizin için ekebilirim."
@@ -1603,16 +1625,15 @@ label dialog42:
     jump random_dialog
 label dialog43:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
-    Baş_İmam "Topladığımız paralardan artanları getirdim hazineye koyalım"
+    Baş_İmam "Ne vakittir aradığımız kutsal emanetlerin yerini buldum bir ordu ile onları kurtaralım."
     $ dialog_count += 1
     menu:
-        "Olur koyalım":
-            $ Economy += 2
+        "Ordumla yola çıkıyorum hemen.":
+            $ Military -= 2
             $ check_bars()
 
-        "Halka dağıtalım":
-            $ Religion += 1
-            $ People += 1
+        "Yeterli ordu gücüm yok":
+            $ Religion -= 3
             $ check_bars()
     hide image Baş_İmam
     jump random_dialog
@@ -1726,7 +1747,7 @@ label dialog50:
     hide image Baş_İmam
     jump random_dialog
 label dialog51:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Aquila Kralı elinizdeki mevcut hazine ile zor zamanlar için bir tahıl ambarı açmalısınız."
     $ dialog_count += 1
     menu:
@@ -1738,7 +1759,7 @@ label dialog51:
     hide image Soylu
     jump random_dialog
 label dialog52:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Yeterli sayıda kölem yok yenilerini nerden bulabilirim."
     $ dialog_count += 1
     menu:
@@ -1751,7 +1772,7 @@ label dialog52:
     hide image Soylu
     jump random_dialog
 label dialog53:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Evimin yanındaki inşaat yıkıldı ve evimin duvarı zarar gördü karşılanmasını talep ediyorum."
     $ dialog_count += 1
     menu:
@@ -1766,7 +1787,7 @@ label dialog53:
     hide image Soylu
     jump random_dialog
 label dialog54:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Pazarlarda büyük tüccarlar çok kar ederken küçük tüccarlar zarara uğruyor bunun önüne geçmemizz gerek."
     $ dialog_count += 1
     menu:
@@ -1780,7 +1801,7 @@ label dialog54:
     hide image Soylu
     jump random_dialog
 label dialog55:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Komutanlar çok kazanıyor maaşlarını azaltıp başka alanlara yöneltelim."
     $ dialog_count += 1
     menu:
@@ -1794,7 +1815,7 @@ label dialog55:
     hide image Soylu
     jump random_dialog
 label dialog56:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Ülke zor durumda , bazı Soylular elindeki değerli eşyaları size vermek istiyor."
     $ dialog_count += 1
     menu:
@@ -1808,7 +1829,7 @@ label dialog56:
     hide image Soylu
     jump random_dialog
 label dialog57:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Efendim bazı köyler eksik vergi ödemişler ne yapalım?"
     $ dialog_count += 1
     menu:
@@ -1823,7 +1844,7 @@ label dialog57:
     hide image Soylu
     jump random_dialog
 label dialog58:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Tavernada bir eğlence düzenlemek istiroum bu sayede tacirler ülkemize daha çok uğrar."
     $ dialog_count += 1
     menu:
@@ -1838,7 +1859,7 @@ label dialog58:
     hide image Soylu
     jump random_dialog
 label dialog59:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Kralım kölelerim çok fazla size satmak istiyorum."
     $ dialog_count += 1
     menu:
@@ -1857,7 +1878,7 @@ label dialog59:
     hide image Soylu
     jump random_dialog
 label dialog60:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Daha fazla para için köleleri su kenarlarına götürelim balık yakalasınlar."
     $ dialog_count += 1
     menu:
@@ -1871,7 +1892,7 @@ label dialog60:
     hide image Soylu
     jump random_dialog
 label dialog61:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Köylerden gelen vergileri arttıralım."
     $ dialog_count += 1
     menu:
@@ -1886,7 +1907,7 @@ label dialog61:
     hide image Soylu
     jump random_dialog
 label dialog62:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Daha fazla para için köleleri inşaatlarda çalıştıralım."
     $ dialog_count += 1
     menu:
@@ -1900,7 +1921,7 @@ label dialog62:
     hide image Soylu
     jump random_dialog
 label dialog63:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Majesteleri, Bana bir toprak bağışlamanızı talep ediyorum. Böylece hem krallığınıza daha fazla vergi ödeyebilir hem de sınırları koruyabilirim."
     $ dialog_count += 1
     menu:
@@ -1916,7 +1937,7 @@ label dialog63:
     hide image Soylu
     jump random_dialog
 label dialog64:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Efendim, danışmanlarınız arasında daha fazla söz hakkına sahip olmalıyım. Kraliyet konseyinizde bana bir yer verirseniz, tecrübemle kararlarınıza rehberlik edebilirim."
     $ dialog_count += 1
     menu:
@@ -1929,7 +1950,7 @@ label dialog64:
     hide image Soylu
     jump random_dialog
 label dialog65:
-    show Soylu at Position(xalign=0.5, yalign=0.5)
+    show Soylu at Position(xalign=0.5, yalign=0.3)
     Soylu "Majesteleri, güçlü bir ittifak ve sizin otoritenizi güçlendirmek için beni bir başka asile evlendirmenizi rica ediyorum."
     $ dialog_count += 1
     menu:
@@ -2213,7 +2234,7 @@ label dialog83:
     hide image Zengin_Tüccar
     jump random_dialog
 label dialog84:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Kralım soyluların elinde çok fazla değerli eşya var bunları eritip ordunun harcamaları için kullanalım."
     $ dialog_count += 1
     menu:
@@ -2228,7 +2249,7 @@ label dialog84:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog85:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Efendim batı daki köyler sınırlarımıza çok yakın onlar için tehlike arz ediyor."
     $ dialog_count += 1
     menu:
@@ -2243,7 +2264,7 @@ label dialog85:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog86:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Kralım hazinemiz tükeniyor bir çare bulmamız gerek."
     $ dialog_count += 1
     menu:
@@ -2259,7 +2280,7 @@ label dialog86:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog87:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Efendim hazineden bir miktar altın arttırdım bunu ne için kullanalım."
     $ dialog_count += 1
     menu:
@@ -2273,7 +2294,7 @@ label dialog87:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog88:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Kralım Zemorvia Krallığı ile barış antlaşmamız ın süresi bitiyor yenisini imzalıyıp sulh e devam edelim mi?"
     $ dialog_count += 1
     menu:
@@ -2289,7 +2310,7 @@ label dialog88:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog89:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Soyluların çok fazla değerli  eşyaları var onlara el koyup hazineye ekleyebiliriz."
     $ dialog_count += 1
     menu:
@@ -2304,7 +2325,7 @@ label dialog89:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog90:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Yonkur Krallığı bize savaş açtığını iletti ne yapacağız."
     $ dialog_count += 1
     menu:
@@ -2321,7 +2342,7 @@ label dialog90:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog91:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Donovia yadan elçi geldi bizden borç istiyorlar karşılığında bize paralı askerler vericekler ."
     $ dialog_count += 1
     menu:
@@ -2337,7 +2358,7 @@ label dialog91:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog92:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Majesteleri, hazinemiz zayıflıyor. Soyluların ve büyük tüccarların daha fazla vergi ödemesi için yeni bir düzenleme yapmalıyız. Eğer onlara fazla yük bindirmek istemezseniz, köylülerden ek vergiler toplayabiliriz."
     $ dialog_count += 1
     menu:
@@ -2353,7 +2374,7 @@ label dialog92:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog93:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Efendim, sarayda ve taşrada bazı memurlar rüşvet alıyor, halk arasında huzursuzluk artıyor. Yetkilerini kötüye kullanan bürokratları cezalandırmalı ve yeni, güvenilir kişiler atamalıyız."
     $ dialog_count += 1
     menu:
@@ -2367,7 +2388,7 @@ label dialog93:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog94:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Kralım, halkımız giderek daha fazla açlık ve kıtlık içinde. Yeni tahıl ambarları kurup yiyecekleri adil dağıtırsak, isyanları önleyebiliriz. Ancak bu, hazineye ek yük getirecektir."
     $ dialog_count += 1
     menu:
@@ -2383,7 +2404,7 @@ label dialog94:
     hide image Yerel_Bakan
     jump random_dialog
 label dialog95:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.3)
+    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     Yerel_Bakan "Krallığınızda farklı bölgelerde kanunlar farklı işliyor, bazı lordlar kendi hukukunu uyguluyor. Merkezi bir yasa çıkararak otoritenizi pekiştirebiliriz. Ancak soylular bu değişime karşı çıkabilir."
     $ dialog_count += 1
     menu:
@@ -2411,7 +2432,7 @@ label dialog96:
     hide image Büyücü
     jump random_dialog
 label dialog97:
-    show Büyücü at Position(xalign=0.5, yalign=0.8)
+    show Büyücü at Position(xalign=0.5, yalign=0.5)
     Büyücü "Eğer bana biraz ödeme yaparsan sana büyü yaparım veherşeyi önceden fark edersin."
     $ dialog_count += 1
     menu:
@@ -2427,7 +2448,7 @@ label dialog97:
     hide image Büyücü
     jump random_dialog
 label dialog98:
-    show Büyücü at Position(xalign=0.5, yalign=0.8)
+    show Büyücü at Position(xalign=0.5, yalign=0.5)
     Büyücü "Majesteleri, Diyanet in bazı mensupları benim karanlık sanatlarla uğraştığımı iddia ediyor ve cezalandırmak istiyor."
     $ dialog_count += 1
     menu:
@@ -2442,7 +2463,7 @@ label dialog98:
     hide image Büyücü
     jump random_dialog
 label dialog99:
-    show Büyücü at Position(xalign=0.5, yalign=0.8)
+    show Büyücü at Position(xalign=0.5, yalign=0.5)
     Büyücü "Efendim, son zamanlarda kıtlık arttı. Bunun doğal sebeplerle mi, yoksa bir lanet yüzünden mi olduğunu belirlemem için sizden destek istiyorum."
     $ dialog_count += 1
     menu:
@@ -2697,7 +2718,21 @@ label dialog116:
             $ check_bars()
     hide image Hizmetçi_Başı
     jump random_dialog
+label dialog117:
+    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    Muhafız_Başı "Efendim bir grup iyi asker sizin hizmetinize girmek istiyorlar. Belli bir ücret karşılığında tabii."
+    $ dialog_count += 1
+    menu:
+        "Evet çağır onları.":
+            $ Economy -= 3
+            $ assassin_leagu_minicard = 1
+            $ check_bars()
 
-label random_dialog: # bu label daima dialog label larından sonra olacak şekilde yerleştirilmedilir
+        "Hayır ,muhafızlarım gayet yeterli.":
+            $ check_bars()
+    hide image Muhafız_Başı
+    jump random_dialog
+
+label random_dialog:
     $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
     jump expression chosen_dialog  # Yeni seçilen diyaloga git
