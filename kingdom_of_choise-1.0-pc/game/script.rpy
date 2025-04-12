@@ -215,7 +215,7 @@ init:#Tanımlamalar
     $ assassin_leagu_minicard = 0
     $ holy_relics_minicard = 0
     $ superior_political_science_book_minicard = 0
-    $ spoils_of_ar_minicard = 0
+    $ spoils_of_war_minicard = 0
     $ royal_guard_minicard = 0
     $ silk_trade_income_minicard = 0
     $ blue_cap_mushroom_minicard = 0
@@ -673,9 +673,9 @@ label minicard:
             jump game_over
 
     elif Economy <= 0:
-        if spoils_of_ar_minicard > 0:
+        if spoils_of_war_minicard > 0:
             $ Economy += 3
-            $ spoils_of_ar_minicard -= 1
+            $ spoils_of_war_minicard -= 1
             $ check_bars()
             return
         elif silk_trade_income_minicard > 0:
@@ -696,9 +696,9 @@ label minicard:
             jump game_over
 
     elif People <= 0:
-        if spoils_of_ar_minicard > 0:
+        if spoils_of_war_minicard > 0:
             $ People += 3
-            $ spoils_of_ar_minicard -= 1
+            $ spoils_of_war_minicard -= 1
             $ check_bars()
             return
         elif granary_warehouse_minicard > 0:
