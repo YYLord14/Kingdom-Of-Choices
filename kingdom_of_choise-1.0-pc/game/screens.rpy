@@ -495,7 +495,8 @@ screen game_menu(title, scroll=None, yinitial=1.0, spacing=10):
         style "return_button"
 
         action Hide("game_menu")
-
+    if renpy.pause(0.1, hard=True) == "escape":
+        action Hide(game_menu)
     label title
 
     if main_menu:
