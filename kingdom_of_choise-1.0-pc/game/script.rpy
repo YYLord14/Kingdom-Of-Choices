@@ -1625,16 +1625,16 @@ label dialog42:
     jump random_dialog
 label dialog43:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
-    Baş_İmam "Ne vakittir aradığımız kutsal emanetlerin yerini buldum bir ordu ile onları kurtaralım."
+    Baş_İmam "Topladığımız paralardan artanları getirdim hazineye koyalım"
     $ dialog_count += 1
     menu:
-        "Ordumla yola çıkıyorum hemen.":
-            $ Military -= 2
+        "Olur koyalım":
+            $ Economy += 2
             $ check_bars()
 
-        "Yeterli ordu gücüm yok":
-            $ Religion -= 3
-            $ check_bars()
+        "Halka dağıtalım":
+            $ Religion += 1
+            $ People += 1
     hide image Baş_İmam
     jump random_dialog
 label dialog44:
@@ -2717,20 +2717,6 @@ label dialog116:
             $ Health -= 1
             $ check_bars()
     hide image Hizmetçi_Başı
-    jump random_dialog
-label dialog117:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
-    Muhafız_Başı "Efendim bir grup iyi asker sizin hizmetinize girmek istiyorlar. Belli bir ücret karşılığında tabii."
-    $ dialog_count += 1
-    menu:
-        "Evet çağır onları.":
-            $ Economy -= 3
-            $ assassin_leagu_minicard = 1
-            $ check_bars()
-
-        "Hayır ,muhafızlarım gayet yeterli.":
-            $ check_bars()
-    hide image Muhafız_Başı
     jump random_dialog
 
 label random_dialog:
