@@ -777,7 +777,7 @@ init python:# Diyologlar
     def get_random_dialog():
         return random.choice(dialogs)  # Rastgele bir diyalog seçiyoruz
 
-init python:
+init python:# Minicard diyolglar
     import random
 
     minicard_dialogs = [

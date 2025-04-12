@@ -390,9 +390,9 @@ screen main_menu():
 init python:
     def check_dragged(drags,drop):
         for d in drags:
-            if d.x < 600:
+            if d.x < 840:
                 renpy.call_in_new_context("start")
-            elif d.x > 750:
+            elif d.x > 850:
                 renpy.invoke_in_new_context(renpy.call_screen, "load")
 
 
@@ -405,6 +405,17 @@ style main_menu_vbox:
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
+
+
+## Mini cart ekranı ###########################################################
+screen mini_card():
+    xysize(500,400)
+    xpos 1
+    ypos 0
+    text_button _("Minicard"):
+        
+
+
 
 ## Oyun Menüsü ekranı ##########################################################
 ##
@@ -480,7 +491,7 @@ screen game_menu(title, scroll=None, yinitial=1.0, spacing=10):
     textbutton _("Geri"):
         style "return_button"
 
-        action Return()
+        action Hide("game_menu")
 
     label title
 
