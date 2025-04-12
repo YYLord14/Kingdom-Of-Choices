@@ -412,8 +412,11 @@ screen mini_card():
     xysize(500,400)
     xpos 1
     ypos 0
-    text_button _("Minicard"):
-        
+    text_button _("X"):
+        xysize(30,30)
+
+        action Hide("mini_card")
+
 
 
 
