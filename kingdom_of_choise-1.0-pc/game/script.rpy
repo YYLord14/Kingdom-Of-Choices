@@ -240,23 +240,25 @@ label zero_point:
     $ Religion = 5
     $ Health = 5
     $ People = 5
-    $ Kütüphaneci = 5 # karakter barları
-    $ Demirci = 5
-    $ Baş_İmam = 5
-    $ Ozan = 5
-    $ Muhafız_Başı = 5
-    $ Kadı = 5
-    $ Asker = 5
-    $ Çiftçi = 5
-    $ Zengin_Tüccar = 5
-    $ Yerel_Bakan = 5
-    $ Soylu = 5
-    $ Gizemli_Adam = 5
-    $ Büyücü = 5
-    $ Otacı = 5
-    $ Şifacı = 5
-    $ Hizmetçi_Başı = 5
     jump start
+
+init python:
+    Kütüphaneci = 5 # karakter barları
+    Demirci = 5
+    Baş_İmam = 5
+    Ozan = 5
+    Muhafız_Başı = 5
+    Kadı = 5
+    Asker = 5
+    Çiftçi = 5
+    Zengin_Tüccar = 5
+    Yerel_Bakan = 5
+    Soylu = 5
+    Gizemli_Adam = 5
+    Büyücü = 5
+    Otacı = 5
+    Şifacı = 5
+    Hizmetçi_Başı = 5
 
 screen character_info(Kütüphaneci, relation):
         modal True
