@@ -84,16 +84,9 @@ init: # Başlangıç değerleri
     $ Economy = 5
     $ People = 5
 
-#Keymapler
-init python:
-    config.keymap['game_menu']=['K_ESCAPE']
 
 # Diyalog sayısının başlatılması
 default dialog_count = 0
-
-#Esc tuşunu dinler
-screen key_listener():
-    key "game_menu" action ShowMenu("game_menu")
 
 # Diyalog sayısını gösterecek ekran
 screen dialog_counter():
@@ -1055,20 +1048,11 @@ label start:
         "audio/Rite_of_the_Fading_Light.mp3"] loop
     show screen bars
     scene startbcg
-    show screen key_listener
     show screen dialog_counter
     $ character_alive=True
     while True:
-
-        if renpy.pause(0.1, hard=True) == "escape":
-            hide screen bars
-            hide screen dialog_counter
-            show screen game_menu
-
-        else:
-            $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
-            jump expression chosen_dialog
-
+        $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
+        jump expression chosen_dialog
 label card1: 
     show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
     Gizemli_Adam "Eğer bana istediğim ödemeyi yaparsan sana bağlı bir şövalye teşkilatı oluştururum."
