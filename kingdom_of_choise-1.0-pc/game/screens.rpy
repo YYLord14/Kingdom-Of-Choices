@@ -489,18 +489,6 @@ screen game_menu(title, scroll=None, yinitial=1.0, spacing=10):
 
                     transclude
 
-    use navigation
-
-    textbutton _("Geri"):
-        style "return_button"
-
-        action Hide("game_menu")
-    if renpy.pause(0.1, hard=True) == "escape":
-        action Hide(game_menu)
-    label title
-
-    if main_menu:
-        key "game_menu" action ShowMenu("main_menu")
 
 
 style game_menu_outer_frame is empty
@@ -583,6 +571,13 @@ screen about():
                 text "[gui.about!t]\n"
 
             text _("{a=https://sites.google.com/view/paperworkstudios/ana-sayfa?authuser=0}Paperworks şirketi tarafından yapılmıştır yapım hakları şirkete aittir izin alınmadan kopyası yapılıp satılamaz.\n\nPaperwork şirketi resmi websitesi {/a}")
+    use navigation
+    textbutton _("Geri"):
+        xpos gui.navigation_xpos
+        yalign 1.0
+        yoffset -30
+
+        action Return()
 
 
 style about_label is gui_label
@@ -705,6 +700,13 @@ screen file_slots(title):
                         textbutton _("Sync'i İndirin"):
                             action DownloadSync()
                             xalign 0.5
+    use navigation
+    textbutton _("Geri"):
+        xpos gui.navigation_xpos
+        yalign 1.0
+        yoffset -30
+
+        action Return()
 
 
 style page_label is gui_label
@@ -826,6 +828,13 @@ screen preferences():
                         textbutton _("Hepsini Sustur"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+    use navigation
+    textbutton _("Geri"):
+        xpos gui.navigation_xpos
+        yalign 1.0
+        yoffset -30
+
+        action Return()
 
 
 style pref_label is gui_label
@@ -943,6 +952,13 @@ screen history():
 
         if not _history_list:
             label _("Diyalog geçmişi boş.")
+    use navigation
+    textbutton _("Geri"):
+        xpos gui.navigation_xpos
+        yalign 1.0
+        yoffset -30
+
+        action Return()
 
 
 ## Geçmiş ekranında ne tür etiketlerin gösterilmesine izin verileceğini
@@ -1023,6 +1039,13 @@ screen help():
                 use mouse_help
             elif device == "gamepad":
                 use gamepad_help
+    use navigation
+    textbutton _("Geri"):
+        xpos gui.navigation_xpos
+        yalign 1.0
+        yoffset -30
+
+        action Return()
 
 
 screen keyboard_help():
