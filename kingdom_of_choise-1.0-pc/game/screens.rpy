@@ -408,6 +408,7 @@ style main_menu_text:
 
 
 ## Mini cart ekranı ###########################################################
+'''
 screen mini_card():
     xysize(500,400)
     xpos 1
@@ -415,7 +416,7 @@ screen mini_card():
     text_button _("X"):
         xysize(30,30)
 
-        action Hide("mini_card")
+        action Hide("mini_card")'''
 
 
 
@@ -577,8 +578,15 @@ screen about():
         yalign 1.0
         yoffset -30
 
-        action Return()
-
+        if in_game == False:
+            action Return()
+        else :
+            action [SetVariable("in_game", False), Jump("start")]
+    if in_game == False:
+        key "escape" action Return()
+    else :
+        $ in_game = False
+        key "escape" action Jump("start")
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -706,8 +714,15 @@ screen file_slots(title):
         yalign 1.0
         yoffset -30
 
-        action Return()
-
+        if in_game == False:
+            action Return()
+        else :
+            action [SetVariable("in_game", False), Jump("start")]
+    if in_game == False:
+        key "escape" action Return()
+    else :
+        $ in_game = False
+        key "escape" action Jump("start")
 
 style page_label is gui_label
 style page_label_text is gui_label_text
@@ -834,8 +849,15 @@ screen preferences():
         yalign 1.0
         yoffset -30
 
-        action Return()
-
+        if in_game == False:
+            action Return()
+        else :
+            action [SetVariable("in_game", False), Jump("start")]
+    if in_game == False:
+        key "escape" action Return()
+    else :
+        $ in_game = False
+        key "escape" action Jump("start")
 
 style pref_label is gui_label
 style pref_label_text is gui_label_text
@@ -958,8 +980,15 @@ screen history():
         yalign 1.0
         yoffset -30
 
-        action Return()
-
+        if in_game == False:
+            action Return()
+        else :
+            action [SetVariable("in_game", False), Jump("start")]
+    if in_game == False:
+        key "escape" action Return()
+    else :
+        $ in_game = False
+        key "escape" action Jump("start")
 
 ## Geçmiş ekranında ne tür etiketlerin gösterilmesine izin verileceğini
 ## belirler.
@@ -1045,8 +1074,15 @@ screen help():
         yalign 1.0
         yoffset -30
 
-        action Return()
-
+        if in_game == False:
+            action Return()
+        else :
+            action [SetVariable("in_game", False), Jump("start")]
+    if in_game == False:
+        key "escape" action Return()
+    else :
+        $ in_game = False
+        key "escape" action Jump("start")
 
 screen keyboard_help():
 

@@ -199,6 +199,7 @@ screen bars():
             add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
 init:#Tanımlamalar
+    $ in_game = False
     $ game_over_triggered = False
     $ character_alive = True
     $ knight_of_swan_clan_minicard = 0
@@ -1049,6 +1050,7 @@ label start:
     show screen bars
     scene startbcg
     show screen dialog_counter
+    $ in_game = True
     $ character_alive=True
     while True:
         $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
