@@ -76,6 +76,12 @@ init:
         "game_start_bgd.png"
         size(config.screen_width, config.screen_height)
     
+label open_preferences:#Esc on clik to open preferences
+    call screen preferences
+    return
+screen esc_listener():#Esc control
+    key "escape" action Call("open_preferences")
+    
 init: # Başlangıç değerleri
     $ Health = 5
     $ Religion = 5
@@ -202,6 +208,7 @@ init:#Tanımlamalar
     $ in_game = False
     $ game_over_triggered = False
     $ character_alive = True
+    $ chosen_dialog = 0
     $ knight_of_swan_clan_minicard = 0
     $ health_potion_minicard = 0
     $ black_magic_minicard = 0
@@ -1053,6 +1060,8 @@ label start:
     $ in_game = True
     $ character_alive=True
     while True:
+        $ in_game = True
+        show screen esc_listener
         $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
         jump expression chosen_dialog
 label card1: 
