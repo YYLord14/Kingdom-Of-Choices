@@ -1684,3 +1684,136 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 600
+
+init python:
+    Kütüphaneci_Bar = 5 # karakter barları
+    Demirci_Bar = 5
+    Baş_İmam_Bar = 5
+    Ozan_Bar = 5
+    Muhafız_Başı_Bar = 5
+    Kadı_Bar = 5
+    Asker_Bar = 5
+    Çiftçi_Bar = 5
+    Zengin_Tüccar_Bar = 5
+    Yerel_Bakan_Bar = 5
+    Soylu_Bar = 5
+    Gizemli_Adam_Bar = 5
+    Büyücü_Bar = 5
+    Otacı_Bar = 5
+    Şifacı_Bar = 5
+    Hizmetçi_Başı_Bar = 5
+
+# Karakter bilgi ekranı
+screen character_info(name, relation):
+    modal True
+    frame:
+        padding (30, 30)
+        xalign 0.5
+        yalign 0.5
+        has vbox
+
+        text "[name]" size 40
+        text "İlişki: [relation]/10" size 25
+        bar value relation range 10 xmaximum 300
+
+        textbutton "Kapat":
+            action Hide("character_info")
+
+# Karakterin görseline tıklanabilir buton
+screen character_info_buttons():
+    imagebutton:
+        idle "images/kütüphaneci.png"
+        hover "images/kütüphaneci.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Kütüphaneci", relation=Kütüphaneci_Bar)
+    imagebutton:
+        idle "images/demirci.png"
+        hover "images/demirci.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Demirci", relation=Demirci_Bar)
+    imagebutton:
+        idle "images/baş_imam.png"
+        hover "images/baş_imam.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Baş_İmam", relation=Baş_İmam_Bar)
+    imagebutton:
+        idle "images/ozan.png"
+        hover "images/ozan.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Ozan", relation=Ozan_Bar)
+    imagebutton:
+        idle "images/muhafız_başı.png"
+        hover "images/muhafız_başı.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Muhafız_Başı", relation=Muhafız_Başı_Bar)
+    imagebutton:
+        idle "images/kadı.png"
+        hover "images/kadı.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Kadı", relation=Kadı_Bar)
+    imagebutton:
+        idle "images/asker.png"
+        hover "images/asker.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Asker", relation=Asker_Bar)
+    imagebutton:
+        idle "images/çiftçi.png"
+        hover "images/çiftçi.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Çiftçi", relation=Çiftçi_Bar)
+    imagebutton:
+        idle "images/zengin_tüccar.png"
+        hover "images/zengin_tüccar.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Zengin_Tüccar", relation=Zengin_Tüccar_Bar)
+    imagebutton:
+        idle "images/soylu.png"
+        hover "images/soylu.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Soylu", relation=Soylu_Bar)
+    imagebutton:
+        idle "images/gizemli_adam.png"
+        hover "images/gizemli_adam.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Gizemli_Adam", relation=Gizemli_Adam_Bar)
+    imagebutton:
+        idle "images/otacı.png"
+        hover "images/otacı.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Otacı", relation=Otacı_Bar)
+    imagebutton:
+        idle "images/büyücü.png"
+        hover "images/büyücü.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Büyücü", relation=Büyücü_Bar)
+    imagebutton:
+        idle "images/şifacı.png"
+        hover "images/şifacı.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Şifacı", relation=Şifacı_Bar)
+    imagebutton:
+        idle "images/yerel_bakan.png"
+        hover "images/yerel_bakan.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Yerel_Bakan", relation=Yerel_Bakan_Bar)
+    imagebutton:
+        idle "images/hizmetci_basi.png"
+        hover "images/hizmetci_basi.png"
+        xpos 100
+        ypos 300
+        action Show("character_info", name="Hizmetçi_Başı", relation=Hizmetçi_Başı_Bar)
