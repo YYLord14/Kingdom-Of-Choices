@@ -796,7 +796,6 @@ label start:
         "audio/Lake_of_Light.mp3",
         "audio/Rite_of_the_Fading_Light.mp3"] loop
     show screen bars
-    show screen character_info_buttons
     scene startbcg
     show screen dialog_counter
     $ in_game = True
