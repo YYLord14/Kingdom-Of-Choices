@@ -243,265 +243,6 @@ label zero_point:
     $ People = 5
     jump start
 
-init python:
-    Kütüphaneci = 5 # karakter barları
-    Demirci = 5
-    Baş_İmam = 5
-    Ozan = 5
-    Muhafız_Başı = 5
-    Kadı = 5
-    Asker = 5
-    Çiftçi = 5
-    Zengin_Tüccar = 5
-    Yerel_Bakan = 5
-    Soylu = 5
-    Gizemli_Adam = 5
-    Büyücü = 5
-    Otacı = 5
-    Şifacı = 5
-    Hizmetçi_Başı = 5
-
-screen character_info(Kütüphaneci, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Kütüphaneci]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Demirci, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Demirci]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Baş_İmam, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Baş_İmam]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Ozan, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Ozan]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Muhafız_Başı, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Muhafız_Başı]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Kadı, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Kadı]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Asker, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Asker]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Çiftçi, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Çiftçi]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Zengin_Tüccar, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Zengin_Tüccar]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Yerel_Bakan, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Yerel_Bakan]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Soylu, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Soylu]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Gizemli_Adam, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Gizemli_Adam]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Büyücü, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Büyücü]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Otacı, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Otacı]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Şifacı, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Şifacı]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-screen character_info(Hizmetçi_Başı, relation):
-        modal True
-        frame:
-            padding (30, 30)
-            xalign 0.5
-            yalign 0.5
-            has vbox
-
-            text "[Hizmetçi_Başı]" size 40
-            text "İlişki: [relation]/10" size 25
-            bar value relation range 10 xmaximum 300
-
-            textbutton "Kapat":
-                action Hide("character_info")
-
-
 label game_over:
     scene startbcg
     if not game_over_triggered:
@@ -1055,6 +796,7 @@ label start:
         "audio/Lake_of_Light.mp3",
         "audio/Rite_of_the_Fading_Light.mp3"] loop
     show screen bars
+    show screen character_info_buttons
     scene startbcg
     show screen dialog_counter
     $ in_game = True
@@ -1215,6 +957,7 @@ label check_minicard: #bunun yeri ile oynamayın rasgele minicard dialogu atıyo
 
 label dialog1:
     show Demirci at Position(xalign=0.5, yalign=0.9) 
+    show screen character_info_buttons
     Demirci "Kralım elimde kaliteli bir maden geçti bununla ne yapmalıyım?"
     $ dialog_count += 1
 
@@ -1229,6 +972,7 @@ label dialog1:
             Demirci "Güzel kar ettik."
             $ check_bars()
     
+    hide screen character_info_buttons
     hide image Demirci
     jump random_dialog
 label dialog2:
