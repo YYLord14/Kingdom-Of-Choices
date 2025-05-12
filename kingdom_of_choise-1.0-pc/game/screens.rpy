@@ -585,7 +585,6 @@ screen about():
     if in_game == False:
         key "escape" action Return()
     else :
-        $ in_game = False
         key "escape" action [SetVariable("in_game", False), Jump("start")]
 
 style about_label is gui_label
@@ -721,7 +720,6 @@ screen file_slots(title):
     if in_game == False:
         key "escape" action Return()
     else :
-        $ in_game = False
         key "escape" action [SetVariable("in_game", False), Jump("start")]
 
 style page_label is gui_label
@@ -856,7 +854,6 @@ screen preferences():
     if in_game == False:
         key "escape" action Return()
     else :
-        $ in_game = False
         key "escape" action [SetVariable("in_game", False), Jump("start")]
 
 style pref_label is gui_label
@@ -987,7 +984,6 @@ screen history():
     if in_game == False:
         key "escape" action Return()
     else :
-        $ in_game = False
         key "escape" action [SetVariable("in_game", False), Jump("start")]
 
 ## Geçmiş ekranında ne tür etiketlerin gösterilmesine izin verileceğini
@@ -1081,7 +1077,6 @@ screen help():
     if in_game == False:
         key "escape" action Return()
     else :
-        $ in_game = False
         key "escape" action [SetVariable("in_game", False), Jump("start")]
 
 screen keyboard_help():
