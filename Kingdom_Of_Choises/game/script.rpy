@@ -233,6 +233,7 @@ screen choice(items):
         for item in items:
             textbutton item.caption action item.action
 
+#0 Noktaları
 label zero_point:
     $ dialog_count = 0
     $ Economy = 5
@@ -242,6 +243,22 @@ label zero_point:
     $ Health = 5
     $ People = 5
     jump start
+label zero_chr_button:
+    hide screen chr_button_asker
+    hide screen chr_button_baş_imam
+    hide screen chr_button_büyücü
+    hide screen chr_button_demirci
+    hide screen chr_button_hizmetci
+    hide screen chr_button_kadı
+    hide screen chr_button_kütüphaneci
+    hide screen chr_button_muhafız_başı
+    hide screen chr_button_ozan
+    hide screen chr_button_soylu
+    hide screen chr_button_yerel_bakan
+    hide screen chr_button_zengin_tüccar
+    hide screen chr_button_çiftçi
+    hide screen chr_button_şifacı
+    return
 
 label game_over:
     scene startbcg
