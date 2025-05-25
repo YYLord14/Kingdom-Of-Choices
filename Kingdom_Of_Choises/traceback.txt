@@ -1,0 +1,22 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 806, in script
+    jump expression chosen_dialog
+ScriptError: could not find label '0'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 806, in script
+    jump expression chosen_dialog
+  File "d:\renpy-8.3.6-sdk\renpy\ast.py", line 1712, in execute
+    rv = renpy.game.script.lookup(target)
+  File "d:\renpy-8.3.6-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label '0'.
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.3.6.25022803
+Kingdom of Choise 1.0
+Wed May 21 11:32:27 2025
