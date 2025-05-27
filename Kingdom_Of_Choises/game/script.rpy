@@ -762,18 +762,9 @@ label minicard:
 
 init python:# Barların kontrol edilmesi
     def check_bars():
-        if Health <= 0 or Health >= 10:
-            renpy.jump("minicard")
-        elif Religion <= 0 or Religion >= 10:
-            renpy.jump("minicard")
-        elif Politics <= 0 or Politics >= 10:
-            renpy.jump("minicard")
-        elif Military <= 0 or Military >= 10:
-            renpy.jump("minicard")
-        elif Economy <= 0 or Economy >= 10:
-            renpy.jump("minicard")
-        elif People <= 0 or People >= 10:
-            renpy.jump("minicard")
+        for value in [Health,Religion,Politics,Military,Economy,People]:
+            if value <= 0 or value >= 10:
+                renpy.jump("minicard")
 
 init python:# Diyologlar
     import random

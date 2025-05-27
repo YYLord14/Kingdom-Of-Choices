@@ -572,14 +572,20 @@ screen about():
         xpos gui.navigation_xpos
         yalign 1.0
         yoffset -30
-        if in_game == False:
-            action Return()
+        if character_alive == True:
+            if in_game == False:
+                action Return()
+            else :
+                action [SetVariable("in_game", False), Jump("start")]
         else :
-            action [SetVariable("in_game", False), Jump("start")]
-    if in_game == False:
-        key "escape" action Return()
-    else :
-        key "escape" action [SetVariable("in_game", False), Jump("start")]
+            action Jump("game_over")
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("start")]
+    else:
+        key "escape" action Jump("game_over")
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -705,14 +711,20 @@ screen file_slots(title):
         xpos gui.navigation_xpos
         yalign 1.0
         yoffset -30
-        if in_game == False:
-            action Return()
+        if character_alive == True:
+            if in_game == False:
+                action Return()
+            else :
+                action [SetVariable("in_game", False), Jump("start")]
         else :
-            action [SetVariable("in_game", False), Jump("start")]
-    if in_game == False:
-        key "escape" action Return()
-    else :
-        key "escape" action [SetVariable("in_game", False), Jump("start")]
+            action Jump("game_over")
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("start")]
+    else:
+        key "escape" action Jump("game_over")
 
 style page_label is gui_label
 style page_label_text is gui_label_text
@@ -839,14 +851,20 @@ screen preferences():
         xpos gui.navigation_xpos
         yalign 1.0
         yoffset -30
-        if in_game == False:
-            action Return()
+        if character_alive == True:
+            if in_game == False:
+                action Return()
+            else :
+                action [SetVariable("in_game", False), Jump("start")]
         else :
-            action [SetVariable("in_game", False), Jump("start")]
-    if in_game == False:
-        key "escape" action Return()
-    else :
-        key "escape" action [SetVariable("in_game", False), Jump("start")]
+            action Jump("game_over")
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("start")]
+    else:
+        key "escape" action Jump("game_over")
 
 
 style pref_label is gui_label
@@ -969,14 +987,20 @@ screen history():
         xpos gui.navigation_xpos
         yalign 1.0
         yoffset -30
-        if in_game == False:
-            action Return()
+        if character_alive == True:
+            if in_game == False:
+                action Return()
+            else :
+                action [SetVariable("in_game", False), Jump("start")]
         else :
-            action [SetVariable("in_game", False), Jump("start")]
-    if in_game == False:
-        key "escape" action Return()
-    else :
-        key "escape" action [SetVariable("in_game", False), Jump("start")]
+            action Jump("game_over")
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("start")]
+    else:
+        key "escape" action Jump("game_over")
 
 ## Geçmiş ekranında ne tür etiketlerin gösterilmesine izin verileceğini
 ## belirler.
@@ -1061,14 +1085,20 @@ screen help():
         xpos gui.navigation_xpos
         yalign 1.0
         yoffset -30
-        if in_game == False:
-            action Return()
+        if character_alive == True:
+            if in_game == False:
+                action Return()
+            else :
+                action [SetVariable("in_game", False), Jump("start")]
         else :
-            action [SetVariable("in_game", False), Jump("start")]
-    if in_game == False:
-        key "escape" action Return()
-    else :
-        key "escape" action [SetVariable("in_game", False), Jump("start")]
+            action Jump("game_over")
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("start")]
+    else:
+        key "escape" action Jump("game_over")
 
 
 screen keyboard_help():
