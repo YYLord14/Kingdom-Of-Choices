@@ -1646,8 +1646,8 @@ screen chr_button_demirci():
 
 screen chr_button_baş_imam():
     imagebutton:
-        idle "images/baş_imam.png"
-        hover "images/baş_imam.png"
+        idle "images/bas_imam.png"
+        hover "images/bas_imam.png"
         xpos 100
         ypos 300
         action Show("character_info", name="Baş_İmam", relation=Baş_İmam_Bar)

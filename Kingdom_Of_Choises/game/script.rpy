@@ -233,8 +233,7 @@ screen choice(items):
         for item in items:
             textbutton item.caption action item.action
 
-#0 Noktaları
-label zero_point:
+label zero_point:#0 noktası
     $ dialog_count = 0
     $ Economy = 5
     $ Politics = 5
@@ -243,39 +242,33 @@ label zero_point:
     $ Health = 5
     $ People = 5
     jump start
-label zero_chr_button:
-    hide screen chr_button_asker
-    hide screen chr_button_baş_imam
-    hide screen chr_button_büyücü
-    hide screen chr_button_demirci
-    hide screen chr_button_hizmetci
-    hide screen chr_button_kadı
-    hide screen chr_button_kütüphaneci
-    hide screen chr_button_muhafız_başı
-    hide screen chr_button_ozan
-    hide screen chr_button_soylu
-    hide screen chr_button_yerel_bakan
-    hide screen chr_button_zengin_tüccar
-    hide screen chr_button_çiftçi
-    hide screen chr_button_şifacı
-    return
+
+init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
+    def check_bars():
+        for value in [Health,Religion,Politics,Military,Economy,People]:
+            if value <= 0 or value >= 10:
+                renpy.jump("minicard")
+        
+    
+    def zero_chr_button():
+        renpy.hide_screen("chr_button_asker")
+        renpy.hide_screen("chr_button_baş_imam")
+        renpy.hide_screen("chr_button_büyücü")
+        renpy.hide_screen("chr_button_demirci")
+        renpy.hide_screen("chr_button_hizmetci")
+        renpy.hide_screen("chr_button_kadı")
+        renpy.hide_screen("chr_button_kütüphaneci")
+        renpy.hide_screen("chr_button_muhafız_başı")
+        renpy.hide_screen("chr_button_ozan")
+        renpy.hide_screen("chr_button_soylu")
+        renpy.hide_screen("chr_button_yerel_bakan")
+        renpy.hide_screen("chr_button_zengin_tüccar")
+        renpy.hide_screen("chr_button_çiftçi")
+        renpy.hide_screen("chr_button_şifacı")
 
 label game_over:
     scene startbcg
-    hide screen chr_button_asker
-    hide screen chr_button_baş_imam
-    hide screen chr_button_büyücü
-    hide screen chr_button_demirci
-    hide screen chr_button_hizmetci
-    hide screen chr_button_kadı
-    hide screen chr_button_kütüphaneci
-    hide screen chr_button_muhafız_başı
-    hide screen chr_button_ozan
-    hide screen chr_button_soylu
-    hide screen chr_button_yerel_bakan
-    hide screen chr_button_zengin_tüccar
-    hide screen chr_button_çiftçi
-    hide screen chr_button_şifacı
+    $ zero_chr_button()
     if not game_over_triggered:
         $ game_over_triggered = True
         $ character_alive=False
@@ -760,12 +753,6 @@ label minicard:
         else :
             jump game_over
 
-init python:# Barların kontrol edilmesi
-    def check_bars():
-        for value in [Health,Religion,Politics,Military,Economy,People]:
-            if value <= 0 or value >= 10:
-                renpy.jump("minicard")
-
 init python:# Diyologlar
     import random
 
@@ -824,6 +811,7 @@ label start:
     while True:
         $ in_game = True
         show screen esc_listener
+        $ zero_chr_button()
         $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
         jump expression chosen_dialog
 
