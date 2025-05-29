@@ -16,7 +16,7 @@ define Büyücü = Character("Büyücü")
 define Otacı = Character("Otacı")
 define Şifacı = Character("Şifacı")
 define Hizmetçi_Başı = Character("Hizmetçi Başı")
-
+default last_dialog = None
 #image ile karakterlere bir resim atıyoruz
 
 init:
@@ -205,6 +205,7 @@ screen bars():
             add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
 init:#Tanımlamalar
+    $ last_dialog = None
     $ in_game = False
     $ game_over_triggered = False
     $ character_alive = True
@@ -811,8 +812,12 @@ label start:
     while True:
         $ in_game = True
         show screen esc_listener
-        $ zero_chr_button()
-        $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
+        if last_dialog == None:
+            $ zero_chr_button()
+            $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
+            $ last_dialog = chosen_dialog
+        else :
+            $ chosen_dialog = last_dialog
         jump expression chosen_dialog
 
 label card1: 
@@ -1006,6 +1011,8 @@ label dialog1:
     hide image Demirci
     hide screen chr_button_demirci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog2:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -1025,6 +1032,8 @@ label dialog2:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog3:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1046,6 +1055,8 @@ label dialog3:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog4:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -1063,6 +1074,8 @@ label dialog4:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog5:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1082,6 +1095,8 @@ label dialog5:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog6:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1100,6 +1115,8 @@ label dialog6:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog7:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -1116,6 +1133,8 @@ label dialog7:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog8:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -1132,6 +1151,8 @@ label dialog8:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog9:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1149,6 +1170,8 @@ label dialog9:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog10:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1166,6 +1189,8 @@ label dialog10:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog11:
     show Şifacı at Position(xalign=0.5, yalign=1)
     show screen chr_button_şifacı
@@ -1182,6 +1207,8 @@ label dialog11:
     hide image Şifacı
     hide screen chr_button_şifacı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog12:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1218,6 +1245,8 @@ label dialog13:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog14:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1237,6 +1266,8 @@ label dialog14:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog15:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1255,6 +1286,8 @@ label dialog15:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog16:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1275,6 +1308,8 @@ label dialog16:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog17:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_muhafız_başı
@@ -1289,6 +1324,8 @@ label dialog17:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog18:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1306,6 +1343,8 @@ label dialog18:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog19:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1324,6 +1363,8 @@ label dialog19:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog20:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_muhafız_başı
@@ -1342,6 +1383,8 @@ label dialog20:
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog21:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1358,6 +1401,8 @@ label dialog21:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog22:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1372,6 +1417,8 @@ label dialog22:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog23:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1389,6 +1436,8 @@ label dialog23:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog24:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1405,6 +1454,8 @@ label dialog24:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog25:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1423,6 +1474,8 @@ label dialog25:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog26:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1443,6 +1496,8 @@ label dialog26:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog27:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1461,6 +1516,8 @@ label dialog27:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog28:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1479,6 +1536,8 @@ label dialog28:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog29:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1498,6 +1557,8 @@ label dialog29:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog30:
     show Kadı at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_kadı
@@ -1516,6 +1577,8 @@ label dialog30:
     hide image Kadı
     hide screen chr_button_kadı
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog31:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1534,6 +1597,8 @@ label dialog31:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog32:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1551,6 +1616,8 @@ label dialog32:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog33:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1567,6 +1634,8 @@ label dialog33:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog34:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1588,6 +1657,8 @@ label dialog34:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog35:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1609,6 +1680,8 @@ label dialog35:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog36:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1627,6 +1700,8 @@ label dialog36:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog37:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1645,6 +1720,8 @@ label dialog37:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog38:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1662,6 +1739,8 @@ label dialog38:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog39:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1680,6 +1759,8 @@ label dialog39:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog40:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1698,6 +1779,8 @@ label dialog40:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog41:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1716,6 +1799,8 @@ label dialog41:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog42:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_çiftçi
@@ -1734,6 +1819,8 @@ label dialog42:
     hide image Çiftçi
     hide screen chr_button_çiftçi
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog43:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1750,6 +1837,8 @@ label dialog43:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog44:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1768,6 +1857,8 @@ label dialog44:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog45:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1785,6 +1876,8 @@ label dialog45:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog46:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1805,6 +1898,8 @@ label dialog46:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog47:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1823,6 +1918,8 @@ label dialog47:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog48:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1840,6 +1937,8 @@ label dialog48:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog49:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1857,6 +1956,8 @@ label dialog49:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog50:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_baş_imam
@@ -1873,6 +1974,8 @@ label dialog50:
     hide image Baş_İmam
     hide screen chr_button_baş_imam
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog51:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1887,6 +1990,8 @@ label dialog51:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog52:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1902,6 +2007,8 @@ label dialog52:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog53:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1919,6 +2026,8 @@ label dialog53:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog54:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1935,6 +2044,8 @@ label dialog54:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog55:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1951,6 +2062,8 @@ label dialog55:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog56:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1967,6 +2080,8 @@ label dialog56:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog57:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -1984,6 +2099,8 @@ label dialog57:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog58:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2001,6 +2118,8 @@ label dialog58:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog59:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2022,6 +2141,8 @@ label dialog59:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog60:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2038,6 +2159,8 @@ label dialog60:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog61:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2055,6 +2178,8 @@ label dialog61:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog62:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2071,6 +2196,8 @@ label dialog62:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog63:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2089,6 +2216,8 @@ label dialog63:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog64:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2104,6 +2233,8 @@ label dialog64:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog65:
     show Soylu at Position(xalign=0.5, yalign=0.3)
     show screen chr_button_soylu
@@ -2121,6 +2252,8 @@ label dialog65:
     hide image Soylu
     hide screen chr_button_soylu
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog66:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2136,6 +2269,8 @@ label dialog66:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog67:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2153,6 +2288,8 @@ label dialog67:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog68:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2171,6 +2308,8 @@ label dialog68:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog69:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2190,6 +2329,8 @@ label dialog69:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog70:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2208,6 +2349,8 @@ label dialog70:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog71:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2224,6 +2367,8 @@ label dialog71:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog72:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2244,6 +2389,8 @@ label dialog72:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog73:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2261,6 +2408,8 @@ label dialog73:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog74:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2278,6 +2427,8 @@ label dialog74:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog75:
     show Asker at Position(xalign=0.5, yalign=0.8)
     show screen chr_button_asker
@@ -2296,6 +2447,8 @@ label dialog75:
     hide image Asker
     hide screen chr_button_asker
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog76:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2311,6 +2464,8 @@ label dialog76:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog77:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2329,6 +2484,8 @@ label dialog77:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog78:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2344,6 +2501,8 @@ label dialog78:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog79:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2360,6 +2519,8 @@ label dialog79:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog80:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2376,6 +2537,8 @@ label dialog80:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog81:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2392,6 +2555,8 @@ label dialog81:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog82:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2409,6 +2574,8 @@ label dialog82:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog83:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_zengin_tüccar
@@ -2426,6 +2593,8 @@ label dialog83:
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog84:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2443,6 +2612,8 @@ label dialog84:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog85:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2460,6 +2631,8 @@ label dialog85:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog86:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2478,6 +2651,8 @@ label dialog86:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog87:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2494,6 +2669,8 @@ label dialog87:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog88:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2512,6 +2689,8 @@ label dialog88:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog89:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2529,6 +2708,8 @@ label dialog89:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog90:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2548,6 +2729,8 @@ label dialog90:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog91:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2566,6 +2749,8 @@ label dialog91:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog92:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2584,6 +2769,8 @@ label dialog92:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog93:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2600,6 +2787,8 @@ label dialog93:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog94:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2618,6 +2807,8 @@ label dialog94:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog95:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
     show screen chr_button_yerel_bakan
@@ -2633,6 +2824,8 @@ label dialog95:
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog96:
     show Büyücü at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_büyücü
@@ -2650,6 +2843,8 @@ label dialog96:
     hide image Büyücü
     hide screen chr_button_büyücü
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog97:
     show Büyücü at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_büyücü
@@ -2668,6 +2863,8 @@ label dialog97:
     hide image Büyücü
     hide screen chr_button_büyücü
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog98:
     show Büyücü at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_büyücü
@@ -2685,6 +2882,8 @@ label dialog98:
     hide image Büyücü
     hide screen chr_button_büyücü
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog99:
     show Büyücü at Position(xalign=0.5, yalign=0.5)
     show screen chr_button_büyücü
@@ -2701,6 +2900,8 @@ label dialog99:
     hide image Büyücü
     hide screen chr_button_büyücü
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog100:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2718,6 +2919,8 @@ label dialog100:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog101:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2734,6 +2937,8 @@ label dialog101:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog102:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2751,6 +2956,8 @@ label dialog102:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog103:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2768,6 +2975,8 @@ label dialog103:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog104:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2785,6 +2994,8 @@ label dialog104:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog105:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2801,6 +3012,8 @@ label dialog105:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog106:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2818,6 +3031,8 @@ label dialog106:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog107:
     show Ozan at Position(xalign=0.5, yalign=0.9)
     show screen chr_button_ozan
@@ -2834,6 +3049,8 @@ label dialog107:
     hide image Ozan
     hide screen chr_button_ozan
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog108:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2849,6 +3066,8 @@ label dialog108:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog109:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2863,6 +3082,8 @@ label dialog109:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog110:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2878,6 +3099,8 @@ label dialog110:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog111:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2894,6 +3117,8 @@ label dialog111:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog112:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2909,6 +3134,8 @@ label dialog112:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog113:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2925,6 +3152,8 @@ label dialog113:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog114:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2942,6 +3171,8 @@ label dialog114:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog115:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2960,6 +3191,8 @@ label dialog115:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 label dialog116:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
     show screen chr_button_hizmetci
@@ -2977,6 +3210,8 @@ label dialog116:
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
     jump random_dialog
+    $ last_dialog= None
+    return
 
 label random_dialog:
     $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
