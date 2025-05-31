@@ -16,7 +16,6 @@ define Büyücü = Character("Büyücü")
 define Otacı = Character("Otacı")
 define Şifacı = Character("Şifacı")
 define Hizmetçi_Başı = Character("Hizmetçi Başı")
-default last_dialog = None
 #image ile karakterlere bir resim atıyoruz
 
 init:
@@ -253,19 +252,33 @@ init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
     
     def zero_chr_button():
         renpy.hide_screen("chr_button_asker")
+        renpy.hide("Asker")
         renpy.hide_screen("chr_button_baş_imam")
+        renpy.hide("Baş İmam")
         renpy.hide_screen("chr_button_büyücü")
+        renpy.hide("Büyücü")
         renpy.hide_screen("chr_button_demirci")
+        renpy.hide("Demirci")
         renpy.hide_screen("chr_button_hizmetci")
+        renpy.hide("Hizmetçi Başı")
         renpy.hide_screen("chr_button_kadı")
+        renpy.hide("Kadı")
         renpy.hide_screen("chr_button_kütüphaneci")
+        renpy.hide("Kütüphaneci")
         renpy.hide_screen("chr_button_muhafız_başı")
+        renpy.hide("Muhafız Başı")
         renpy.hide_screen("chr_button_ozan")
+        renpy.hide("Ozan")
         renpy.hide_screen("chr_button_soylu")
+        renpy.hide("Soylu")
         renpy.hide_screen("chr_button_yerel_bakan")
+        renpy.hide("Yerel Bakan")
         renpy.hide_screen("chr_button_zengin_tüccar")
+        renpy.hide("Zengin Tüccar")
         renpy.hide_screen("chr_button_çiftçi")
+        renpy.hide("Çiftçi")
         renpy.hide_screen("chr_button_şifacı")
+        renpy.hide("Şifacı")
 
 label game_over:
     scene startbcg
@@ -283,18 +296,20 @@ label game_over:
                 Gizemli_Adam "Vakalar arttı ve hastalık en sonunda sarayınızıda kırıp geçirdi."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        return 
+                        $ renpy.quit() 
             "Olamaz":
                 hide image Otacı
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Vakalar arttı ve hastalık en sonunda sarayınızıda kırıp geçirdi."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        return 
+                        $ renpy.quit() 
 
     elif Health >= 10:
         show Şifacı at Position(xalign=0.5, yalign=0.9) 
@@ -306,18 +321,20 @@ label game_over:
                 Gizemli_Adam "Ülkeni mutantlar bastı, sürekli üreyen bu yaratıklar Aquiladaki herkesi öldürdü."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        return 
+                        $ renpy.quit() 
             "Neler oluyor?":
                 hide image Şifacı
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Ülkeni mutantlar bastı, sürekli üreyen bu yaratıklar Aquiladaki herkesi öldürdü."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        return 
+                        $ renpy.quit() 
     elif Religion <= 0:
         
         show Baş_İmam at Position(xalign=0.5, yalign=0.9) 
@@ -329,18 +346,20 @@ label game_over:
                 Gizemli_Adam " Dinsizlikle yargılanarak ülkeden sürgün edildiğiniz yolda suikast e uğradınız."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        return 
+                        $ renpy.quit() 
             "Ne?":
                 hide image Baş_İmam
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam " Dinsizlikle yargılanarak ülkeden sürgün edildiğiniz yolda suikast e uğradınız."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        return 
+                        $ renpy.quit() 
                     
     elif Religion >= 10:
         
@@ -353,20 +372,20 @@ label game_over:
                 Gizemli_Adam "Çok güçlenen Baş İmam seni tahttan indirerek idam etti ve yerine kendi geçti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
             "Ne oluyor":
                 hide image Baş_İmam
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Çok güçlenen Baş İmam seni tahttan indirerek idam etti ve yerine kendi geçti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
 
     elif Politics <= 0:
         
@@ -379,20 +398,20 @@ label game_over:
                 Gizemli_Adam "Ülkenin tüm istihbaratları sızdırılmış düşman ülkeler Aquila yı alt etti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
             "Hayır!":
                 hide image Yerel_Bakan
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.4)
                 Gizemli_Adam "Ülkenin tüm istihbaratları sızdırılmış düşman ülkeler Aquila yı alt etti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
     elif Politics >= 10:
         
         show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -404,20 +423,20 @@ label game_over:
                 Gizemli_Adam "Kraliyet meclisi sana baş kaldırıp isyan etti halkının önünde idam edildin."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
             "Ne?":
                 hide image Yerel_Bakan
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.4)
                 Gizemli_Adam "Kraliyet meclisi sana baş kaldırıp isyan etti halkının önünde idam edildin." 
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
     elif Military <= 0:
         
         show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -429,20 +448,20 @@ label game_over:
                 Gizemli_Adam "Düşman orduları sarayınızı basıyor ve sizi yakalıp öldürüyorlar Aquila Krallığı sizin hükümdarlığınızda yok oluyor."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
             "Hayır!":
                 hide image Muhafız_Başı
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Düşman orduları sarayınızı basıyor ve sizi yakalıp öldürüyorlar Aquila Krallığı sizin hükümdarlığınızda yok oluyor."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return 
+                        $ renpy.quit() 
     elif Military >= 10:
         
         show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -454,20 +473,20 @@ label game_over:
                 Gizemli_Adam "Askerler sarayınızı basıyor ve sizi yakalayıp asarak idam ediyorlar Ülkeniz darbe girişimi ile Ordunun eline geçti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return 
+                        $ renpy.quit() 
             "Ne saçmalıyorsun?":
                 hide image Muhafız_Başı
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Askerler sarayınızı basıyor ve sizi yakalayıp asarak idam ediyorlar Ülkeniz darbe girişimi ile Ordunun eline geçti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()
-                        return
     elif Economy <= 0:
         
         show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -479,21 +498,20 @@ label game_over:
                 Gizemli_Adam "Dış ülkeler dört bir yandan saldıraya geçti ve yavaş yavaş ülkeni ele geçirdiler."
                 menu:
                     "Yeniden başla":
-                        $ game_over_triggered = False  # Bitiş ekranı sıfırlansın
+                        hide image Gizemli_Adam
                         jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return 
+                        $ renpy.quit() 
             "Ne?":
                 hide image Soylu
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Dış ülkeler dört bir yandan saldıraya geçti ve yavaş yavaş ülkeni ele geçirdiler."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return 
+                        $ renpy.quit() 
     elif Economy >= 10:
         
         show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -505,20 +523,20 @@ label game_over:
                 Gizemli_Adam "Ülkende monarşi ortadan kalıyor ve sizi yakalayıp idam ediyorlar Ülkeniz artık zengin kesimin eline geçti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()
-                        return
             "Aklınımı kaçırdın?":
                 hide image Soylu
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Ülkende monarşi ortadan kalıyor ve sizi yakalayıp idam ediyorlar Ülkeniz artık zengin kesimin eline geçti."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return  
+                        $ renpy.quit()  
     elif People <= 0:
         
         show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -530,20 +548,20 @@ label game_over:
                 Gizemli_Adam "Halk size daha fazla dayanamadı ve sarayınızı basıp sizi kargılarla öldürdüler."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return 
+                        $ renpy.quit() 
             "Ne oluyor?":
                 hide image Kadı
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Halk size daha fazla dayanamadı ve sarayınızı basıp sizi kargılarla öldürdüler."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return 
+                        $ renpy.quit() 
     elif People >= 10:
         
         show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -555,20 +573,20 @@ label game_over:
                 Gizemli_Adam "Doyumsuz halk daha fazlasını istiyor sarayınızı basan isyancılardan kaçarken öldünüz."
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()
-                        return
             "Aklınımı kaçırdın?":
                 hide image Çiftçi
                 show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
                 Gizemli_Adam "Doyumsuz halk daha fazlasını istiyor sarayınızı basan isyancılardan kaçarken öldünüz." 
                 menu:
                     "Yeniden başla":
-                        jump zero_point  
+                        hide image Gizemli_Adam
+                        jump zero_point   
                     "Çık":
-                        $ renpy.quit()
-                        return 
+                        $ renpy.quit() 
 
 label minicard:
     if Health <= 0:
@@ -809,16 +827,17 @@ label start:
     scene startbcg
     show screen dialog_counter
     $ character_alive=True
-    while True:
-        $ in_game = True
-        show screen esc_listener
-        if last_dialog == None:
-            $ zero_chr_button()
-            $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
-            $ last_dialog = chosen_dialog
-        else :
-            $ chosen_dialog = last_dialog
-        jump expression chosen_dialog
+    label in_start:
+        while True:
+            $ in_game = True
+            show screen esc_listener
+            if last_dialog == None:
+                $ zero_chr_button()
+                $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
+                $ last_dialog = chosen_dialog
+            else :
+                $ chosen_dialog = last_dialog
+            jump expression chosen_dialog
 
 label card1: 
     show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
@@ -1010,8 +1029,8 @@ label dialog1:
     
     hide image Demirci
     hide screen chr_button_demirci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog2:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -1031,8 +1050,8 @@ label dialog2:
     
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog3:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1054,8 +1073,8 @@ label dialog3:
            
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog4:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -1073,8 +1092,8 @@ label dialog4:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog5:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1094,8 +1113,8 @@ label dialog5:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog6:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1114,8 +1133,8 @@ label dialog6:
             $ check_bars()
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog7:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -1132,8 +1151,8 @@ label dialog7:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog8:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -1150,8 +1169,8 @@ label dialog8:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog9:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -1169,8 +1188,8 @@ label dialog9:
             Soylu "Doğru, değil."
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog10:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1188,8 +1207,8 @@ label dialog10:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog11:
     show Şifacı at Position(xalign=0.5, yalign=1)
@@ -1206,8 +1225,8 @@ label dialog11:
             $check_bars()
     hide image Şifacı
     hide screen chr_button_şifacı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog12:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1244,8 +1263,8 @@ label dialog13:
             $ check_bars()
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog14:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1265,8 +1284,8 @@ label dialog14:
             Muhafız_Başı "Efendim, köylüler kurtarıldı."
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog15:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1285,8 +1304,8 @@ label dialog15:
             $ check_bars()
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog16:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1307,8 +1326,8 @@ label dialog16:
             $ check_bars()
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog17:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.8)
@@ -1323,8 +1342,8 @@ label dialog17:
             $ check_bars()
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog18:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1342,8 +1361,8 @@ label dialog18:
             $ check_bars()
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog19:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1362,8 +1381,8 @@ label dialog19:
             $ check_bars()
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog20:
     show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
@@ -1382,8 +1401,8 @@ label dialog20:
             $ check_bars()
     hide image Muhafız_Başı
     hide screen chr_button_muhafız_başı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog21:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1400,8 +1419,8 @@ label dialog21:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog22:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1416,8 +1435,8 @@ label dialog22:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog23:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1435,8 +1454,8 @@ label dialog23:
         
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog24:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1453,8 +1472,8 @@ label dialog24:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog25:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1473,8 +1492,8 @@ label dialog25:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog26:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1495,8 +1514,8 @@ label dialog26:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog27:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1515,8 +1534,8 @@ label dialog27:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog28:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1535,8 +1554,8 @@ label dialog28:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog29:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1556,8 +1575,8 @@ label dialog29:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog30:
     show Kadı at Position(xalign=0.5, yalign=0.9)
@@ -1576,8 +1595,8 @@ label dialog30:
             $ check_bars()
     hide image Kadı
     hide screen chr_button_kadı
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog31:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1596,8 +1615,8 @@ label dialog31:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog32:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1615,8 +1634,8 @@ label dialog32:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog33:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1633,8 +1652,8 @@ label dialog33:
             Çiftçi "Haklısınız Efendim."
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog34:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1656,8 +1675,8 @@ label dialog34:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog35:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1679,8 +1698,8 @@ label dialog35:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog36:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1699,8 +1718,8 @@ label dialog36:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog37:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1719,8 +1738,8 @@ label dialog37:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog38:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1738,8 +1757,8 @@ label dialog38:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog39:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1758,8 +1777,8 @@ label dialog39:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog40:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1778,8 +1797,8 @@ label dialog40:
 
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog41:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1798,8 +1817,8 @@ label dialog41:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog42:
     show Çiftçi at Position(xalign=0.5, yalign=0.9)
@@ -1818,8 +1837,8 @@ label dialog42:
             $ check_bars()
     hide image Çiftçi
     hide screen chr_button_çiftçi
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog43:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1836,8 +1855,8 @@ label dialog43:
             $ People += 1
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog44:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1856,8 +1875,8 @@ label dialog44:
             $ check_bars()
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog45:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1875,8 +1894,8 @@ label dialog45:
 
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog46:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1897,8 +1916,8 @@ label dialog46:
             $ check_bars()
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog47:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1917,8 +1936,8 @@ label dialog47:
             $ check_bars()
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog48:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1936,8 +1955,8 @@ label dialog48:
             $ check_bars()
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog49:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1955,8 +1974,8 @@ label dialog49:
             $ check_bars()
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog50:
     show Baş_İmam at Position(xalign=0.5, yalign=0.5)
@@ -1973,8 +1992,8 @@ label dialog50:
             $ check_bars()
     hide image Baş_İmam
     hide screen chr_button_baş_imam
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog51:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -1989,8 +2008,8 @@ label dialog51:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog52:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2006,8 +2025,8 @@ label dialog52:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog53:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2025,8 +2044,8 @@ label dialog53:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog54:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2043,8 +2062,8 @@ label dialog54:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog55:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2061,8 +2080,8 @@ label dialog55:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog56:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2079,8 +2098,8 @@ label dialog56:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog57:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2098,8 +2117,8 @@ label dialog57:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog58:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2117,8 +2136,8 @@ label dialog58:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog59:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2140,8 +2159,8 @@ label dialog59:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog60:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2158,8 +2177,8 @@ label dialog60:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog61:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2177,8 +2196,8 @@ label dialog61:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog62:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2195,8 +2214,8 @@ label dialog62:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog63:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2215,8 +2234,8 @@ label dialog63:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog64:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2232,8 +2251,8 @@ label dialog64:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog65:
     show Soylu at Position(xalign=0.5, yalign=0.3)
@@ -2251,8 +2270,8 @@ label dialog65:
             $ check_bars()
     hide image Soylu
     hide screen chr_button_soylu
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog66:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2268,8 +2287,8 @@ label dialog66:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog67:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2287,8 +2306,8 @@ label dialog67:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog68:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2307,8 +2326,8 @@ label dialog68:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog69:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2328,8 +2347,8 @@ label dialog69:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog70:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2348,8 +2367,8 @@ label dialog70:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog71:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2366,8 +2385,8 @@ label dialog71:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog72:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2388,8 +2407,8 @@ label dialog72:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog73:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2407,8 +2426,8 @@ label dialog73:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog74:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2426,8 +2445,8 @@ label dialog74:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog75:
     show Asker at Position(xalign=0.5, yalign=0.8)
@@ -2446,8 +2465,8 @@ label dialog75:
             $ check_bars()
     hide image Asker
     hide screen chr_button_asker
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog76:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2463,8 +2482,8 @@ label dialog76:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog77:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2483,8 +2502,8 @@ label dialog77:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog78:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2500,8 +2519,8 @@ label dialog78:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog79:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2518,8 +2537,8 @@ label dialog79:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog80:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2536,8 +2555,8 @@ label dialog80:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog81:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2554,8 +2573,8 @@ label dialog81:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog82:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2573,8 +2592,8 @@ label dialog82:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog83:
     show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
@@ -2592,8 +2611,8 @@ label dialog83:
             $ check_bars()
     hide image Zengin_Tüccar
     hide screen chr_button_zengin_tüccar
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog84:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2611,8 +2630,8 @@ label dialog84:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog85:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2630,8 +2649,8 @@ label dialog85:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog86:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2650,8 +2669,8 @@ label dialog86:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog87:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2668,8 +2687,8 @@ label dialog87:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog88:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2688,8 +2707,8 @@ label dialog88:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog89:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2707,8 +2726,8 @@ label dialog89:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog90:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2728,8 +2747,8 @@ label dialog90:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog91:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2748,8 +2767,8 @@ label dialog91:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog92:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2768,8 +2787,8 @@ label dialog92:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog93:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2786,8 +2805,8 @@ label dialog93:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog94:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2806,8 +2825,8 @@ label dialog94:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog95:
     show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
@@ -2823,8 +2842,8 @@ label dialog95:
             $ check_bars()
     hide image Yerel_Bakan
     hide screen chr_button_yerel_bakan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog96:
     show Büyücü at Position(xalign=0.5, yalign=0.4)
@@ -2842,8 +2861,8 @@ label dialog96:
             $ check_bars()
     hide image Büyücü
     hide screen chr_button_büyücü
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog97:
     show Büyücü at Position(xalign=0.5, yalign=0.5)
@@ -2862,8 +2881,8 @@ label dialog97:
             $ check_bars()
     hide image Büyücü
     hide screen chr_button_büyücü
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog98:
     show Büyücü at Position(xalign=0.5, yalign=0.5)
@@ -2881,8 +2900,8 @@ label dialog98:
             $ check_bars()
     hide image Büyücü
     hide screen chr_button_büyücü
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog99:
     show Büyücü at Position(xalign=0.5, yalign=0.5)
@@ -2899,8 +2918,8 @@ label dialog99:
             $ check_bars()
     hide image Büyücü
     hide screen chr_button_büyücü
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog100:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -2918,8 +2937,8 @@ label dialog100:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog101:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -2936,8 +2955,8 @@ label dialog101:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog102:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -2955,8 +2974,8 @@ label dialog102:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog103:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -2974,8 +2993,8 @@ label dialog103:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog104:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -2993,8 +3012,8 @@ label dialog104:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog105:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -3011,8 +3030,8 @@ label dialog105:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog106:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -3030,8 +3049,8 @@ label dialog106:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog107:
     show Ozan at Position(xalign=0.5, yalign=0.9)
@@ -3048,8 +3067,8 @@ label dialog107:
             $ check_bars()
     hide image Ozan
     hide screen chr_button_ozan
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog108:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3065,8 +3084,8 @@ label dialog108:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog109:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3081,8 +3100,8 @@ label dialog109:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog110:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3098,8 +3117,8 @@ label dialog110:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog111:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3116,8 +3135,8 @@ label dialog111:
             
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog112:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3133,8 +3152,8 @@ label dialog112:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog113:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3151,8 +3170,8 @@ label dialog113:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog114:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3170,8 +3189,8 @@ label dialog114:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog115:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3190,8 +3209,8 @@ label dialog115:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 label dialog116:
     show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
@@ -3209,8 +3228,8 @@ label dialog116:
             $ check_bars()
     hide image Hizmetçi_Başı
     hide screen chr_button_hizmetci
-    jump random_dialog
     $ last_dialog= None
+    jump random_dialog
     return
 
 label random_dialog:

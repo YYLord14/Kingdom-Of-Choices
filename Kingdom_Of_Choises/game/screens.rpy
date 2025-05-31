@@ -576,14 +576,14 @@ screen about():
             if in_game == False:
                 action Return()
             else :
-                action [SetVariable("in_game", False), Jump("start")]
+                action [SetVariable("in_game", False), Jump("in_start")]
         else :
             action Jump("game_over")
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
         else :
-            key "escape" action [SetVariable("in_game", False), Jump("start")]
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
     else:
         key "escape" action Jump("game_over")
 
@@ -715,14 +715,14 @@ screen file_slots(title):
             if in_game == False:
                 action Return()
             else :
-                action [SetVariable("in_game", False), Jump("start")]
+                action [SetVariable("in_game", False), Jump("in_start")]
         else :
             action Jump("game_over")
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
         else :
-            key "escape" action [SetVariable("in_game", False), Jump("start")]
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
     else:
         key "escape" action Jump("game_over")
 
@@ -855,14 +855,14 @@ screen preferences():
             if in_game == False:
                 action Return()
             else :
-                action [SetVariable("in_game", False), Jump("start")]
+                action [SetVariable("in_game", False), Jump("in_start")]
         else :
             action Jump("game_over")
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
         else :
-            key "escape" action [SetVariable("in_game", False), Jump("start")]
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
     else:
         key "escape" action Jump("game_over")
 
@@ -991,14 +991,14 @@ screen history():
             if in_game == False:
                 action Return()
             else :
-                action [SetVariable("in_game", False), Jump("start")]
+                action [SetVariable("in_game", False), Jump("in_start")]
         else :
             action Jump("game_over")
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
         else :
-            key "escape" action [SetVariable("in_game", False), Jump("start")]
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
     else:
         key "escape" action Jump("game_over")
 
@@ -1089,14 +1089,14 @@ screen help():
             if in_game == False:
                 action Return()
             else :
-                action [SetVariable("in_game", False), Jump("start")]
+                action [SetVariable("in_game", False), Jump("in_start")]
         else :
             action Jump("game_over")
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
         else :
-            key "escape" action [SetVariable("in_game", False), Jump("start")]
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
     else:
         key "escape" action Jump("game_over")
 
