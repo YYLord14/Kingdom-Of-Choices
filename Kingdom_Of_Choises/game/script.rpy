@@ -241,7 +241,7 @@ label zero_point:#0 noktası
     $ Religion = 5
     $ Health = 5
     $ People = 5
-    jump start
+    jump in_start
 
 init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
     def check_bars():
@@ -836,6 +836,7 @@ label start:
                 $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
                 $ last_dialog = chosen_dialog
             else :
+                $ zero_chr_button()
                 $ chosen_dialog = last_dialog
             jump expression chosen_dialog
 
