@@ -226,6 +226,7 @@ init:#Tanımlamalar
 
 init python:# Gerekli Fonksiyonlar
     def check_bars():
+        renpy.pause(0.1)
         for value in [Health,Religion,Politics,Military,Economy,People]:
             if value <= 0 or value >= 10:
                 renpy.jump("minicard")
@@ -3236,4 +3237,5 @@ label dialog116:
 
 label random_dialog:
     $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
+    $ last_dialog = chosen_dialog
     jump expression chosen_dialog  # Yeni seçilen diyaloga git

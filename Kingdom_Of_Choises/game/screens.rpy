@@ -1293,7 +1293,7 @@ style confirm_button:
 style confirm_button_text:
     properties gui.text_properties("confirm_button")
 
-
+'''
 ## Atlama gösterge ekranı ######################################################
 ##
 ## Atlama gösterge ekranı, atlama işleminin devam ettiğini gösterir.
@@ -1346,7 +1346,7 @@ style skip_text:
 style skip_triangle:
     ## İçinde SİYAH, SAĞI GÖSTEREN KÜÇÜK ÜÇGEN olan bir font kullanmalıyız.
     font "DejaVuSans.ttf"
-
+'''
 
 ## Bildirim ekranı #############################################################
 ##

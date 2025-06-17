@@ -55,7 +55,7 @@ define config.has_voice = True
 
 init -1 python:
     renpy.config.keymap["escape"]=["K_ESCAPE"]
-    renpy.config.keymap["skip"]=["K_SPACE"]
+    renpy.config.keymap["dismiss"].append("K_SPACE")
 
 ## Oyuncu ana menüdeyken oynatılacak bir ses dosyasını ayarlamak için aşağıdaki
 ## satırı etkinleştirin. Bu dosya oyun başladıktan sonra durdurulana ya da başka
