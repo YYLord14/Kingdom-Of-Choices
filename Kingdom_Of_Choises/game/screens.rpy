@@ -233,48 +233,6 @@ style choice_button is default:
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
-
-## Hızlı Menü ekranı ###########################################################
-##
-## Hızlı menü, oyun-dışı menülere kolay erişim için oyunda gösterilir.
-
-screen quick_menu():
-
-    ## Bunun diğer ekranlar üzerinde göründüğünden emin olun.
-    zorder 100
-
-    if quick_menu:
-
-        hbox:
-            style_prefix "quick"
-
-            xalign 0.5
-            yalign 1.0
-            textbutton _("Atla") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Oto") action Preference("auto-forward", "toggle")
-            textbutton _("Kayıt") action ShowMenu('save')
-            textbutton _("H.Kayıt") action QuickSave()
-            textbutton _("H.Yükle") action QuickLoad()
-            textbutton _("Tercih") action ShowMenu('preferences')
-
-
-## Bu kod, oyuncu kasten arayüzü gizlemediği sürece hızlı menünün oyunda
-## gösterildiğinden emin olmak içindir.
-init python:
-    config.overlay_screens.append("quick_menu")
-
-default quick_menu = True
-
-style quick_button is default
-style quick_button_text is button_text
-
-style quick_button:
-    properties gui.button_properties("quick_button")
-
-style quick_button_text:
-    properties gui.text_properties("quick_button")
-
-
 ################################################################################
 ## Ana Menü ve Oyun Menüsü Ekranları
 ################################################################################
@@ -294,40 +252,19 @@ screen navigation():
 
         spacing gui.navigation_spacing
 
-        if main_menu:
-
-            textbutton _("Yeni Oyun") action Start()
-
-        else:
-
-            textbutton _("Geçmiş") action ShowMenu("history")
-
-            textbutton _("Kayıt") action ShowMenu("save")
+        textbutton _("Yeni Oyun") action Start()
 
         textbutton _("Devam et") action ShowMenu("load")
 
         textbutton _("Ayarlar") action ShowMenu("preferences")
 
         textbutton _("Hakkında") action ShowMenu("about")
-        if _in_replay:
+        
+        textbutton _("Ana Menü") action ShowMenu("main_menu")
 
-            textbutton _("Yeniden Oynatmayı Durdur") action EndReplay(confirm=True)
+        textbutton _("Yardım") action ShowMenu("help")
 
-        elif not main_menu:
-
-            textbutton _("Ana Menü") action MainMenu()
-
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Yardım mobil cihazlarla alakalı ya da gerekli değildir.
-            textbutton _("Yardım") action ShowMenu("help")
-
-        if renpy.variant("pc"):
-
-            ## Çıkış düğmesi iOS'ta yasaklanmıştır ve Android ve Web'de
-            ## gereksizdir.
-            textbutton _("Çıkış") action Quit(confirm=not main_menu)
+        textbutton _("Çıkış") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -351,7 +288,9 @@ screen main_menu():
 
     ## Bu diğer herhangi bir menünün aktif olmadığından emin olur.
     tag menu
-    $ in_game=False
+    $ in_mainmenu  = True
+    $ in_game = False
+    $ last_dialog = None
     add gui.main_menu_background
     add "gui/logo_beyaz.png" at Transform(xpos=0.05, ypos=0.8,zoom=0.35)
     

@@ -100,7 +100,7 @@ screen dialog_counter():
 
 
 transform bar_animation:
-    ease 0.5 xsize 400  # Barların geçişlerini akışkan hale getirmek
+    ease 0.5 xsize 395  # Barların geçişlerini akışkan hale getirmek
 
 screen bars():
     vbox:
@@ -111,12 +111,12 @@ screen bars():
         text "Sağlık" xalign 0.5  
         frame:
             background None
-            xsize 400  
+            xsize 395  
             ysize 30
             bar:
                 value Health
                 range 10
-                xsize 400
+                xsize 395
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -127,12 +127,12 @@ screen bars():
         text "Din" xalign 0.5
         frame:
             background None
-            xsize 400  
+            xsize 395  
             ysize 30
             bar:
                 value Religion
                 range 10
-                xsize 400
+                xsize 395
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -143,12 +143,12 @@ screen bars():
         text "Siyaset" xalign 0.5
         frame:
             background None
-            xsize 400  
+            xsize 395  
             ysize 30
             bar:
                 value Politics
                 range 10
-                xsize 400
+                xsize 395
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -159,12 +159,12 @@ screen bars():
         text "Askeri" xalign 0.5
         frame:
             background None
-            xsize 400  
+            xsize 395  
             ysize 30
             bar:
                 value Military
                 range 10
-                xsize 400
+                xsize 395
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -175,12 +175,12 @@ screen bars():
         text "Ekonomi" xalign 0.5
         frame:
             background None
-            xsize 400  
+            xsize 395  
             ysize 30
             bar:
                 value Economy
                 range 10
-                xsize 400
+                xsize 395
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -191,12 +191,12 @@ screen bars():
         text "Halk" xalign 0.5
         frame:
             background None
-            xsize 400
+            xsize 395
             ysize 30
             bar:
                 value People
                 range 10
-                xsize 400
+                xsize 395
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -231,34 +231,20 @@ init python:# Gerekli Fonksiyonlar
             if value <= 0 or value >= 10:
                 renpy.jump("minicard")
 
-    def zero_chr_button():
-        renpy.hide_screen("chr_button_asker")
+    def zero_chr():
         renpy.hide("Asker")
-        renpy.hide_screen("chr_button_baş_imam")
         renpy.hide("Baş_İmam")
-        renpy.hide_screen("chr_button_büyücü")
         renpy.hide("Büyücü")
-        renpy.hide_screen("chr_button_demirci")
         renpy.hide("Demirci")
-        renpy.hide_screen("chr_button_hizmetci")
         renpy.hide("Hizmetçi Başı")
-        renpy.hide_screen("chr_button_kadı")
         renpy.hide("Kadı")
-        renpy.hide_screen("chr_button_kütüphaneci")
         renpy.hide("Kütüphaneci")
-        renpy.hide_screen("chr_button_muhafız_başı")
         renpy.hide("Muhafız Başı")
-        renpy.hide_screen("chr_button_ozan")
         renpy.hide("Ozan")
-        renpy.hide_screen("chr_button_soylu")
         renpy.hide("Soylu")
-        renpy.hide_screen("chr_button_yerel_bakan")
         renpy.hide("Yerel Bakan")
-        renpy.hide_screen("chr_button_zengin_tüccar")
         renpy.hide("Zengin Tüccar")
-        renpy.hide_screen("chr_button_çiftçi")
         renpy.hide("Çiftçi")
-        renpy.hide_screen("chr_button_şifacı")
         renpy.hide("Şifacı")
 
 label zero_point:#0 noktası
@@ -284,7 +270,7 @@ screen choice(items):
             textbutton item.caption action item.action
 
 label game_over:
-    $ zero_chr_button()
+    $ zero_chr()
     if not game_over_triggered:
         $ game_over_triggered = True
         $ character_alive=False
@@ -829,16 +815,15 @@ label start:
     scene startbcg
     show screen dialog_counter
     $ character_alive=True
+    jump zero_point
     label in_start:
         $ in_game = True
         show screen esc_listener
         while True:
             if last_dialog == None:
-                $ zero_chr_button()
                 $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
                 $ last_dialog = chosen_dialog
             else :
-                $ zero_chr_button()
                 $ chosen_dialog = last_dialog
             jump expression chosen_dialog
 
