@@ -1,5 +1,5 @@
 label card1: 
-    show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+    show Gizemli_Adam
     Gizemli_Adam "Eğer bana istediğim ödemeyi yaparsan sana bağlı bir şövalye teşkilatı oluştururum."
     menu:
         "sende kimsin":
@@ -10,8 +10,7 @@ label card1:
             $ check_bars() #knight of the swan minikart
     hide image Gizemli_Adam
 label card2:
-    show Büyücü at Position(xalign=0.5, yalign=0.5)
-    
+    show Büyücü
     Büyücü "Biraz paraya ihtiyacım var elimdeki sağlık iksirini seninle paylaşabilirim ne dersin."
     menu:
         "Kabul ediyorum":
@@ -22,10 +21,8 @@ label card2:
         "İksirlere inanmıyorum":
             $ check-bars()
     hide image Büyücü
-    
 label card3:
-    show Büyücü at Position(xalign=0.5, yalign=0.5)
-    
+    show Büyücü
     Büyücü "Biraz paraya ihtiyacım var sana zor zamanlarda yardım edecek bir şeyler öğretebilirim"
     menu:
         "Kabul ediyorum":
@@ -36,10 +33,8 @@ label card3:
         "Benim büyü ile işim olmaz":
             $ check_bars()
     hide image Büyücü
-    
 label card4:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
-    
+    show Soylu
     Soylu "Aquila Kralı elinizdeki mevcut hazine ile zor zamanlar için bir tahıl ambarı açmalısınız."
     menu:
         "Mantıklı açıyorum":
@@ -49,10 +44,8 @@ label card4:
         "Hazineyi kullanmak istemiyorum":
             $ check_bars()
     hide image Soylu
-    
 label card5:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
-    
+    show Muhafız_Başı
     Muhafız_Başı "Efendim bir grup iyi asker sizin hizmetinize girmek istiyorlar. Belli bir ücret karşılığında tabii."
     menu:
         "Evet çağır onları":
@@ -62,10 +55,8 @@ label card5:
         "Hayır ihtiyacım yok":
             $ check_bars()
     hide image Muhafız_Başı
-    
 label card6:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
-    
+    show Baş_İmam
     Baş_İmam "Ne vakittir aradığımız kutsal emanetlerin yerini buldum bir ordu ile onları kurtaralım."
     menu:
         "Ordumla yola çıkıyorum hemen":
@@ -75,9 +66,8 @@ label card6:
         "Yeterli gücüm yok maalesef":
             $ check_bars()
     hide image Baş_İmam
-    
 label card7:
-    show Kütüphaneci at Position(xalign=0.5 yalign=0.5)
+    show Kütüphaneci
     Kütüphaneci "Kralım babanızın kütüphanesinde eski bir kitap buldum belki işinize yarayabilir."
     menu:
         "Ver bakalım":
@@ -86,10 +76,8 @@ label card7:
         "Sende kalsın":
             $ check_bars()
     hide image Kütüphaneci
-    
 label card8:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
-    
+    show Muhafız_Başı
     Muhafız_Başı "Efendim Krallığınız Yargea ile olan savaşı kazandı gelen ganimeti ne yapalım"
     menu:
         "Zor günler için ayıralım":
@@ -101,10 +89,8 @@ label card8:
             $ Politics += 1
             $ check_bars()
     hide image Muhafız_Başı
-    
 label card9:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
-    
+    show Muhafız_Başı
     Muhafız_Başı "Efendim bana bağlı bir grup askeri sizin emrinize vermek istiyorum can güvenliğinizi arttırmak için."
     menu:
         "Tamam ücretlerini ben karşılayacağım":
@@ -114,10 +100,8 @@ label card9:
         "Şuan böyle bir tehdit yok":
             $ check_bars()
     hide image Muhafız_Başı
-    
 label card10:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
-    
+    show Zengin_Tüccar
     Zengin_Tüccar "Sizinle bir anlaşma yapmak istiyorum eğer bana koruma ve maddi destek sağlarsanız Donovia ile ipek ticareti yapalım, karın bir kısmınıda size vereceğim."
     menu:
         "Kabul ediyorum destek vereceğim.":
@@ -128,10 +112,8 @@ label card10:
         "Ben bir Kralım sana ihtiyacım yok":
             $ check_bars()
     hide image Zengin_Tüccar
-    
 label card11:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
-    
+    show Çiftçi
     Çiftçi "Saygı değer Kralım bir mağranın içinde mavi şapkalı mantar bulduk bize ekonomik destek sağlarsanız onları sizin için toplayabiliriz."
     menu:
         "Böyle saçma işlerle huzuruma bir daha çıkma":
@@ -143,10 +125,8 @@ label card11:
             $ blue_cap_mushroom_minicard = 1
             $ check_bars()
     hide image Çiftçi
-    
 label card12:
-    show Büyücü at Position(xalign=0.5, yalign=0.5)
-    
+    show Büyücü
     Büyücü "Biraz paraya ihtiyacım var elimdeki sadakat iksirini seninle paylaşabilirim ne dersin. "
     menu:
         "Kabul ediyorum":

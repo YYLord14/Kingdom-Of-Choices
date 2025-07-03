@@ -1,5 +1,5 @@
 label dialog1:
-    show Demirci at Position(xalign=0.5, yalign=0.9)
+    show Demirci
     
     Demirci "Kralım elimde kaliteli bir maden geçti bununla ne yapmalıyım?"
     $ dialog_count += 1
@@ -21,7 +21,7 @@ label dialog1:
     jump random_dialog
     return
 label dialog2:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Kralım saray ahalisi çok mutsuz bir eğlence düzenleyelim"
     $ dialog_count += 1
@@ -42,7 +42,7 @@ label dialog2:
     jump random_dialog
     return
 label dialog3:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Ordumuzun gücünü artırmak için yeni askerler toplamalıyız"
     $ dialog_count += 1
@@ -65,7 +65,7 @@ label dialog3:
     jump random_dialog
     return
 label dialog4:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Saygı değer Kralım talimler çok fazla sayısını azaltmalısınız."
     $ dialog_count += 1
@@ -84,7 +84,7 @@ label dialog4:
     jump random_dialog
     return
 label dialog5:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralım Köyümüzü fareler bastı lütfen yardım edin"
     $ dialog_count += 1
@@ -105,7 +105,7 @@ label dialog5:
     jump random_dialog
     return
 label dialog6:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam "Ülkedeki camiler yetersiz halkımız dışarda kalıyor destek talep ediyorum"
     $ dialog_count += 1
@@ -125,7 +125,7 @@ label dialog6:
     jump random_dialog
     return
 label dialog7:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Eğer vergilerde indirim yaparsanız kendi halkımdan gelen tacirleri  ülkenize yönlendiririm kazan kazan ne dersiniz"
     $ dialog_count += 1
@@ -143,7 +143,7 @@ label dialog7:
     jump random_dialog
     return
 label dialog8:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Kralım ülkenin bütçesinin büyük bir kısmı askeriye ye harcanıyor inşaatları arttıralım."
     $ dialog_count += 1
@@ -161,7 +161,7 @@ label dialog8:
     jump random_dialog
     return
 label dialog9:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Yeterli sayıda kölem yok yenilerini nerden bulabilirim"
     $ dialog_count += 1
@@ -180,7 +180,7 @@ label dialog9:
     jump random_dialog
     return
 label dialog10:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Majesteleri, bir Soylu ve bir  Tacir , sınırları belirlenmemiş bir arazi yüzünden yıllardır anlaşmazlık içinde. Her ikisi de bu toprakların kendilerine ait olduğunu iddia ediyor."
     $ dialog_count += 1
@@ -199,7 +199,7 @@ label dialog10:
     jump random_dialog
     return
 label dialog11:
-    show Şifacı at Position(xalign=0.5, yalign=1)
+    show Şifacı
     
     Şifacı "Tıp için bir araştırma yapmam gerekiyo bütçeyi nasıl oluşturayım"
     $ dialog_count += 1
@@ -217,7 +217,7 @@ label dialog11:
     jump random_dialog
     return
 label dialog12:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Efendim Narga Krallığı sınırlarımızı ihlal ediyor bu bir son vermemiz gerek."
     $ dialog_count += 1
@@ -237,7 +237,7 @@ label dialog12:
     hide image Muhafız_Başı
     
 label dialog13:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Efendim askerler arasında bir husumet çıktı bu sorunu çözmeliyiz."
     $ dialog_count += 1
@@ -255,7 +255,7 @@ label dialog13:
     jump random_dialog
     return
 label dialog14:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Efendim Kuzey bölgesinden bir grup haydut bir köyü basıp insanları rehin almış."
     $ dialog_count += 1
@@ -276,7 +276,7 @@ label dialog14:
     jump random_dialog
     return
 label dialog15:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Efendim ordu için ekipman yetersiz sağlıkçıların aletlerini eritip silah yapalım mı?"
     $ dialog_count += 1
@@ -296,7 +296,7 @@ label dialog15:
     jump random_dialog
     return
 label dialog16:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Efendim ordudaki askerlerin sayısı az buna bir çözüm bulalım."
     $ dialog_count += 1
@@ -318,7 +318,7 @@ label dialog16:
     jump random_dialog
     return
 label dialog17:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.8)
+    show Muhafız_Başı
     
     Muhafız_Başı "Efendim asker sayımız çok fazla bazılarını size koruma olarak verebilirim"
         
@@ -334,7 +334,7 @@ label dialog17:
     jump random_dialog
     return
 label dialog18:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Bir grup haydut yolumuzu kesmişti hepsini öldürüp silahlarını aldık bunları ne yapalım?"
     $ dialog_count += 1
@@ -353,7 +353,7 @@ label dialog18:
     jump random_dialog
     return
 label dialog19:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Askerlerimiz savaş ganimetleri arasında bir takım sıhhıyye aletleri buldu kime verelim."
     $ dialog_count += 1
@@ -373,7 +373,7 @@ label dialog19:
     jump random_dialog
     return
 label dialog20:
-    show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+    show Muhafız_Başı
     
     Muhafız_Başı "Efendim askerler aileleri için yarıcalık talep ediyorlar."
     $ dialog_count += 1
@@ -393,7 +393,7 @@ label dialog20:
     jump random_dialog
     return
 label dialog21:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Majesteleri, bir Soylu ve bir  Tacir , sınırları belirlenmemiş bir arazi yüzünden yıllardır anlaşmazlık içinde. Her ikisi de bu toprakların kendilerine ait olduğunu iddia ediyor. Adaletin tecelli etmesi için kararınızı bekliyorum."
     $ dialog_count += 1
@@ -411,7 +411,7 @@ label dialog21:
     jump random_dialog
     return
 label dialog22:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Efendim, şehirdeki zengin bir tüccar, ödediği vergilerin haksız olduğunu iddia ediyor .Eğer bu konu çözülemezse, diğer tacirler de aynı yola başvurabilir."
     $ dialog_count += 1
@@ -427,7 +427,7 @@ label dialog22:
     jump random_dialog
     return
 label dialog23:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı"Majesteleri, köylüler genç bir kadını büyücülükle suçluyor. Kadının suçlu olup olmadığına karar vermek için sizden bir hüküm beklenmektedir."
     $ dialog_count += 1
@@ -446,7 +446,7 @@ label dialog23:
     jump random_dialog
     return
 label dialog24:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Kralım muhafızlardan biri, düşman krallıkla gizlice haberleşmekle suçlanıyor. Kanıtlar yetersiz ama halk idam edilmesini istiyor. Adaletin sağlanması için kesin bir emir vermelisiniz."
     $ dialog_count += 1
@@ -464,7 +464,7 @@ label dialog24:
     jump random_dialog
     return
 label dialog25:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Kralım, adaletin doğru ve hızlı bir şekilde yerine getirilebilmesi için yeni bir mahkeme binasına ihtiyacımız var. Eski bina küçük ve yetersiz kaldı."
     $ dialog_count += 1
@@ -484,7 +484,7 @@ label dialog25:
     jump random_dialog
     return
 label dialog26:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Efendim , Yargıçlar ve mahkeme personelinin maaşları çok düşüktür, Onların maaşlarında bir artış yapılmasını talep ediyorum."
     $ dialog_count += 1
@@ -506,7 +506,7 @@ label dialog26:
     jump random_dialog
     return
 label dialog27:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Bazı suçlar, halk arasında büyük tartışmalara yol açıyor. Bu durumu önlemek için belirli suçların cezalarında değişiklik yapmamız gerekiyor."
     $ dialog_count += 1
@@ -526,7 +526,7 @@ label dialog27:
     jump random_dialog
     return
 label dialog28:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Ülkemizin büyüklüğü ve adalet talepleri göz önüne alındığında, daha fazla kadı ve yargıç atanmasına ihtiyaç var."
     $ dialog_count += 1
@@ -546,7 +546,7 @@ label dialog28:
     jump random_dialog
     return
 label dialog29:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Kralım , Halk arasında eşitlik ve adaletin sağlanması adına, köylerde ve kasabalarda da düzenli olarak adaletli bir şekilde duruşmalar yapılmalıdır."
     $ dialog_count += 1
@@ -567,7 +567,7 @@ label dialog29:
     jump random_dialog
     return
 label dialog30:
-    show Kadı at Position(xalign=0.5, yalign=0.9)
+    show Kadı
     
     Kadı "Büyük Kralım, kadınların ve çocukların korunması hususunda daha fazla önlem alınmasını rica ediyorum. Bu, toplumda adalete olan güveni pekiştirecek ve halkın huzurunu sağlayacaktır."
     $ dialog_count += 1
@@ -587,7 +587,7 @@ label dialog30:
     jump random_dialog
     return
 label dialog31:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralım Köyümüzü fareler bastı lütfen yardım edin."
     $ dialog_count += 1
@@ -607,7 +607,7 @@ label dialog31:
     jump random_dialog
     return
 label dialog32:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralım bir mağranın içinde Mavi şapkalı mantar bulduk bize ekonomik destek sağlarsanız onları sizin için toplayabiliriz."
     $ dialog_count += 1
@@ -626,7 +626,7 @@ label dialog32:
     jump random_dialog
     return
 label dialog33:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralım bana güneydeki arsalarınızı verirseniz onları sizin için ekebilirim."
     $ dialog_count += 1
@@ -644,7 +644,7 @@ label dialog33:
     jump random_dialog
     return
 label dialog34:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralımız biz vergilerimizi ödeyen kısım askerlerden yeteri korumayı sağlamıyorlar."
     $ dialog_count += 1
@@ -667,7 +667,7 @@ label dialog34:
     jump random_dialog
     return
 label dialog35:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralımız köylüler olarak taleplerimizi bildirmek için sizinle bir görüşme yapmak istiyoruz."
     $ dialog_count += 1
@@ -690,7 +690,7 @@ label dialog35:
     jump random_dialog
     return
 label dialog36:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralımız köyümüze hiç yağmur yağmadı çok zarar ettik lütfen bu sene vergi almayın."
     $ dialog_count += 1
@@ -710,7 +710,7 @@ label dialog36:
     jump random_dialog
     return
 label dialog37:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Saygı değer Kralımız köyümüzde yeterli insan gücü kalmadı tarım yaparken zorlanıyoruz bize hayvan desteği verirmisiniz."
     $ dialog_count += 1
@@ -730,7 +730,7 @@ label dialog37:
     jump random_dialog
     return
 label dialog38:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Majesteleri, bu yıl kuraklık hasatlarımızı mahvetti. Vergileri azaltmazsanız ailelerimiz aç kalacak. Lütfen bizden alınan vergiyi bu yıl için düşürün."
     $ dialog_count += 1
@@ -749,7 +749,7 @@ label dialog38:
     jump random_dialog
     return
 label dialog39:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Kralım, yıllardır lordumun topraklarında çalışıyorum ama kendi ailem için hiçbir şeyim yok. Bana ve aileme işleyebileceğimiz küçük bir arazi bağışlamanızı dilerim."
     $ dialog_count += 1
@@ -769,7 +769,7 @@ label dialog39:
     jump random_dialog
     return
 label dialog40:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Efendimiz, köyümüzden çok fazla genç erkek askere alındı. Tarlalarımızı ekecek kimse kalmadı. daha fazla adam almamanız için yalvarıyorum."
     $ dialog_count += 1
@@ -789,7 +789,7 @@ label dialog40:
     jump random_dialog
     return
 label dialog41:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Efendim, haydutlar ve paralı askerler köylerimizi talan ediyor. Kadınlarımız ve çocuklarımız korku içinde yaşıyor. Bizi koruyacak bir grup asker gönderir misiniz?"
     $ dialog_count += 1
@@ -809,7 +809,7 @@ label dialog41:
     jump random_dialog
     return
 label dialog42:
-    show Çiftçi at Position(xalign=0.5, yalign=0.9)
+    show Çiftçi
     
     Çiftçi "Kralım, tarlalarımız kuruyor ve mahsul alamıyoruz. Köyümüze bir kuyu açtırmanız veya bir sulama kanalı yaptırmanız için yalvarıyoruz."
     $ dialog_count += 1
@@ -829,7 +829,7 @@ label dialog42:
     jump random_dialog
     return
 label dialog43:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam "Topladığımız paralardan artanları getirdim hazineye koyalım"
     $ dialog_count += 1
@@ -847,7 +847,7 @@ label dialog43:
     jump random_dialog
     return
 label dialog44:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam "Ülkedeki camiler yetersiz destek talep ediyorum."
     $ dialog_count += 1
@@ -867,7 +867,7 @@ label dialog44:
     jump random_dialog
     return
 label dialog45:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam "Camilerde topladığımız yardımlar arttı bu kadarına ihtiyacımız yok ne yapalım."
     $ dialog_count += 1
@@ -886,7 +886,7 @@ label dialog45:
     jump random_dialog
     return
 label dialog46:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam "Gençlerimizin gereken eğitimi alması için medreseler açalım."
     $ dialog_count += 1
@@ -908,7 +908,7 @@ label dialog46:
     jump random_dialog
     return
 label dialog47:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam"Vergilerin bir kısmı ile başı boş kişilere eğitim verelim."
     $ dialog_count += 1
@@ -928,7 +928,7 @@ label dialog47:
     jump random_dialog
     return
 label dialog48:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam"Efendimiz, şehirlerimizde kumar, içki ve sefahat artıyor. Bu günahları önlemek için daha sert yasalar getirmenizi rica ediyorum."
     $ dialog_count += 1
@@ -947,7 +947,7 @@ label dialog48:
     jump random_dialog
     return
 label dialog49:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam"Kralım, halkın inancını güçlendirmek için kutsal bir günü kraliyet kararıyla resmî bayram ilan edelim."
     $ dialog_count += 1
@@ -966,7 +966,7 @@ label dialog49:
     jump random_dialog
     return
 label dialog50:
-    show Baş_İmam at Position(xalign=0.5, yalign=0.5)
+    show Baş_İmam
     
     Baş_İmam"Majesteleri, kararlarınıza rehberlik etmesi için yanınıza bir din bilgini almanızı öneririm."
     $ dialog_count += 1
@@ -984,7 +984,7 @@ label dialog50:
     jump random_dialog
     return
 label dialog51:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Aquila Kralı elinizdeki mevcut hazine ile zor zamanlar için bir tahıl ambarı açmalısınız."
     $ dialog_count += 1
@@ -1000,7 +1000,7 @@ label dialog51:
     jump random_dialog
     return
 label dialog52:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Yeterli sayıda kölem yok yenilerini nerden bulabilirim."
     $ dialog_count += 1
@@ -1017,7 +1017,7 @@ label dialog52:
     jump random_dialog
     return
 label dialog53:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Evimin yanındaki inşaat yıkıldı ve evimin duvarı zarar gördü karşılanmasını talep ediyorum."
     $ dialog_count += 1
@@ -1036,7 +1036,7 @@ label dialog53:
     jump random_dialog
     return
 label dialog54:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Pazarlarda büyük tüccarlar çok kar ederken küçük tüccarlar zarara uğruyor bunun önüne geçmemizz gerek."
     $ dialog_count += 1
@@ -1054,7 +1054,7 @@ label dialog54:
     jump random_dialog
     return
 label dialog55:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Komutanlar çok kazanıyor maaşlarını azaltıp başka alanlara yöneltelim."
     $ dialog_count += 1
@@ -1072,7 +1072,7 @@ label dialog55:
     jump random_dialog
     return
 label dialog56:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Ülke zor durumda , bazı Soylular elindeki değerli eşyaları size vermek istiyor."
     $ dialog_count += 1
@@ -1090,7 +1090,7 @@ label dialog56:
     jump random_dialog
     return
 label dialog57:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Efendim bazı köyler eksik vergi ödemişler ne yapalım?"
     $ dialog_count += 1
@@ -1109,7 +1109,7 @@ label dialog57:
     jump random_dialog
     return
 label dialog58:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Tavernada bir eğlence düzenlemek istiroum bu sayede tacirler ülkemize daha çok uğrar."
     $ dialog_count += 1
@@ -1128,7 +1128,7 @@ label dialog58:
     jump random_dialog
     return
 label dialog59:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Kralım kölelerim çok fazla size satmak istiyorum."
     $ dialog_count += 1
@@ -1151,7 +1151,7 @@ label dialog59:
     jump random_dialog
     return
 label dialog60:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Daha fazla para için köleleri su kenarlarına götürelim balık yakalasınlar."
     $ dialog_count += 1
@@ -1169,7 +1169,7 @@ label dialog60:
     jump random_dialog
     return
 label dialog61:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Köylerden gelen vergileri arttıralım."
     $ dialog_count += 1
@@ -1188,7 +1188,7 @@ label dialog61:
     jump random_dialog
     return
 label dialog62:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Daha fazla para için köleleri inşaatlarda çalıştıralım."
     $ dialog_count += 1
@@ -1206,7 +1206,7 @@ label dialog62:
     jump random_dialog
     return
 label dialog63:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Majesteleri, Bana bir toprak bağışlamanızı talep ediyorum. Böylece hem krallığınıza daha fazla vergi ödeyebilir hem de sınırları koruyabilirim."
     $ dialog_count += 1
@@ -1226,7 +1226,7 @@ label dialog63:
     jump random_dialog
     return
 label dialog64:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Efendim, danışmanlarınız arasında daha fazla söz hakkına sahip olmalıyım. Kraliyet konseyinizde bana bir yer verirseniz, tecrübemle kararlarınıza rehberlik edebilirim."
     $ dialog_count += 1
@@ -1243,7 +1243,7 @@ label dialog64:
     jump random_dialog
     return
 label dialog65:
-    show Soylu at Position(xalign=0.5, yalign=0.3)
+    show Soylu
     
     Soylu "Majesteleri, güçlü bir ittifak ve sizin otoritenizi güçlendirmek için beni bir başka asile evlendirmenizi rica ediyorum."
     $ dialog_count += 1
@@ -1262,7 +1262,7 @@ label dialog65:
     jump random_dialog
     return
 label dialog66:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Saygı değer Kralım talimler çok fazla sayısını azaltmalısınız. Bu durumda ne yapacaksınız?"
     $ dialog_count += 1
@@ -1279,7 +1279,7 @@ label dialog66:
     jump random_dialog
     return
 label dialog67:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Saygı değer Kralım savaş ganimetlerinin çoğu komutanlarımıza gidiyor adalet istiyoruz."
     $ dialog_count += 1
@@ -1298,7 +1298,7 @@ label dialog67:
     jump random_dialog
     return
 label dialog68:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Saygı değer Kralım silahlarımız eskidi yenilerine ihtiyaç var."
     $ dialog_count += 1
@@ -1318,7 +1318,7 @@ label dialog68:
     jump random_dialog
     return
 label dialog69:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Kralım yemekler yeterince iyi değil değişmesini talep ediyoruz."
     $ dialog_count += 1
@@ -1339,7 +1339,7 @@ label dialog69:
     jump random_dialog
     return
 label dialog70:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Kralım yatakhaneler çok berbat daha iyilerini hak ediyoruz."
     $ dialog_count += 1
@@ -1359,7 +1359,7 @@ label dialog70:
     jump random_dialog
     return
 label dialog71:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Kralım askerler size minnetlerini sunmak için sizi kışlaya davet ediyorlar."
     $ dialog_count += 1
@@ -1377,7 +1377,7 @@ label dialog71:
     jump random_dialog
     return
 label dialog72:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Majesteleri, savaş meydanında gösterdiğim kahramanlıklar nedeniyle bana ve aileme küçük bir arazi bağışlamanızı rica ederim."
     $ dialog_count += 1
@@ -1399,7 +1399,7 @@ label dialog72:
     jump random_dialog
     return
 label dialog73:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Efendim, uzun yıllardır ordunuza sadakatle hizmet ettim. Bana şövalyelik unvanı ve komuta edebileceğim küçük bir birlik bahşetmenizi dilerim."
     $ dialog_count += 1
@@ -1418,7 +1418,7 @@ label dialog73:
     jump random_dialog
     return
 label dialog74:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Majesteleri, askerlerimiz zor şartlar altında görev yapmaktadır. Orduya daha fazla destek sağlamanızı arz ederim."
     $ dialog_count += 1
@@ -1437,7 +1437,7 @@ label dialog74:
     jump random_dialog
     return
 label dialog75:
-    show Asker at Position(xalign=0.5, yalign=0.8)
+    show Asker
     
     Asker "Kralım, yıllardır seferden sefere koşuyorum. Eşim ve çocuklarım beni görmeyi özledi. Kısa bir süreliğine köyüme dönmem için izin vermenizi istiyorum."
     $ dialog_count += 1
@@ -1457,7 +1457,7 @@ label dialog75:
     jump random_dialog
     return
 label dialog76:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Elimde çok değerli bir tarihi eser var bunu almak isteyebilirsiniz."
     $ dialog_count += 1
@@ -1474,7 +1474,7 @@ label dialog76:
     jump random_dialog
     return
 label dialog77:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Kiralık asker arıyorum ordunuzdan bir bölük alabilirmiyim."
     $ dialog_count += 1
@@ -1494,7 +1494,7 @@ label dialog77:
     jump random_dialog
     return
 label dialog78:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Yargea dan geldim elimde güzel deriler var bakmak istemisin."
     $ dialog_count += 1
@@ -1511,7 +1511,7 @@ label dialog78:
     jump random_dialog
     return
 label dialog79:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Majesteleri, tüccarlarınızın yolları haydutlarla dolu! Eğer askerleriniz bu yolları korursa, ticaretimiz büyür ve hazineniz altınla dolar."
     $ dialog_count += 1
@@ -1529,7 +1529,7 @@ label dialog79:
     jump random_dialog
     return
 label dialog80:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Kralım, eğer bana ve loncalarıma özel bir vergi indirimi sağlarsanız, size her yıl bol miktarda altın ve mal göndermeye söz veririm."
     $ dialog_count += 1
@@ -1547,7 +1547,7 @@ label dialog80:
     jump random_dialog
     return
 label dialog81:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Majesteleri, tuz ve baharat ticaretinin tek yetkilisi ben olayım. Karşılığında size her yıl belirli bir miktar gelir aktarırım."
     $ dialog_count += 1
@@ -1565,7 +1565,7 @@ label dialog81:
     jump random_dialog
     return
 label dialog82:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Kralım, ticaretin gelişmesi için yeni bir pazar yeri ya da liman açılmasını öneriyorum. Böylece, yabancı tüccarlar gelip daha fazla vergi ödeyebilirler."
     $ dialog_count += 1
@@ -1584,7 +1584,7 @@ label dialog82:
     jump random_dialog
     return
 label dialog83:
-    show Zengin_Tüccar at Position(xalign=0.5, yalign=0.9)
+    show Zengin_Tüccar
     
     Zengin_Tüccar "Efendim, soylular ve Baş imam çok fazla güce sahip. Bana daha fazla yetki verirseniz, ticareti ve dolayısıyla krallığın ekonomisini sizin için büyütürüm."
     $ dialog_count += 1
@@ -1603,7 +1603,7 @@ label dialog83:
     jump random_dialog
     return
 label dialog84:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Kralım soyluların elinde çok fazla değerli eşya var bunları eritip ordunun harcamaları için kullanalım."
     $ dialog_count += 1
@@ -1622,7 +1622,7 @@ label dialog84:
     jump random_dialog
     return
 label dialog85:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Efendim batı daki köyler sınırlarımıza çok yakın onlar için tehlike arz ediyor."
     $ dialog_count += 1
@@ -1641,7 +1641,7 @@ label dialog85:
     jump random_dialog
     return
 label dialog86:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Kralım hazinemiz tükeniyor bir çare bulmamız gerek."
     $ dialog_count += 1
@@ -1661,7 +1661,7 @@ label dialog86:
     jump random_dialog
     return
 label dialog87:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Efendim hazineden bir miktar altın arttırdım bunu ne için kullanalım."
     $ dialog_count += 1
@@ -1679,7 +1679,7 @@ label dialog87:
     jump random_dialog
     return
 label dialog88:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Kralım Zemorvia Krallığı ile barış antlaşmamız ın süresi bitiyor yenisini imzalıyıp sulh e devam edelim mi?"
     $ dialog_count += 1
@@ -1699,7 +1699,7 @@ label dialog88:
     jump random_dialog
     return
 label dialog89:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Soyluların çok fazla değerli  eşyaları var onlara el koyup hazineye ekleyebiliriz."
     $ dialog_count += 1
@@ -1718,7 +1718,7 @@ label dialog89:
     jump random_dialog
     return
 label dialog90:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Yonkur Krallığı bize savaş açtığını iletti ne yapacağız."
     $ dialog_count += 1
@@ -1739,7 +1739,7 @@ label dialog90:
     jump random_dialog
     return
 label dialog91:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Donovia yadan elçi geldi bizden borç istiyorlar karşılığında bize paralı askerler vericekler ."
     $ dialog_count += 1
@@ -1759,7 +1759,7 @@ label dialog91:
     jump random_dialog
     return
 label dialog92:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Majesteleri, hazinemiz zayıflıyor. Soyluların ve büyük tüccarların daha fazla vergi ödemesi için yeni bir düzenleme yapmalıyız. Eğer onlara fazla yük bindirmek istemezseniz, köylülerden ek vergiler toplayabiliriz."
     $ dialog_count += 1
@@ -1779,7 +1779,7 @@ label dialog92:
     jump random_dialog
     return
 label dialog93:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Efendim, sarayda ve taşrada bazı memurlar rüşvet alıyor, halk arasında huzursuzluk artıyor. Yetkilerini kötüye kullanan bürokratları cezalandırmalı ve yeni, güvenilir kişiler atamalıyız."
     $ dialog_count += 1
@@ -1797,7 +1797,7 @@ label dialog93:
     jump random_dialog
     return
 label dialog94:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Kralım, halkımız giderek daha fazla açlık ve kıtlık içinde. Yeni tahıl ambarları kurup yiyecekleri adil dağıtırsak, isyanları önleyebiliriz. Ancak bu, hazineye ek yük getirecektir."
     $ dialog_count += 1
@@ -1817,7 +1817,7 @@ label dialog94:
     jump random_dialog
     return
 label dialog95:
-    show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+    show Yerel_Bakan
     
     Yerel_Bakan "Krallığınızda farklı bölgelerde kanunlar farklı işliyor, bazı lordlar kendi hukukunu uyguluyor. Merkezi bir yasa çıkararak otoritenizi pekiştirebiliriz. Ancak soylular bu değişime karşı çıkabilir."
     $ dialog_count += 1
@@ -1834,7 +1834,7 @@ label dialog95:
     jump random_dialog
     return
 label dialog96:
-    show Büyücü at Position(xalign=0.5, yalign=0.4)
+    show Büyücü
     
     Büyücü "Canım biraz para istiyor istersen meclisindekilere kısa süreli bir büyü yapıp Siyaset i 3 arttırabilirim."
     $ dialog_count += 1
@@ -1853,7 +1853,7 @@ label dialog96:
     jump random_dialog
     return
 label dialog97:
-    show Büyücü at Position(xalign=0.5, yalign=0.5)
+    show Büyücü
     
     Büyücü "Eğer bana biraz ödeme yaparsan sana büyü yaparım veherşeyi önceden fark edersin."
     $ dialog_count += 1
@@ -1873,7 +1873,7 @@ label dialog97:
     jump random_dialog
     return
 label dialog98:
-    show Büyücü at Position(xalign=0.5, yalign=0.5)
+    show Büyücü
     
     Büyücü "Majesteleri, Diyanet in bazı mensupları benim karanlık sanatlarla uğraştığımı iddia ediyor ve cezalandırmak istiyor."
     $ dialog_count += 1
@@ -1892,7 +1892,7 @@ label dialog98:
     jump random_dialog
     return
 label dialog99:
-    show Büyücü at Position(xalign=0.5, yalign=0.5)
+    show Büyücü
     
     Büyücü "Efendim, son zamanlarda kıtlık arttı. Bunun doğal sebeplerle mi, yoksa bir lanet yüzünden mi olduğunu belirlemem için sizden destek istiyorum."
     $ dialog_count += 1
@@ -1910,7 +1910,7 @@ label dialog99:
     jump random_dialog
     return
 label dialog100:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Majesteleri, halkımızı eğlendirmek ve moralini yükseltmek adına büyük bir şenlik düzenlemek istiyoruz. Şenliklerde müzik, hikâyeler ve gösteriler olacak. Halkın sevgisini kazanmak için harika bir fırsat!"
     $ dialog_count += 1
@@ -1929,7 +1929,7 @@ label dialog100:
     jump random_dialog
     return
 label dialog101:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Efendim Taverna ve hanlarda yeteri kadar çalışan yok destek talep ediyorum."
     $ dialog_count += 1
@@ -1947,7 +1947,7 @@ label dialog101:
     jump random_dialog
     return
 label dialog102:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Taciler için Taverna ve Hanlara daha fazla oda lazım."
     $ dialog_count += 1
@@ -1966,7 +1966,7 @@ label dialog102:
     jump random_dialog
     return
 label dialog103:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Ulu Kralım, halkınızın ruhunu ve ahengini güçlendirmek için sarayda bir şiir ve şarkı gecesi düzenleyelim. Böylece hem soylular hem de halk, müzik ve hikâyelerle huzur bulur."
     $ dialog_count += 1
@@ -1985,7 +1985,7 @@ label dialog103:
     jump random_dialog
     return
 label dialog104:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Büyük Kralım, sizin ve krallığınızın şanını tüm ülkeye duyurmak için sarayınızın resmî ozanı olmak istiyorum. Destanlar yazıp şanınızı nesilden nesile aktarayım."
     $ dialog_count += 1
@@ -2004,7 +2004,7 @@ label dialog104:
     jump random_dialog
     return
 label dialog105:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Majesteleri, ordumuzun cesur savaşçıları için destanlar yazıp bunları tüm ülkeye yaymak istiyorum. Böylece askerlerimiz daha büyük bir gurur ve inançla savaşabilir!"
     $ dialog_count += 1
@@ -2022,7 +2022,7 @@ label dialog105:
     jump random_dialog
     return
 label dialog106:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Büyük Kralım, din adamlarıyla birlikte çalışarak ilahiler ve kutsal şarkılar bestelemek istiyoruz. Böylece halkımızın manevi huzuru artacaktır."
     $ dialog_count += 1
@@ -2041,7 +2041,7 @@ label dialog106:
     jump random_dialog
     return
 label dialog107:
-    show Ozan at Position(xalign=0.5, yalign=0.9)
+    show Ozan
     
     Ozan "Majesteleri, krallığınızın başarılarını yücelten şarkılar yazıp her köye ve kasabaya yaymak istiyorum. Böylece halkınız sizi daha çok sevecektir."
     $ dialog_count += 1
@@ -2059,7 +2059,7 @@ label dialog107:
     jump random_dialog
     return
 label dialog108:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Elbiselerimiz eskidi yeni bir şeyler istiyoruz Kralım."
     $ dialog_count += 1
@@ -2076,7 +2076,7 @@ label dialog108:
     jump random_dialog
     return
 label dialog109:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Bugün saçım nasıl olmuş Kralım?"
     $ dialog_count += 1
@@ -2092,7 +2092,7 @@ label dialog109:
     jump random_dialog
     return
 label dialog110:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Efendim yeni bir saç stili mi istersiniz yoksa yeni bir elbisemi?"
     $ dialog_count += 1
@@ -2109,7 +2109,7 @@ label dialog110:
     jump random_dialog
     return
 label dialog111:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Kralımız bugün nasıllar?"
     $ dialog_count += 1
@@ -2127,7 +2127,7 @@ label dialog111:
     jump random_dialog
     return
 label dialog112:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Efendim biraz hamama girip rahatlamak istermisiniz?"
     $ dialog_count += 1
@@ -2144,7 +2144,7 @@ label dialog112:
     jump random_dialog
     return
 label dialog113:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Efendim soylular bizi zorla dans ettiriyor böyle bir hakları olmamalı."
     $ dialog_count += 1
@@ -2162,7 +2162,7 @@ label dialog113:
     jump random_dialog
     return
 label dialog114:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Kralım, hizmetkârlarınızınaldıkları ücret yetmiyor. Eğer maaşlarını artırırsanız, daha verimli ve sadık çalışırlar."
     $ dialog_count += 1
@@ -2181,7 +2181,7 @@ label dialog114:
     jump random_dialog
     return
 label dialog115:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Majesteleri, sarayınızın temizlik işleri yetersiz kalıyor. Duvarlar küflenmeye, halılar kokmaya başladı. Daha fazla hizmetkâr ve malzeme almamıza izin verin."
     $ dialog_count += 1
@@ -2201,7 +2201,7 @@ label dialog115:
     jump random_dialog
     return
 label dialog116:
-    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    show Hizmetçi_Başı
     
     Hizmetçi_Başı "Kralım, mutfağınızda kullanılan malzemeler bayat ve kalitesiz. Daha iyi ve taze malzemeler almak için bütçemizi artırmalıyız, yoksa hastalıklar baş gösterebilir."
     $ dialog_count += 1
