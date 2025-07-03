@@ -1,4 +1,4 @@
-﻿# Define ile karakterleri tanımlıyoruz
+# Define ile karakterleri tanımlıyoruz
 
 define Kütüphaneci = Character("Kütüphaneci")
 define Demirci = Character("Demirci")
@@ -16,73 +16,177 @@ define Büyücü = Character("Büyücü")
 define Otacı = Character("Otacı")
 define Şifacı = Character("Şifacı")
 define Hizmetçi_Başı = Character("Hizmetçi Başı")
-
-default last_dialog = None
 #image ile karakterlere bir resim atıyoruz
 
-init:
+
+init:     
     image Asker:
         "asker.png"
-        zoom 0.65
+        zoom 0.35
     image Kütüphaneci:
         "kütüphaneci.png"
-        zoom 0.7
+        zoom 0.35
     image Demirci:
         "demirci.png"
-        zoom 0.7
+        zoom 0.35
     image Baş_İmam:
         "bas_imam.png"
-        zoom 0.6
+        zoom 0.3
     image Ozan:
         "ozan.png"
-        zoom 0.7
+        zoom 0.55
     image Muhafız_Başı:
         "muhafız_basi.png"
-        zoom 0.7
+        zoom 0.35
 init:
     image Kadı:
         "Kadı.png"
-        zoom 0.7
+        zoom 0.3
     image Soylu:
         "soylu.png"
-        zoom 0.8
-        yalign 0.5
+        zoom 0.45
     image Yerel_Bakan:
         "yerel_bakan.png"
-        zoom 0.55
-        yalign 0.2
+        zoom 0.55   
     image Çiftçi:
         "çiftçi.png"
-        zoom 0.8
+        zoom 0.4
     image Büyücü:
         "büyücü.png"
-        zoom 0.7
+        zoom 0.35
     image Gizemli_Adam:
         "gizemli_adam.png"
-        zoom 0.7
+        zoom 0.25
     image Şifacı:
         "şifacı.png"
-        zoom 1.3
+        zoom 0.35
     image Zengin_Tüccar:
         "zengin_tüccar.png"
-        zoom 0.7
+        zoom 0.35
 init:
     image Otacı:
         "Otacı.png"
-        zoom 0.7
+        zoom 0.35
     image Hizmetçi_Başı:
         "hizmetci_basi.png"
-        zoom 0.7
+        zoom 0.25
     image startbcg :
-        "game_start_bgd.png"
+        "arka_plan.jpg"
         size(config.screen_width, config.screen_height)
-    
+init:
+    image style_start :
+        "style_start.png"
+        size(config.screen_width,100)
+        yalign 0.0
+
 label open_preferences:#Esc on clik to open preferences
     call screen preferences
     return
 screen esc_listener():#Esc control
     key "escape" action Call("open_preferences")
+
+transform Demirci:
+    xalign 0.5
+    yalign 0.5
+transform Ozan:
+    xalign 0.5
+    yalign 0.1
+transform Muhafız_Başı:
+    xalign 0.5
+    yalign 0.5
+transform Asker:
+    xalign 0.5
+    yalign 0.3
+transform Çiftçi:
+    xalign 0.5
+    yalign 0.05
+transform Baş_İmam:
+    xalign 0.5
+    yalign 0.3
+transform Zengin_Tüccar:
+    xalign 0.5
+    yalign 0.4
+transform Yerel_Bakan:
+    xalign 0.5
+    yalign 0.35
+transform Soylu:
+    xalign 0.5
+    yalign 0.2
+transform Kadı:
+    xalign 0.5
+    yalign 0.4
+transform Şifacı:
+    xalign 0.5
+    yalign 0.3
+transform Hizmetçi_Başı:
+    xalign 0.5
+    yalign 0.2
+transform Büyücü:
+    xalign 0.5
+    yalign 0.4
+transform Kütüphaneci:
+    xalign 0.5
+    yalign 0.4
+transform Otacı:
+    xalign 0.5
+    yalign 0.6
+transform Gizemli_Adam:
+    xalign 0.5
+    yalign 0.2
+
+## Tarih kodları ################################################################
+default current_date = {
+    "day": 24,
+    "month": 2,
+    "year": 1224,
+    "month_names": {
+        1: "Ocak",
+        2: "Şubat",
+        3: "Mart",
+        4: "Nisan",
+        5: "Mayıs",
+        6: "Haziran",
+        7: "Temmuz",
+        8: "Ağustos",
+        9: "Eylül",
+        10: "Ekim",
+        11: "Kasım",
+        12: "Aralık"
+    }
+}
+
+init python:
     
+
+    def format_date():
+        return f"{current_date['day']} {current_date['month_names'][current_date['month']]} {current_date['year']}"
+
+    def managed_day(days_to_add):
+        # Ay günlerini belirle (Artık yılları hesaba katmıyoruz)
+        month_days = {
+            1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
+            7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
+        }
+        
+        # Günleri ekle
+        current_date["day"] += days_to_add
+        
+        # Ay ve yıl ilerlemesi
+        while current_date["day"] > month_days[current_date["month"]]:
+            current_date["day"] -= month_days[current_date["month"]]
+            current_date["month"] += 1
+            
+            if current_date["month"] > 12:
+                current_date["month"] = 1
+                current_date["year"] += 1
+ 
+screen date_display():
+    text "{color=#FFFFFF}[current_date['day']]  [current_date['month_names'][current_date['month']]]\n   {color=#FFFFFF}[current_date['year']]{/color}":
+        xpos 105
+        ypos 60
+        size 18
+        line_spacing 5
+
 init: # Başlangıç değerleri
     $ Health = 5
     $ Religion = 5
@@ -91,16 +195,25 @@ init: # Başlangıç değerleri
     $ Economy = 5
     $ People = 5
 
-# Diyalog sayısının başlatılması
+
+####### sayaçlar ############################
 default dialog_count = 0
+default day_managed = managed_day
+default minicard_count = 0
+default main_story_count = 0
 
 # Diyalog sayısını gösterecek ekran
-screen dialog_counter():
-    text "Diyalog Sayısı: [dialog_count]" xpos 20 ypos 50 color "#FFFFFF"
+screen managed_day():
+    text "Yönetilen Gün: [dialog_count]":
+        xpos 90
+        ypos 115
+        color "#FFFFFF"
+        size 15
+
 
 
 transform bar_animation:
-    ease 0.5 xsize 395  # Barların geçişlerini akışkan hale getirmek
+    ease 0.5 xsize 400  # Barların geçişlerini akışkan hale getirmek
 
 screen bars():
     vbox:
@@ -111,12 +224,12 @@ screen bars():
         text "Sağlık" xalign 0.5  
         frame:
             background None
-            xsize 395  
+            xsize 400  
             ysize 30
             bar:
                 value Health
                 range 10
-                xsize 395
+                xsize 400
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -127,12 +240,12 @@ screen bars():
         text "Din" xalign 0.5
         frame:
             background None
-            xsize 395  
+            xsize 400  
             ysize 30
             bar:
                 value Religion
                 range 10
-                xsize 395
+                xsize 400
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -143,12 +256,12 @@ screen bars():
         text "Siyaset" xalign 0.5
         frame:
             background None
-            xsize 395  
+            xsize 400  
             ysize 30
             bar:
                 value Politics
                 range 10
-                xsize 395
+                xsize 400
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -159,12 +272,12 @@ screen bars():
         text "Askeri" xalign 0.5
         frame:
             background None
-            xsize 395  
+            xsize 400  
             ysize 30
             bar:
                 value Military
                 range 10
-                xsize 395
+                xsize 400
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -175,12 +288,12 @@ screen bars():
         text "Ekonomi" xalign 0.5
         frame:
             background None
-            xsize 395  
+            xsize 400  
             ysize 30
             bar:
                 value Economy
                 range 10
-                xsize 395
+                xsize 400
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -191,12 +304,12 @@ screen bars():
         text "Halk" xalign 0.5
         frame:
             background None
-            xsize 395
+            xsize 400
             ysize 30
             bar:
                 value People
                 range 10
-                xsize 395
+                xsize 400
                 ysize 30
                 left_bar Frame("#cc0000")
                 right_bar Frame("#00000000")
@@ -210,7 +323,6 @@ init:#Tanımlamalar
     $ game_over_triggered = False
     $ character_alive = True
     $ chosen_dialog = 0
-    $ chr_zero_point = 0
     $ knight_of_swan_clan_minicard = 0
     $ health_potion_minicard = 0
     $ black_magic_minicard = 0
@@ -224,40 +336,6 @@ init:#Tanımlamalar
     $ blue_cap_mushroom_minicard = 0
     $ loyalty_potion_minicard = 0
 
-init python:# Gerekli Fonksiyonlar
-    def check_bars():
-        renpy.pause(0.1)
-        for value in [Health,Religion,Politics,Military,Economy,People]:
-            if value <= 0 or value >= 10:
-                renpy.jump("minicard")
-
-    def zero_chr():
-        renpy.hide("Asker")
-        renpy.hide("Baş_İmam")
-        renpy.hide("Büyücü")
-        renpy.hide("Demirci")
-        renpy.hide("Hizmetçi Başı")
-        renpy.hide("Kadı")
-        renpy.hide("Kütüphaneci")
-        renpy.hide("Muhafız Başı")
-        renpy.hide("Ozan")
-        renpy.hide("Soylu")
-        renpy.hide("Yerel Bakan")
-        renpy.hide("Zengin Tüccar")
-        renpy.hide("Çiftçi")
-        renpy.hide("Şifacı")
-
-label zero_point:#0 noktası
-    $ dialog_count = 0
-    $ Economy = 5
-    $ Politics = 5
-    $ Military = 5
-    $ Religion = 5
-    $ Health = 5
-    $ People = 5
-    $ last_dialog = None
-    jump in_start
-
 screen choice(items):
     style_prefix "choice"
 
@@ -269,8 +347,59 @@ screen choice(items):
         for item in items:
             textbutton item.caption action item.action
 
+label zero_point:#0 noktası
+    $ dialog_count = 0
+    $ day_managed = 1
+    $ minicard_count = 0
+    $ main_story_count = 0
+    $ Economy = 5
+    $ Politics = 5
+    $ Military = 5
+    $ Religion = 5
+    $ Health = 5
+    $ People = 5
+    jump in_start
+
+init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
+    def check_bars():
+        for value in [Health,Religion,Politics,Military,Economy,People]:
+            if value <= 0 or value >= 10:
+                renpy.jump("minicard")
+        
+    
+    def zero_chr_button():
+        renpy.hide_screen("chr_button_asker")
+        renpy.hide("Asker")
+        renpy.hide_screen("chr_button_baş_imam")
+        renpy.hide("Baş İmam")
+        renpy.hide_screen("chr_button_büyücü")
+        renpy.hide("Büyücü")
+        renpy.hide_screen("chr_button_demirci")
+        renpy.hide("Demirci")
+        renpy.hide_screen("chr_button_hizmetci")
+        renpy.hide("Hizmetçi Başı")
+        renpy.hide_screen("chr_button_kadı")
+        renpy.hide("Kadı")
+        renpy.hide_screen("chr_button_kütüphaneci")
+        renpy.hide("Kütüphaneci")
+        renpy.hide_screen("chr_button_muhafız_başı")
+        renpy.hide("Muhafız Başı")
+        renpy.hide_screen("chr_button_ozan")
+        renpy.hide("Ozan")
+        renpy.hide_screen("chr_button_soylu")
+        renpy.hide("Soylu")
+        renpy.hide_screen("chr_button_yerel_bakan")
+        renpy.hide("Yerel Bakan")
+        renpy.hide_screen("chr_button_zengin_tüccar")
+        renpy.hide("Zengin Tüccar")
+        renpy.hide_screen("chr_button_çiftçi")
+        renpy.hide("Çiftçi")
+        renpy.hide_screen("chr_button_şifacı")
+        renpy.hide("Şifacı")
+
 label game_over:
-    $ zero_chr()
+    scene startbcg
+    $ zero_chr_button()
     if not game_over_triggered:
         $ game_over_triggered = True
         $ character_alive=False
@@ -285,7 +414,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
             "Olamaz":
@@ -295,7 +424,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
 
@@ -310,7 +439,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
             "Neler oluyor?":
@@ -320,7 +449,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
     elif Religion <= 0:
@@ -335,7 +464,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
             "Ne?":
@@ -345,7 +474,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
                     
@@ -361,7 +490,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
             "Ne oluyor":
@@ -371,7 +500,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
 
@@ -387,7 +516,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
             "Hayır!":
@@ -397,7 +526,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
     elif Politics >= 10:
@@ -412,7 +541,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
             "Ne?":
@@ -422,7 +551,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
     elif Military <= 0:
@@ -437,7 +566,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
             "Hayır!":
@@ -447,7 +576,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
     elif Military >= 10:
@@ -462,7 +591,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
             "Ne saçmalıyorsun?":
@@ -472,7 +601,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()
     elif Economy <= 0:
@@ -497,7 +626,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
     elif Economy >= 10:
@@ -512,7 +641,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()
             "Aklınımı kaçırdın?":
@@ -522,7 +651,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()  
     elif People <= 0:
@@ -537,7 +666,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
             "Ne oluyor?":
@@ -547,7 +676,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
     elif People >= 10:
@@ -562,7 +691,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit()
             "Aklınımı kaçırdın?":
@@ -572,7 +701,7 @@ label game_over:
                 menu:
                     "Yeniden başla":
                         hide image Gizemli_Adam
-                        jump zero_point  
+                        jump zero_point   
                     "Çık":
                         $ renpy.quit() 
 
@@ -767,28 +896,7 @@ init python:# Diyologlar
     dialogs = [
         "dialog1", "dialog2", "dialog3", "dialog4", "dialog5",
         "dialog6", "dialog7", "dialog8", "dialog9", "dialog10",
-        "dialog11", "dialog12", "dialog13", "dialog14", "dialog15",
-        "dialog16", "dialog17", "dialog18", "dialog19", "dialog20",
-        "dialog21", "dialog22", "dialog23", "dialog24", "dialog25",
-        "dialog26", "dialog27", "dialog28", "dialog29", "dialog30",
-        "dialog31", "dialog32", "dialog33", "dialog34", "dialog35",
-        "dialog36", "dialog37", "dialog38", "dialog39", "dialog40",
-        "dialog41", "dialog42", "dialog43", "dialog44", "dialog45",
-        "dialog46", "dialog47", "dialog48", "dialog49", "dialog50",
-        "dialog51", "dialog52", "dialog53", "dialog54", "dialog55",
-        "dialog56", "dialog57", "dialog58", "dialog59", "dialog60",
-        "dialog61", "dialog62", "dialog63", "dialog64", "dialog65",
-        "dialog66", "dialog67", "dialog68", "dialog69", "dialog70",
-        "dialog71", "dialog72", "dialog73", "dialog74", "dialog75",
-        "dialog76", "dialog77", "dialog78", "dialog79", "dialog80",
-        "dialog81", "dialog82", "dialog83", "dialog84", "dialog85",
-        "dialog86", "dialog87", "dialog88", "dialog89", "dialog90",
-        "dialog91", "dialog92", "dialog93", "dialog94", "dialog95",
-        "dialog96", "dialog97", "dialog98", "dialog99", "dialog100",
-        "dialog101", "dialog102", "dialog103", "dialog104", "dialog105",
-        "dialog106", "dialog107", "dialog108", "dialog109", "dialog110",
-        "dialog111", "dialog112", "dialog113", "dialog114", "dialog115",
-        "dialog116"
+        "dialog11", "dialog12", "dialog13", "dialog14", "dialog15"
     ]
 
     def get_random_dialog():
@@ -806,37 +914,521 @@ init python:# Minicard diyolglar
     minicard_used = False
 
 label start:
-    stop music
+    stop music 
     queue music[
         "audio/Bleak_Falls.mp3",
         "audio/Lake_of_Light.mp3",
         "audio/Rite_of_the_Fading_Light.mp3"] loop
     show screen bars
+    show screen style_start
+    show screen sign_hist
+    show screen map_button
+    show screen run_button
+    show screen setting_button
+    show screen character_button
+    show screen minicard_button
     scene startbcg
-    show screen dialog_counter
+    show screen managed_day
+    show screen date_display
+    
     $ character_alive=True
-    jump zero_point
     label in_start:
-        $ in_game = True
-        show screen esc_listener
         while True:
+            $ in_game = True
+            show screen esc_listener
             if last_dialog == None:
+                $ zero_chr_button()
                 $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
                 $ last_dialog = chosen_dialog
             else :
+                $ zero_chr_button()
                 $ chosen_dialog = last_dialog
             jump expression chosen_dialog
+
+
+
+label card1: 
+    show Gizemli_Adam 
+    Gizemli_Adam "Eğer bana istediğim ödemeyi yaparsan sana bağlı bir şövalye teşkilatı oluştururum."
+    menu:
+        "sende kimsin":
+            $ check_bars()
+        "Ödemeyi kabul ediyorum":
+            $ Economy -= 4
+            $ knight_of_swan_clan_minicard = 1
+            $ check_bars() #knight of the swan minikart
+    hide image Gizemli_Adam
+label card2:
+    show Büyücü 
     
-label check_minicard: #bunun yeri ile oynamayın rasgele minicard dialogu atıyor
-    if dialog_count == 20 and not minicard_used:
+    Büyücü "Biraz paraya ihtiyacım var elimdeki sağlık iksirini seninle paylaşabilirim ne dersin."
+    menu:
+        "Kabul ediyorum":
+            $ Economy -= 2
+            $ Religion -= 2 # Sağlık iksiri mini kartı
+            $ health_potion_minicard = 1
+            $ check_bars()
+        "İksirlere inanmıyorum":
+            $ check-bars()
+    hide image Büyücü
+    
+label card3:
+    show Büyücü 
+    
+    Büyücü "Biraz paraya ihtiyacım var sana zor zamanlarda yardım edecek bir şeyler öğretebilirim"
+    menu:
+        "Kabul ediyorum":
+            $ Economy -= 2
+            $ Religion -= 2
+            $ black_magic_minicard = 1
+            $ check_bars() #Kara büyü kartı
+        "Benim büyü ile işim olmaz":
+            $ check_bars()
+    hide image Büyücü
+    
+label card4:
+    show Soylu 
+    
+    Soylu "Aquila Kralı elinizdeki mevcut hazine ile zor zamanlar için bir tahıl ambarı açmalısınız."
+    menu:
+        "Mantıklı açıyorum":
+            $ Economy -= 3
+            $ granary_warehouse_minicard = 1
+            $ check_bars()
+        "Hazineyi kullanmak istemiyorum":
+            $ check_bars()
+    hide image Soylu
+    
+label card5:
+    show Muhafız_Başı 
+    
+    Muhafız_Başı "Efendim bir grup iyi asker sizin hizmetinize girmek istiyorlar. Belli bir ücret karşılığında tabii."
+    menu:
+        "Evet çağır onları":
+            $ Economy -= 3
+            $ assassin_leagu_minicard = 1
+            $ check_bars()
+        "Hayır ihtiyacım yok":
+            $ check_bars()
+    hide image Muhafız_Başı
+    
+label card6:
+    show Baş_İmam 
+    
+    Baş_İmam "Ne vakittir aradığımız kutsal emanetlerin yerini buldum bir ordu ile onları kurtaralım."
+    menu:
+        "Ordumla yola çıkıyorum hemen":
+            $ Military -= 2
+            $ holy_relics_minicard = 1
+            $ check_bars()
+        "Yeterli gücüm yok maalesef":
+            $ check_bars()
+    hide image Baş_İmam
+    
+label card7:
+    show Kütüphaneci 
+    Kütüphaneci "Kralım babanızın kütüphanesinde eski bir kitap buldum belki işinize yarayabilir."
+    menu:
+        "Ver bakalım":
+            $ superior_political_science_book_minicard = 1
+            $ check_bars()
+        "Sende kalsın":
+            $ check_bars()
+    hide image Kütüphaneci
+    
+label card8:
+    show Muhafız_Başı
+    
+    Muhafız_Başı "Efendim Krallığınız Yargea ile olan savaşı kazandı gelen ganimeti ne yapalım"
+    menu:
+        "Zor günler için ayıralım":
+            $ spoils_of_war_minicard = 1
+            $ check_bars()
+        "Bir kısmını orduya bir kısmını hazineye dağıt":
+            $ Military += 1
+            $ Economy += 1
+            $ Politics += 1
+            $ check_bars()
+    hide image Muhafız_Başı
+    
+label card9:
+    show Muhafız_Başı 
+    
+    Muhafız_Başı "Efendim bana bağlı bir grup askeri sizin emrinize vermek istiyorum can güvenliğinizi arttırmak için."
+    menu:
+        "Tamam ücretlerini ben karşılayacağım":
+            $ Economy -= 3
+            $ royal_guard_minicard = 1
+            $ check_bars()
+        "Şuan böyle bir tehdit yok":
+            $ check_bars()
+    hide image Muhafız_Başı
+    
+label card10:
+    show Zengin_Tüccar 
+    
+    Zengin_Tüccar "Sizinle bir anlaşma yapmak istiyorum eğer bana koruma ve maddi destek sağlarsanız Donovia ile ipek ticareti yapalım, karın bir kısmınıda size vereceğim."
+    menu:
+        "Kabul ediyorum destek vereceğim.":
+            $ Economy -= 2
+            $ Military -= 2
+            $ silk_trade_income_minicard = 1
+            $ check_bars()
+        "Ben bir Kralım sana ihtiyacım yok":
+            $ check_bars()
+    hide image Zengin_Tüccar
+    
+label card11:
+    show Çiftçi 
+    
+    Çiftçi "Saygı değer Kralım bir mağranın içinde mavi şapkalı mantar bulduk bize ekonomik destek sağlarsanız onları sizin için toplayabiliriz."
+    menu:
+        "Böyle saçma işlerle huzuruma bir daha çıkma":
+            $ People -= 1
+            $ check_bars()
+        "Tamam destek veriyorum":
+            $ Economy -= 1
+            $ People += 1
+            $ blue_cap_mushroom_minicard = 1
+            $ check_bars()
+    hide image Çiftçi
+    
+label card12:
+    show Büyücü 
+    
+    Büyücü "Biraz paraya ihtiyacım var elimdeki sadakat iksirini seninle paylaşabilirim ne dersin. "
+    menu:
+        "Kabul ediyorum":
+            $ Economy -= 2
+            $ Religion -= 2
+            $ loyalty_potion_minicard = 1
+            $ check_bars()
+        "İksirlere inanmıyorum renkli su":
+            $ Religion += 1
+            $ check_bars()
+    hide image Büyücü
+    
+
+label check_minicard: #bunun yeri ile oynamayın rastgele minicard dialogu atıyor
+    if dialog_count == 15 and not minicard_used:
         $ chosen_card = renpy.random.choice(minicard_dialogs)
         $ minicard_used = True 
         jump expression chosen_card
     else:
         jump random_dialog
 
+label dialog1:
+    show Demirci 
+    
+    Demirci "Kralım elimde kaliteli bir maden geçti bununla ne yapmalıyım?"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+
+    menu:
+        "Tarım aletleri yapabiliriz.":
+            $ People += 1
+            $ Economy += 1
+            Demirci "Halk memnun olacaktır."
+            $ check_bars()
+        "Madeni satabiliriz.":
+            $ Economy += 2
+            Demirci "Güzel kar ettik."
+            $ check_bars()
+    
+    hide image Demirci
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog2:
+    show Ozan 
+    
+    Ozan "Kralım saray ahalisi çok mutsuz bir eğlence düzenleyelim"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+
+    menu:
+        "Çok güzel olur, hadi yapalım.":
+            $ People += 1
+            $ Economy -= 2
+            Ozan "Harika!"
+            $ check_bars()
+        "Ülkenin parasını çarçur edemeyiz.":
+            Ozan "Ufff..."
+            $ check_bars()
+    
+    hide image Ozan
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog3:
+    show Muhafız_Başı 
+    
+    Muhafız_Başı "Ordumuzun gücünü artırmak için yeni askerler toplamalıyız"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Evet, ordumuzu güçlendirelim.":
+            $ Military += 2
+            $ Economy -=1
+            $ People -=1
+            Muhafız_Başı "Halk hoşnut olmayacak ama ordumuz güçlenecek." 
+            $ check_bars()
+
+        "Hayır, halkın tepkisini çekebiliriz.":
+            $ People += 1
+            Muhafız_Başı "Peki."
+            $ check_bars()
+           
+    hide image Muhafız_Başı
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog4:
+    show Asker 
+    
+    Asker "Saygı değer Kralım talimler çok fazla sayısını azaltmalısınız."
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+
+    menu: 
+        "Muhafız Başı ile konuşacağım":
+            $ Military -=1
+            Asker "Çok yaşayın efendimiz"
+            $ check_bars()
+
+        "Gerek yok":
+            $ check_bars()
+    hide image Asker
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog5:
+    show Çiftçi 
+    
+    Çiftçi "Saygı değer Kralım Köyümüzü fareler bastı lütfen yardım edin"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+
+    menu:
+        "Ordudan bir bölük gönderiyorum":
+            $ Military -= 2
+            $ People +=2
+            Çiftçi "Teşekkür ederim efendimiz"
+            $ check_bars()
+
+        "Başınızın çaresine bakın":
+            $ People -= 1
+            $ check_bars()
+    hide image Çiftçi
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog6:
+    show Baş_İmam 
+    
+    Baş_İmam "Ülkedeki camiler yetersiz halkımız dışarda kalıyor destek talep ediyorum"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+
+    menu:
+        "Tamam vereceğim":
+            $ Economy -= 2 
+            $ Religion += 2
+            $ check_bars()
+
+        "Lüzumu yok":
+            $ Religion -= 1
+            $ check_bars()
+    hide image Baş_İmam
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog7:
+    show Zengin_Tüccar 
+    
+    Zengin_Tüccar "Eğer vergilerde indirim yaparsanız kendi halkımdan gelen tacirleri  ülkenize yönlendiririm kazan kazan ne dersiniz"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Kabul ediyorum":
+            $ Economy += 1
+            $ Politics += 2
+            Zengin_Tüccar "Doğru karar verdiniz efendim"
+            $ check_bars()
+        "Herkese nasıl davranılıyorsa sanada öyle davranılacak":
+            $ check_bars()
+    hide image Zengin_Tüccar
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog8:
+    show Yerel_Bakan 
+    
+    Yerel_Bakan "Kralım ülkenin bütçesinin büyük bir kısmı askeriye ye harcanıyor inşaatları arttıralım."
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Ordunun bütçesine dokunamayız":
+            $ check_bars()
+        "Olur ülkeyi kalkındıralım":
+            $ Military -= 2
+            $ Economy += 1
+            $ People += 1
+            $ check_bars()
+    hide image Yerel_Bakan
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog9:
+    show Soylu at Position(xalign=0.5, yalign=0.3)
+    
+    Soylu "Yeterli sayıda kölem yok yenilerini nerden bulabilirim"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Benim kölelerimin birazını satın alabilirsin":
+            $ Economy += 2
+            $ Politics -= 1
+            Soylu "Teşekkürler"
+            $ check_bars()
+        "Bu benim sorunum değil":
+            $ check_bars
+            Soylu "Doğru, değil."
+    hide image Soylu
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog10:
+    show Kadı at Position(xalign=0.5, yalign=0.9)
+    
+    Kadı "Majesteleri, bir Soylu ve bir  Tacir , sınırları belirlenmemiş bir arazi yüzünden yıllardır anlaşmazlık içinde. Her ikisi de bu toprakların kendilerine ait olduğunu iddia ediyor."
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Arazi Soylunun hakkı":
+            $ Politics += 1 
+            $ Economy -= 1
+            $ check_bars()
+        "Arazi Tacirin hakkı":
+            $ Politics -= 1
+            $ Economy += 1
+            $ check_bars()
+    hide image Kadı
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog11:
+    show Şifacı at Position(xalign=0.5, yalign=1)
+    
+    Şifacı "Tıp için bir araştırma yapmam gerekiyo bütçeyi nasıl oluşturayım"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu: 
+        "Ben vereceğim":
+            $ Economy -= 2
+            $ Health += 1
+            Şifacı "Teşekkür ederim efendim"
+            $ check_bars()
+        "Bu araştırma gereksiz":
+            $ check_bars()
+    hide image Şifacı
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog12:
+    show Hizmetçi_Başı at Position(xalign=0.5, yalign=0.4)
+    
+    Hizmetçi_Başı "Kralım, mutfağınızda kullanılan malzemeler bayat ve kalitesiz. Daha iyi ve taze malzemeler almak için bütçemizi artırmalıyız, yoksa hastalıklar baş gösterebilir."
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Tamam, bütçeyi arttıracağım.Temizlik önemli.":
+            $ Economy -= 1
+            $ Health += 1
+            $ check_bars()
+
+        "Yemeklerimiz yeterince iyi.Gereksiz şeyler sorma!!":
+            $ Health -= 1
+            $ check_bars()
+    hide image Hizmetçi_Başı
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog13:
+    show Büyücü 
+    
+    Büyücü "Efendim, son zamanlarda kıtlık arttı. Bunun doğal sebeplerle mi, yoksa bir lanet yüzünden mi olduğunu belirlemem için sizden destek istiyorum."
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Tamam destek olucağım.":
+            $ Economy -= 3
+            $ check_bars()
+
+        "Sana inanmıyorum.":
+            $ Religion += 1
+            $ check_bars()
+    hide image Büyücü
+    
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog14:
+    show Otacı 
+
+    Otacı "Yeni bir iksir geliştirdim, hastalıklara karşı çok etkili ama içeriği biraz… alışılmadık."
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Deneyin, işe yarıyorsa sorun yok.":
+            $ Religion -= 2
+            $ Health += 2
+            Otacı "Majesteleri, sağduyunuz her derde deva!"
+            $ check_bars()
+        "Hayır, halk arasında huzursuzluk çıkarır.":
+            $ Religion += 1
+            $ Health -= 1
+            $ check_bars()
+    hide image Otacı
+
+    $ last_dialog= None
+    jump random_dialog
+    return
+label dialog15:
+    show Kütüphaneci 
+
+    Kütüphaneci "Halk kütüphanemiz depremde zarar görmüştü hala tamir edilmedi"
+    $ dialog_count += 1
+    $ managed_day(renpy.random.randint(1, 4))
+    menu:
+        "Şuan ki durumu iyi":
+            $ People -= 1
+            $ check_bars()
+        "Onarım başlasın":
+            $ Politics += 1
+            $ People += 1
+            $ Economy -= 2
+            $ check_bars()
+    hide image Kütüphaneci
+
+    $ last_dialog= None
+    jump random_dialog
+    return
+
+
 
 label random_dialog:
     $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
-    $ last_dialog = chosen_dialog
     jump expression chosen_dialog  # Yeni seçilen diyaloga git
