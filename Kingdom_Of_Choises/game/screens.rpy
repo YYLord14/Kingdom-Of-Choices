@@ -1596,58 +1596,181 @@ define bubble.expand_area = {
 
 screen sign_hist():
     add "gui/sign.png" at Transform(xpos=0.05, ypos=0.05,zoom=0.5)
-
+    
 screen style_start():
-    imagebutton:
-        idle "style_start.png"
-        xalign 0.0
-        yalign 0.0
-        action Show("style_start")
-        at Transform(zoom=0.77)
+    add "style_start"
+
+## Start üstü gözüken yer
+
+screen start_navigation():
+    add "gui/overlay/start_nav_bcg.jpg" at Transform(xsize=config.screen_width, ysize=config.screen_height)
+    vbox:
+        xalign 0.05
+        yalign 0.5
+        textbutton _("Karakter") action Show("character")
+        textbutton _("Minicard") action Show("mini_card")
+        textbutton _("Rün") action Show("run")
+        textbutton _("Harita") action Show("map")     
+
 
 screen character_button():
     imagebutton:
         idle "gui/button/start_button_character.png"
         xalign 0.30
         yalign 0.035
-        action Show("character")
+        action Call("open_character")
         at Transform(zoom=0.77)
 
+label open_character():
+    call screen character
+    return
+
 screen character():
-    $ dialog_count += 1
+    tag menu
+    use start_navigation
+    frame:
+        style "frame_start"
+        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
+    
+    
+    textbutton _("Oyuna Dön"):
+            xpos 0.05
+            yalign 1.0
+            yoffset -30
+            if character_alive == True:
+                if in_game == False:
+                    action Return()
+                else :
+                    action [SetVariable("in_game", False), Jump("in_start")]
+            else :
+                action Jump("game_over") 
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
+    else:
+        key "escape" action Jump("game_over")
+
+## Rün
 
 screen run_button():
     imagebutton:
         idle "gui/button/start_button_run.png"
         xalign 0.47
         yalign 0.035
-        action Show("rün")
+        action Call("open_run")
         at Transform(zoom=0.77)
 
-screen rün():
-    $ dialog_count += 1
+label open_run():
+    call screen run
+    return
+
+screen run():
+    
+    tag menu
+    use start_navigation
+    frame:
+        style "frame_start"
+        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
+    textbutton _("Oyuna Dön"):
+            xpos 0.05
+            yalign 1.0
+            yoffset -30
+            if character_alive == True:
+                if in_game == False:
+                    action Return()
+                else :
+                    action [SetVariable("in_game", False), Jump("in_start")]
+            else :
+                action Jump("game_over") 
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
+    else:
+        key "escape" action Jump("game_over")
+
+### Minicard
 
 screen minicard_button():
     imagebutton:
         idle "gui/button/start_button_minicard.png"
         xalign 0.64
         yalign 0.035
-        action Show("mini_card")
+        action Call("open_mini_card")
         at Transform(zoom=0.77)
 
+label open_mini_card():
+    call screen mini_card
+    return
+
 screen mini_card():
-    $ dialog_count += 1
+    
+    tag menu
+
+    use start_navigation
+    frame:
+        style "frame_start"
+        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
+    textbutton _("Oyuna Dön"):
+            xpos 0.05
+            yalign 1.0
+            yoffset -30
+            if character_alive == True:
+                if in_game == False:
+                    action Return()
+                else :
+                    action [SetVariable("in_game", False), Jump("in_start")]
+            else :
+                action Jump("game_over") 
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
+    else:
+        key "escape" action Jump("game_over")
+
+## Map
 
 screen map_button():
     imagebutton:
         idle "gui/button/start_button_map.png"
         xalign 0.81
         yalign 0.035
-        action Show("map")
+        action Call("open_map")
         at Transform(zoom=0.77)
 
+label open_map():
+    call screen map
+    return
+
 screen map():
-    $ dialog_count += 1
+    tag menu
+    use start_navigation
+    frame:
+        style "frame_start"
+        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
+    textbutton _("Oyuna Dön"):
+            xpos 0.05
+            yalign 1.0
+            yoffset -30
+            if character_alive == True:
+                if in_game == False:
+                    action Return()
+                else :
+                    action [SetVariable("in_game", False), Jump("in_start")]
+            else :
+                action Jump("game_over") 
+    if character_alive == True:
+        if in_game == False:
+            key "escape" action Return()
+        else :
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
+    else:
+        key "escape" action Jump("game_over")
 
 screen setting_button():
     imagebutton:
@@ -1656,3 +1779,7 @@ screen setting_button():
         yalign 0.035
         action Show("preferences")
         at Transform(zoom=0.55)
+style frame_start:
+    background Frame("gui/overlay/oval_start.png",30,30)
+    xalign 0.5
+    yalign 0.5
