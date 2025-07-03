@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Başlatma
 ################################################################################
 
@@ -88,8 +88,8 @@ define gui.title_text_size = 50
 ## Ana ve Oyun Menüleri ########################################################
 
 ## Ana menü ve oyun menüsü için kullanılan resimler.
-define gui.main_menu_background = "gui/main_menu.jpeg"
-define gui.game_menu_background = "gui/main_menu.jpeg"
+define gui.main_menu_background = "gui/main_menu.jpg"
+define gui.game_menu_background = "gui/main_menu.jpg"
 
 
 ## Diyalog #####################################################################
@@ -475,3 +475,4 @@ init python:
 
         gui.nvl_button_width = 1240
         gui.nvl_button_xpos = 20
+
