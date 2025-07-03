@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Başlatma
 ################################################################################
 
@@ -233,6 +233,48 @@ style choice_button is default:
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
+
+## Hızlı Menü ekranı ###########################################################
+##
+## Hızlı menü, oyun-dışı menülere kolay erişim için oyunda gösterilir.
+
+screen quick_menu():
+
+    ## Bunun diğer ekranlar üzerinde göründüğünden emin olun.
+    zorder 100
+
+    if quick_menu:
+
+        hbox:
+            style_prefix "quick"
+
+            xalign 0.5
+            yalign 1.0
+            textbutton _("Atla") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Oto") action Preference("auto-forward", "toggle")
+            textbutton _("Kayıt") action ShowMenu('save')
+            textbutton _("H.Kayıt") action QuickSave()
+            textbutton _("H.Yükle") action QuickLoad()
+            textbutton _("Tercih") action ShowMenu('preferences')
+
+
+## Bu kod, oyuncu kasten arayüzü gizlemediği sürece hızlı menünün oyunda
+## gösterildiğinden emin olmak içindir.
+init python:
+    config.overlay_screens.append("quick_menu")
+
+default quick_menu = True
+
+style quick_button is default
+style quick_button_text is button_text
+
+style quick_button:
+    properties gui.button_properties("quick_button")
+
+style quick_button_text:
+    properties gui.text_properties("quick_button")
+
+
 ################################################################################
 ## Ana Menü ve Oyun Menüsü Ekranları
 ################################################################################
@@ -252,19 +294,40 @@ screen navigation():
 
         spacing gui.navigation_spacing
 
-        textbutton _("Yeni Oyun") action Start()
+        if main_menu:
+
+            textbutton _("Yeni Oyun") action Start()
+
+        else:
+
+            textbutton _("Geçmiş") action ShowMenu("history")
+
+            textbutton _("Kayıt") action ShowMenu("save")
 
         textbutton _("Devam et") action ShowMenu("load")
 
         textbutton _("Ayarlar") action ShowMenu("preferences")
 
         textbutton _("Hakkında") action ShowMenu("about")
-        
-        textbutton _("Ana Menü") action ShowMenu("main_menu")
+        if _in_replay:
 
-        textbutton _("Yardım") action ShowMenu("help")
+            textbutton _("Yeniden Oynatmayı Durdur") action EndReplay(confirm=True)
 
-        textbutton _("Çıkış") action Quit(confirm=not main_menu)
+        elif not main_menu:
+
+            textbutton _("Ana Menü") action MainMenu()
+
+
+        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+            ## Yardım mobil cihazlarla alakalı ya da gerekli değildir.
+            textbutton _("Yardım") action ShowMenu("help")
+
+        if renpy.variant("pc"):
+
+            ## Çıkış düğmesi iOS'ta yasaklanmıştır ve Android ve Web'de
+            ## gereksizdir.
+            textbutton _("Çıkış") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -288,55 +351,53 @@ screen main_menu():
 
     ## Bu diğer herhangi bir menünün aktif olmadığından emin olur.
     tag menu
-    $ in_mainmenu  = True
     $ in_game = False
     $ last_dialog = None
-    add gui.main_menu_background
+    add gui.main_menu_background at Transform(xsize=config.screen_width,ysize=config.screen_height)
     add "gui/logo_beyaz.png" at Transform(xpos=0.05, ypos=0.8,zoom=0.35)
     
-
     text _("Kingdom of Choise"):
-        xpos 0.3 #x ekseninde ortalar
-        ypos 70
-        size 55
+        font "gui/font/CinzelDecorative-Regular.otf"
+        xalign 0.5
+        yalign 0.1
+        size 90
         text_align 0.5
-        color "#ffffff"
-        outlines [(2, "#000000")]
+        color "#cc9933"
+        outlines [(4, "#000000")]
+
     draggroup:
         drag:
-            xpos 0.65
-            ypos 0.35
-            child Transform("gui/button/button_game.png", zoom=0.9)  # %50 küçültme
+            xpos 0.72
+            ypos 0.44
+            child Transform("gui/button/button_game.png", zoom=0.7)
             draggable True
             droppable False
             dragged check_dragged
     imagebutton:
-        idle Transform("gui/button/button_settings.png",zoom=0.9)
-        xpos 0.65
-        ypos 0.5
+        idle Transform("gui/button/button_settings.png",zoom=0.7)
+        xpos 0.72
+        ypos 0.56
         action ShowMenu("preferences")
 
     imagebutton:
-        idle Transform("gui/button/button_about.png", zoom=0.9)
-        xpos 0.65
-        ypos 0.65
+        idle Transform("gui/button/button_about.png", zoom=0.7)
+        xpos 0.72
+        ypos 0.68
         action ShowMenu("about")
 
     imagebutton:
-        idle Transform("gui/button/button_exit.png", zoom=0.9)
-        xpos 0.65
-        ypos 0.8
+        idle Transform("gui/button/button_exit.png", zoom=0.7)
+        xpos 0.72
+        ypos 0.80
         action Quit(confirm=not main_menu)
         
-
 init python:
     def check_dragged(drags,drop):
         for d in drags:
-            if d.x < 840:
+            if d.x < 920:
                 renpy.call_in_new_context("start")
-            elif d.x > 850:
-                renpy.invoke_in_new_context(renpy.call_screen, "load")
-
+            elif d.x > 930:
+                renpy.invoke_in_new_context(renpy.call_screen,"load")
 
 style main_menu_vbox:
     xalign 1.0
@@ -504,8 +565,9 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-    
-            text _("{a=https://sites.google.com/view/paperworkstudios/ana-sayfa?authuser=0}Paperworks şirketi tarafından yapılmıştır yapım hakları şirkete aittir izin alınmadan kopyası yapılıp satılamaz.\n\nPaperwork şirketi resmi websitesi {/a}")
+            text _("PaperWorkStudioPWS@gmail.com \nYoutube hesabı:")
+            text _("{a=https://www.youtube.com/@PaperWorkStudiosss}  Paper Works Studios  {/a}")
+
     use navigation
     textbutton _("Geri"):
         xpos gui.navigation_xpos
@@ -1232,7 +1294,7 @@ style confirm_button:
 style confirm_button_text:
     properties gui.text_properties("confirm_button")
 
-'''
+
 ## Atlama gösterge ekranı ######################################################
 ##
 ## Atlama gösterge ekranı, atlama işleminin devam ettiğini gösterir.
@@ -1285,7 +1347,7 @@ style skip_text:
 style skip_triangle:
     ## İçinde SİYAH, SAĞI GÖSTEREN KÜÇÜK ÜÇGEN olan bir font kullanmalıyız.
     font "DejaVuSans.ttf"
-'''
+
 
 ## Bildirim ekranı #############################################################
 ##
@@ -1531,3 +1593,66 @@ define bubble.expand_area = {
     "top_right" : (0, 22, 0, 0),
     "thought" : (0, 0, 0, 0),
 }
+
+screen sign_hist():
+    add "gui/sign.png" at Transform(xpos=0.05, ypos=0.05,zoom=0.5)
+
+screen style_start():
+    imagebutton:
+        idle "style_start.png"
+        xalign 0.0
+        yalign 0.0
+        action Show("style_start")
+        at Transform(zoom=0.77)
+
+screen character_button():
+    imagebutton:
+        idle "gui/button/start_button_character.png"
+        xalign 0.30
+        yalign 0.035
+        action Show("character")
+        at Transform(zoom=0.77)
+
+screen character():
+    $ dialog_count += 1
+
+screen run_button():
+    imagebutton:
+        idle "gui/button/start_button_run.png"
+        xalign 0.47
+        yalign 0.035
+        action Show("rün")
+        at Transform(zoom=0.77)
+
+screen rün():
+    $ dialog_count += 1
+
+screen minicard_button():
+    imagebutton:
+        idle "gui/button/start_button_minicard.png"
+        xalign 0.64
+        yalign 0.035
+        action Show("mini_card")
+        at Transform(zoom=0.77)
+
+screen mini_card():
+    $ dialog_count += 1
+
+screen map_button():
+    imagebutton:
+        idle "gui/button/start_button_map.png"
+        xalign 0.81
+        yalign 0.035
+        action Show("map")
+        at Transform(zoom=0.77)
+
+screen map():
+    $ dialog_count += 1
+
+screen setting_button():
+    imagebutton:
+        idle "gui/button/start_button_settings.png"
+        xalign 0.98
+        yalign 0.035
+        action Show("preferences")
+        at Transform(zoom=0.55)
