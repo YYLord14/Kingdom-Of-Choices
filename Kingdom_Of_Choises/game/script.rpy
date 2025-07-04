@@ -16,66 +16,97 @@ define Büyücü = Character("Büyücü")
 define Otacı = Character("Otacı")
 define Şifacı = Character("Şifacı")
 define Hizmetçi_Başı = Character("Hizmetçi Başı")
-#image ile karakterlere bir resim atıyoruz
 
+#image ile karakterlere bir resim atıyoruz
 
 init:     
     image Asker:
         "asker.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.3
     image Kütüphaneci:
         "kütüphaneci.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.4
     image Demirci:
         "demirci.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.5
     image Baş_İmam:
         "bas_imam.png"
         zoom 0.3
+        xalign 0.5
+        yalign 0.3
     image Ozan:
         "ozan.png"
         zoom 0.55
+        xalign 0.5
+        yalign 0.1
     image Muhafız_Başı:
         "muhafız_basi.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.5
 init:
     image Kadı:
         "Kadı.png"
         zoom 0.3
+        xalign 0.5
+        yalign 0.4
     image Soylu:
         "soylu.png"
         zoom 0.45
+        xalign 0.5
+        yalign 0.2
     image Yerel_Bakan:
         "yerel_bakan.png"
-        zoom 0.55   
+        zoom 0.55
+        xalign 0.5
+        yalign 0.35   
     image Çiftçi:
         "çiftçi.png"
         zoom 0.4
+        xalign 0.5
+        yalign 0.05
     image Büyücü:
         "büyücü.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.4
     image Gizemli_Adam:
         "gizemli_adam.png"
         zoom 0.25
+        xalign 0.5
+        yalign 0.2
     image Şifacı:
         "şifacı.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.3
     image Zengin_Tüccar:
         "zengin_tüccar.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.4
 init:
     image Otacı:
         "Otacı.png"
         zoom 0.35
+        xalign 0.5
+        yalign 0.6
     image Hizmetçi_Başı:
         "hizmetci_basi.png"
         zoom 0.25
+        xalign 0.5
+        yalign 0.2
     image startbcg :
-        "arka_plan.jpg"
+        "game_start_bgd.jpg"
         size(config.screen_width, config.screen_height)
-init:
     image style_start :
-        "style_start.png"
+        "gui/overlay/style_start.png"
         size(config.screen_width,100)
         yalign 0.0
 
