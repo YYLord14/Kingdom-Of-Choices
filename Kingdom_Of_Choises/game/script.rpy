@@ -19,89 +19,24 @@ define Hizmetçi_Başı = Character("Hizmetçi Başı")
 
 #image ile karakterlere bir resim atıyoruz
 
-init:     
-    image Asker:
-        "asker.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.3
-    image Kütüphaneci:
-        "kütüphaneci.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.4
-    image Demirci:
-        "demirci.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.5
-    image Baş_İmam:
-        "bas_imam.png"
-        zoom 0.3
-        xalign 0.5
-        yalign 0.3
-    image Ozan:
-        "ozan.png"
-        zoom 0.55
-        xalign 0.5
-        yalign 0.1
-    image Muhafız_Başı:
-        "muhafız_basi.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.5
+image Asker = Transform("asker.png",zoom=0.35,xalign=0.5,yalign=0.3)
+image Kütüphaneci = Transform("kütüphaneci.png",zoom=0.35,xalign=0.5,yalign=0.4)
+image Demirci = Transform("demirci.png",zoom=0.35,xalign=0.5,yalign=1.0)
+image Baş_İmam = Transform("bas_imam.png",zoom=0.3,xalign=0.5,yalign=0.3)
+image Ozan = Transform("ozan.png",zoom=0.55,xalign=0.5,yalign=0.1)
+image Kadı = Transform("kadı.png",zoom=0.3,xalign=0.5,yalign=0.4)
+image Soylu = Transform("soylu.png",zoom=0.45,xalign=0.5,yalign=0.2)
+image Yerel_Bakan = Transform("yerel_bakan.png",zoom=0.55,xalign=0.5,yalign=1.0) 
+image Çiftçi = Transform("çiftçi.png",zoom=0.4,xalign=0.5,yalign=0.05)
+image Büyücü = Transform("büyücü.png",zoom=0.35,xalign=0.5,yalign=0.4)
+image Gizemli_Adam = Transform("gizemli_adam.png",zoom=0.25,xalign=0.5,yalign=0.2)
+image Muhafız_Başı = Transform("muhafız_basi",zoom=0.35,xalign=0.5,yalign=0.5)
+image Şifacı = Transform("şifacı.png",zoom=0.35,xalign=0.5,yalign=0.3)
+image Zengin_Tüccar = Transform("zengin_tüccar.png",zoom=0.35,xalign=0.5,yalign=0.4)
+image Otacı = Transform("Otacı.png",zoom=0.35,xalign=0.5,yalign=0.6)
+image Hizmetçi_Başı = Transform("hizmetci_basi.png",zoom=0.25,xalign=0.5,yalign=0.2)
+
 init:
-    image Kadı:
-        "Kadı.png"
-        zoom 0.3
-        xalign 0.5
-        yalign 0.4
-    image Soylu:
-        "soylu.png"
-        zoom 0.45
-        xalign 0.5
-        yalign 0.2
-    image Yerel_Bakan:
-        "yerel_bakan.png"
-        zoom 0.55
-        xalign 0.5
-        yalign 0.35   
-    image Çiftçi:
-        "çiftçi.png"
-        zoom 0.4
-        xalign 0.5
-        yalign 0.05
-    image Büyücü:
-        "büyücü.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.4
-    image Gizemli_Adam:
-        "gizemli_adam.png"
-        zoom 0.25
-        xalign 0.5
-        yalign 0.2
-    image Şifacı:
-        "şifacı.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.3
-    image Zengin_Tüccar:
-        "zengin_tüccar.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.4
-init:
-    image Otacı:
-        "Otacı.png"
-        zoom 0.35
-        xalign 0.5
-        yalign 0.6
-    image Hizmetçi_Başı:
-        "hizmetci_basi.png"
-        zoom 0.25
-        xalign 0.5
-        yalign 0.2
     image startbcg :
         "game_start_bgd.jpg"
         size(config.screen_width, config.screen_height)
@@ -115,55 +50,6 @@ label open_preferences:#Esc on clik to open preferences
     return
 screen esc_listener():#Esc control
     key "escape" action Call("open_preferences")
-
-transform Demirci:
-    xalign 0.5
-    yalign 0.5
-transform Ozan:
-    xalign 0.5
-    yalign 0.1
-transform Muhafız_Başı:
-    xalign 0.5
-    yalign 0.5
-transform Asker:
-    xalign 0.5
-    yalign 0.3
-transform Çiftçi:
-    xalign 0.5
-    yalign 0.05
-transform Baş_İmam:
-    xalign 0.5
-    yalign 0.3
-transform Zengin_Tüccar:
-    xalign 0.5
-    yalign 0.4
-transform Yerel_Bakan:
-    xalign 0.5
-    yalign 0.35
-transform Soylu:
-    xalign 0.5
-    yalign 0.2
-transform Kadı:
-    xalign 0.5
-    yalign 0.4
-transform Şifacı:
-    xalign 0.5
-    yalign 0.3
-transform Hizmetçi_Başı:
-    xalign 0.5
-    yalign 0.2
-transform Büyücü:
-    xalign 0.5
-    yalign 0.4
-transform Kütüphaneci:
-    xalign 0.5
-    yalign 0.4
-transform Otacı:
-    xalign 0.5
-    yalign 0.6
-transform Gizemli_Adam:
-    xalign 0.5
-    yalign 0.2
 
 ## Tarih kodları ################################################################
 default current_date = {
