@@ -875,4 +875,5 @@ label check_minicard: #bunun yeri ile oynamayın rastgele minicard dialogu atıy
 
 label random_dialog:
     $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
+    $ last_dialog = chosen_dialog
     jump expression chosen_dialog  # Yeni seçilen diyaloga git
