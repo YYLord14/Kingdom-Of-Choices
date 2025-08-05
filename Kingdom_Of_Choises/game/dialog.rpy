@@ -10,12 +10,12 @@ label dialog1:
             $ Economy += 1
             Demirci "Halk memnun olacaktır."
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Madeni satabiliriz.":
             $ Economy += 2
             Demirci "Güzel kar ettik."
             $ check_bars()
-            $ demirci_relationship -= 1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
@@ -64,12 +64,12 @@ label dialog3:
             $ People -=1
             Muhafız_Başı "Halk hoşnut olmayacak ama ordumuz güçlenecek." 
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Hayır, halkın tepkisini çekebiliriz.":
             $ People += 1
             Muhafız_Başı "Peki."
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1      
+            $ chr_chng("mhf_baş","-",1)      
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
@@ -242,13 +242,13 @@ label dialog10:
             $ Politics += 1 
             $ Economy -= 1
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
 
         "Arazi Tacirin hakkı":
             $ Politics -= 1
             $ Economy += 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
@@ -294,12 +294,12 @@ label dialog12:
             $ Economy -= 1
             $ Health += 1
             $ check_bars()
-            $ hizmetci_basi_relationship += 1
+            $ chr_chng("hzmt_baş","+",1)
 
         "Yemeklerimiz yeterince iyi.Gereksiz şeyler sorma!!":
             $ Health -= 1
             $ check_bars()
-            $ hizmetci_basi_relationship -= 1
+            $ chr_chng("hzmt_baş","-",1)
     hide image Hizmetçi_Başı
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
@@ -319,12 +319,12 @@ label dialog13:
         "Tamam destek olucağım.":
             $ Economy -= 3
             $ check_bars()
-            $ büyücü_relationship += 1
+            $ chr_chng("büyücü","+",1)
 
         "Sana inanmıyorum.":
             $ Religion += 1
             $ check_bars()
-            $ büyücü_relationship -= 1
+            $ chr_chng("büyücü","-",1)
     hide image Büyücü
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
@@ -345,13 +345,13 @@ label dialog14:
             $ Health += 2
             Otacı "Majesteleri, sağduyunuz her derde deva!"
             $ check_bars()
-            $ otacı_relationship += 1
+            $ chr_chng("otacı","+",1)
 
         "Hayır, halk arasında huzursuzluk çıkarır.":
             $ Religion += 1
             $ Health -= 1
             $ check_bars()
-            $ otacı_relationship -= 1
+            $ chr_chng("otacı","-",1)
     hide image Otacı
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
@@ -370,14 +370,14 @@ label dialog15:
         "Şuan ki durumu iyi":
             $ People -= 1
             $ check_bars()
-            $ kütüphaneci_relationship += 1
+            $ chr_chng("ktpnc","+",1)
 
         "Onarım başlasın":
             $ Politics += 1
             $ People += 1
             $ Economy -= 2
             $ check_bars()
-            $ kütüphaneci_relationship -= 1
+            $ chr_chng("ktpnc","-",1)
     hide image Kütüphaneci
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
@@ -397,11 +397,11 @@ label dialog16:
             $ Health -= 1
             $ People += 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Reddediyorum":
             $ People -= 1
             $ check_bars()
-            $ demirci_relationship -= 1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
             $ managed_day += 1
@@ -423,11 +423,11 @@ label dialog17:
             $ Economy += 1
             Demirci "Minnettarım kralım"
             $ check_bars()
-            $ demirci_relationship +=1
+            $ chr_chng("demirci","+",1)
         "düzeni bozma":
             $ People -= 1
             $ check_bars ()
-            $ demirci_relationship -=1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
             $ managed_day += 1
@@ -447,11 +447,11 @@ label dialog18:
         "Sat":
             $ Economy += 2
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Silah yap":
             $ Military += 2
             $ check_bars()
-            $ demirci_relationship -= 1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -472,11 +472,11 @@ label dialog19:
             $ Economy -= 2
             $ Religion += 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Gerek yok":
             $ Religion -= 1
             $ check_bars()
-            $ demirci_relationship -= 1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -498,11 +498,11 @@ label dialog20:
             $ People += 1
             Demirci "Çok doğru karar."
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Lüzum yok":
             $ People -= 1
             $ check_bars()
-            $ demirci_relationship -=1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -523,11 +523,11 @@ label dialog21:
             $ Economy -= 1
             $ People += 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Para cezası verelim":
             $ People -= 1
             $ check_bars()
-            $ demirci_relationship -=1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -549,10 +549,10 @@ label dialog22:
             $ Military += 2
             Demirci "Bana güvenebilirsiniz."
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Askeri gücümüz yeterli":
             $ check_bars()
-            $ demirci_relationship -=1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -574,12 +574,12 @@ label dialog23:
             $ Economy += 2
             $ People += 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Soyluların şahsi mallarına dokunamayız":
             $ Politics += 1
             Demirci "Sanırım haklısınız."
             $ check_bars()
-            $ demirci_relationship -=1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -599,11 +599,11 @@ label dialog24:
         "Ameliyat aletleri yapalım":
             $ Health += 2
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Satalım":
             $ Economy += 2
             $ check_bars()
-            $ demirci_relationship -=1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -624,10 +624,10 @@ label dialog25:
             $ Economy += 1
             $ Politics -= 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Benim küçük tacirlerle işim olmaz":
             $ check_bars()
-            $ demirci_relationship -=1
+            $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -648,7 +648,7 @@ label dialog26:
             $ Military += 2
             $ Economy -= 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Reddediyorum, şu an kaynaklarımız kısıtlı":
             $ Military -= 1
             $ People += 1
@@ -673,7 +673,7 @@ label dialog27:
             $ Religion += 2
             $ Economy -= 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Şu an devletin hazinesi dini işlere yetecek kadar dolu değil":
             $ Religion -= 1
             $ Politics += 1
@@ -698,7 +698,7 @@ label dialog28:
             $ People += 2
             $ Economy -= 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Önce askeri ihtiyaçlar bitmeli":
             $ People -= 1
             $ Military += 1
@@ -723,7 +723,7 @@ label dialog29:
             $ Politics += 1
             $ Economy -= 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Şimdilik mevcut zırhlar yeterli":
             $ Politics -= 1
             $ check_bars()
@@ -747,7 +747,7 @@ label dialog30:
             $ Health += 2
             $ Economy -= 1
             $ check_bars()
-            $ demirci_relationship += 1
+            $ chr_chng("demirci","+",1)
         "Başka bölgelerde daha acil ihtiyaçlar var":
             $ Health -= 2
             $ Military += 1
@@ -772,13 +772,13 @@ label dialog31:
             $ Economy -= 2
             $ Military += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Şehirdeki stoklarımızı zorlamayalım":
             $ Military -= 1
             $ Economy += 1
             Muhafız_Başı "Aç bir asker, zayıf bir sınır demektir, majesteleri…"
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -800,13 +800,13 @@ label dialog32:
             $ Military += 2
             $ People += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Onlara sadakatlerini hatırlatın":
             $ Military -= 1
             $ Politics += 1
             Muhafız_Başı "Umarım bu kararınız, askerlerin sadakatini sarsmaz, majesteleri…"
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -827,10 +827,10 @@ label dialog33:
             $ Economy -= 2
             $ Military += 2
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Şu an için yeterli olduklarını düşünüyorum":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -852,13 +852,13 @@ label dialog34:
             $ People += 1
             $ Economy -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Önceliğimiz büyük şehirlerdir":
             $ People -= 2
             $ Economy += 1
             Muhafız_Başı "Sınırdaki halkımız kendini yalnız hissedecek, majesteleri…"
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -879,10 +879,10 @@ label dialog35:
             $ Economy -= 3
             $ Military += 2
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Mevcut silahları onarıp kullanın":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -904,12 +904,12 @@ label dialog36:
             $ Politics += 1
             $ Military += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Önce onları dinleyelim":
             $ People += 2
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -930,10 +930,10 @@ label dialog37:
             $ Economy -= 2
             $ Military += 2
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Şimdilik gereksiz bir masraf":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -954,12 +954,12 @@ label dialog38:
             $ Politics -= 1
             $ Military += 2
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Onlarla bir toplantı yapalım":
             $ Politics += 1
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -980,12 +980,12 @@ label dialog39:
             $ People += 1
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Göz ardı edin, bunlar küçük meselelerdir":
             $ People -= 2
             Muhafız_Başı "Adaletin zayıflaması, krallığın çöküşüne sebep olabilir…"
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1006,10 +1006,10 @@ label dialog40:
             $ Economy -= 3
             $ Military += 3
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Şimdilik mevcut taktiklere güvenelim":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1031,12 +1031,12 @@ label dialog41:
             $ People += 1
             $ Military += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Halk kendi güvenliğini sağlamalı":
             $ People -= 2
             $ Economy += 1
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1058,10 +1058,10 @@ label dialog42:
             $ Military += 1
             $ Economy -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Bu bir söylenti olabilir, önemsemeyin":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1082,10 +1082,10 @@ label dialog43:
             $ Economy -= 2
             $ Military += 2
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Şimdilik bir tehdit yok, erteleyin":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1106,12 +1106,12 @@ label dialog44:
             $ Military += 2
             $ Politics -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Önce onların amaçlarını öğrenelim":
             $ Politics += 1
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1135,12 +1135,12 @@ label dialog45:
             $ Politics += 2
             Muhafız_Başı "Efendim, savaş ilan edildi."
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Barış imzalayalım, şartlarını kabul edelim":
             $ Economy -= 3
             $ Politics -= 2
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1160,10 +1160,10 @@ label dialog46:
         "Bölükleri ayıralım, husumet dağılsın":
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Komutan sen değil misin, bastır onları":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1184,13 +1184,13 @@ label dialog47:
             $ People -= 2
             $ Politics += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Ne istiyorlarsa verip köylüleri kurtarın":
             $ Economy -= 2
             $ People += 1
             Muhafız_Başı "Efendim, köylüler kurtarıldı."
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1212,11 +1212,11 @@ label dialog48:
             $ Health -= 2
             Muhafız_Başı "Efendim, silahlar hazır."
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Şu anki durum yeterli":
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1238,12 +1238,12 @@ label dialog49:
             $ People -= 2
             Muhafız_Başı "Efendim, köylerden askerler toplandı."
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Paralı asker alalım":
             $ Economy -= 2
             $ Military += 2
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1262,11 +1262,11 @@ label dialog50:
     menu:
         "Yeterli muhafızım var":
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
         "Olur, ver bakalım":
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1287,11 +1287,11 @@ label dialog51:
             $ Economy += 1
             $ People += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Askerlerimiz kullansınlar":
             $ Military += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1312,11 +1312,11 @@ label dialog52:
             $ Health += 1
             $ Religion -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
         "Şifacılara verelim":
             $ Health += 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1336,13 +1336,13 @@ label dialog53:
         "Herkes eşit haklara sahip olmalı":
             $ Military -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship -= 1
+            $ chr_chng("mhf_baş","-",1)
         "Ayrıcalıkları verelim":
             $ Military += 1
             $ People -= 1
             $ Politics -= 1
             $ check_bars()
-            $ muhafızbaşı_relationship += 1
+            $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
         $ managed_day += 1
@@ -1362,11 +1362,11 @@ label dialog54:
         "Bu topraklar Tacir'e ait. ":
             $ Economy += 1
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
         "Bu topraklar Soylu'ya ait.":
             $ Politics += 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1386,12 +1386,12 @@ label dialog55:
         "O da herkes gibi vergisini ödemeli.":
             $ People += 1
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
         "Ona ayrıcalık tanıyabiliriz.":
             $ Economy -= 1
             $ People -= 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1410,12 +1410,12 @@ label dialog56:
         "Büyü saçmalıklarına inanmam.": 
             $ People -= 1
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
         "Büyü mü? O zaman idam edilsin.":
             $ People += 1
-            $ religion += 1
+            $ Religion += 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1432,13 +1432,13 @@ label dialog57:
     $ daily_visitors += 1
     menu:
         "İdam edelim, şüphe kalmasın.":
-            $ military -= 1
+            $ Military -= 1
             $ People += 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
         "Hapis cezası verelim.":
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1458,12 +1458,12 @@ label dialog58:
             $ Economy -= 1
             $ People += 1
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
         "Gerek yok, eski bina yeterli.":
             $ Politics -= 1
             $ People -= 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1484,13 +1484,13 @@ label dialog59:
             $ People -= 1
             $ Politics += 1
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
         "Maaşlarınız yeterli.":
             $ Economy += 1
             $ People += 1
             $ Politics -= 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1510,12 +1510,12 @@ label dialog60:
             $ People += 1
             $ Politics += 1
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
         "Cezalar caydırıcı olmalıdır.":
             $ People -= 2
             $ Politics -= 1
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1535,12 +1535,12 @@ label dialog61:
             $ Economy -= 2
             $ Politics += 2
             $ check_bars()
-            $ kadı_relationship += 1
+            $ chr_chng("kadı","+",1)
         "Daha fazla alım yapamayız.":
             $ Economy += 1
             $ Politics -= 2
             $ check_bars()
-            $ kadı_relationship -= 1
+            $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
         $ managed_day += 1  
@@ -1607,13 +1607,13 @@ label dialog65:
     $ daily_visitors += 1
     menu:
         "Evet, halkın yükünü azaltın!":
-            $People += 2
-            $Economy -= 2
+            $ People += 2
+            $ Economy -= 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Hayır, güçlü bir ekonomi için vergiler aynı kalmalı!":
-            $People -= 2
-            $Economy += 2
+            $ People -= 2
+            $ Economy += 2
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1633,14 +1633,14 @@ label dialog66:
     $ daily_visitors += 1
     menu:
         "Evet, su yolları inşa edin!":
-            $Economy -= 3
-            $People += 2
+            $ Economy -= 3
+            $ People += 2
             Çiftçi "Sağ olun, majesteleri. Topraklarımız size minnettar olacak!"
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Bu yıl idare edin, şimdilik bütçe yok.":
-            $People -= 1
-            $Economy += 1
+            $ People -= 1
+            $ Economy += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1660,13 +1660,13 @@ label dialog67:
     $ daily_visitors += 1
     menu:
         "Derhal şifacıları yollayın!":
-            $Economy -= 2
-            $People += 2
+            $ Economy -= 2
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Köyü karantinaya alın, ama daha fazla uğraşmayın.":
-            $People -= 1
-            $Politics += 1
+            $ People -= 1
+            $ Politics += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1685,13 +1685,13 @@ label dialog68:
     $ daily_visitors += 1
     menu:
         "Tüccarlarla görüşüp fiyatları adil hale getirin!":
-            $Politics -= 1
-            $Economy += 2
+            $ Politics -= 1
+            $ Economy += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Serbest ticaret böyle işler, alışmalısınız.":
-            $People -= 2
-            $Economy += 1
+            $ People -= 2
+            $ Economy += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1735,13 +1735,13 @@ label dialog70:
     $ daily_visitors += 1
     menu:
         "Birkaç asker gönderin, hırsızları bulun!":
-            $Military -= 1
-            $People += 1
+            $ Military -= 1
+            $ People += 1
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Çiftlik işlerine karışamayız, kendi başınızın çaresine bakın.":
-            $People -= 2
-            $Politics += 1
+            $ People -= 2
+            $ Politics += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1760,8 +1760,8 @@ label dialog71:
     $ daily_visitors += 1
     menu:
         "Toprak genişletme projelerine başlayın!":
-            $Economy -= 3
-            $People += 2
+            $ Economy -= 3
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Şimdilik elimizdekilerle idare edin.":
@@ -1783,13 +1783,13 @@ label dialog72:
     $ daily_visitors += 1
     menu:
         "Evet, ayini düzenleyin!":
-            $Religion += 2
-            $Economy -= 1
+            $ Religion += 2
+            $ Economy -= 1
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Dualarla mahsul artmaz, çalışmaya devam edin!":
-            $Religion -= 2
-            $Economy += 1
+            $ Religion -= 2
+            $ Economy += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1808,13 +1808,13 @@ label dialog73:
     $ daily_visitors += 1
     menu:
         "Şehirden köylere daha fazla yiyecek gönderin.":
-            $Economy -= 2
-            $People += 2
+            $ Economy -= 2
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Şehir halkı önceliklidir, köylüler sabretsin.":
-            $People -= 2
-            $Economy += 1
+            $ People -= 2
+            $ Economy += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1833,13 +1833,13 @@ label dialog74:
     $ daily_visitors += 1
     menu:
         "Eğitim alanlarını başka bir yere taşıyın!":
-            $Military -= 1
-            $People += 2
+            $ Military -= 1
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Tarla her yıl büyür, askerlerimiz daha önemli!":
-            $People -= 2
-            $Military += 1
+            $ People -= 2
+            $ Military += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1858,13 +1858,13 @@ label dialog75:
     $ daily_visitors += 1
     menu:
         "Köylere teşvik verin, daha fazla kişi tarımla uğraşsın!":
-            $Economy -= 3
-            $People += 2
+            $ Economy -= 3
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Şehirde daha çok insana ihtiyaç var, bu doğal bir süreç.":
-            $People -= 2
-            $Politics += 1
+            $ People -= 2
+            $ Politics += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1883,13 +1883,13 @@ label dialog76:
     $ daily_visitors += 1
     menu:
         "Tohum desteği sağlayın!":
-            $Economy -= 2
-            $People += 2
+            $ Economy -= 2
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Çiftçiler kendi yollarını bulmalı.":
-            $People -= 1
-            $Economy += 1
+            $ People -= 1
+            $ Economy += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1908,13 +1908,13 @@ label dialog77:
     $ daily_visitors += 1
     menu:
         "Evet, halkın morale ihtiyacı var!":
-            $Economy -= 2
-            $People += 2
+            $ Economy -= 2
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Festival gereksiz harcamadır, iptal edin.":
-            $People -= 2
-            $Economy += 1
+            $ People -= 2
+            $ Economy += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1933,14 +1933,14 @@ label dialog78:
     $ daily_visitors += 1
     menu:
         "Çiftçilere yardım edin!":
-            $Economy -= 3
-            $People += 2
+            $ Economy -= 3
+            $ People += 2
             Çiftçi "Bizi unutmadığınız için minnettarız, majesteleri!"
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Bu yıl kaybı kabullenmek zorundayız.":
-            $People -= 1
-            $Economy += 1
+            $ People -= 1
+            $ Economy += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -1959,8 +1959,8 @@ label dialog79:
     $ daily_visitors += 1
     menu:
         "Evet, köylülere basit silahlar verin!":
-            $People += 2
-            $Military -= 1
+            $ People += 2
+            $ Military -= 1
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Hayır, ordu varken köylülerin silaha ihtiyacı yok.":
@@ -1984,8 +1984,8 @@ label dialog80:
     $ daily_visitors += 1
     menu:
         "Tamam, kârın bir kısmını alabilirsin.":
-            $Economy += 1
-            $Politics -= 2
+            $ Economy += 1
+            $ Politics -= 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Benim arsam senin gibi bir çiftçinin insafına bırakılamaz.":
@@ -2008,9 +2008,9 @@ label dialog81:
     $ daily_visitors += 1
     menu:
         "Bir bölük askeri köyünüze yollayacağım.":
-            $People += 2
-            $Military -= 2
-            $Politics -= 1
+            $ People += 2
+            $ Military -= 2
+            $ Politics -= 1
             Çiftçi "Minnettarım efendim."
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
@@ -2034,15 +2034,15 @@ label dialog82:
     $ daily_visitors += 1
     menu:
         "Gerekli önlemleri alıp görüşmeyi yapacağım.":
-            $People += 3
-            $Economy -= 1
-            $Politics -= 1
-            $Military -= 2
+            $ People += 3
+            $ Economy -= 1
+            $ Politics -= 1
+            $ Military -= 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Halka bizzat benim görüşmem tehlikeli olacaktır.":
-            $People -= 2
-            $Politics += 1
+            $ People -= 2
+            $ Politics += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -2061,13 +2061,13 @@ label dialog83:
     $ daily_visitors += 1
     menu:
         "Vergilerinizi azaltıyorum.":
-            $Economy -= 2
-            $People += 2
+            $ Economy -= 2
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Herkes vergisini ödeyecek.":
-            $People -= 2
-            $Politics += 1
+            $ People -= 2
+            $ Politics += 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -2086,12 +2086,12 @@ label dialog84:
     $ daily_visitors += 1
     menu:
         "10 baş hayvanı size hibe ediyorum.":
-            $Economy -= 2
-            $People += 2
+            $ Economy -= 2
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Bu benim sorunum değil.":
-            $People -= 2
+            $ People -= 2
             Çiftçi "Haklısınız efendim."
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
@@ -2111,12 +2111,12 @@ label dialog84:
     $ daily_visitors += 1
     menu:
         "Vergiler aynı kalacak.":
-            $People -= 2
+            $ People -= 2
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
         "Vergilerinizi ben ödeyeceğim.":
-            $Economy -= 3
-            $People += 2
+            $ Economy -= 3
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
     hide image Çiftçi
@@ -2135,9 +2135,9 @@ label dialog86:
     $ daily_visitors += 1
     menu:
         "Sana ve ailene arazi veriyorum.":
-            $Politics -= 3
-            $Economy -= 1
-            $People += 1
+            $ Politics -= 3
+            $ Economy -= 1
+            $ People += 1
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Bu kabul edilemez.":
@@ -2159,12 +2159,12 @@ label dialog87:
     $ daily_visitors += 1
     menu:
         "Asker alımlarını azaltıyorum.":
-            $People += 2
-            $Military -= 2
+            $ People += 2
+            $ Military -= 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Sanmıyorum.":
-            $People -= 1
+            $ People -= 1
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -2183,12 +2183,12 @@ label dialog88:
     $ daily_visitors += 1
     menu:
         "Köyünüze bir bölük asker gönderiyorum.":
-            $Military -= 1
-            $People += 2
+            $ Military -= 1
+            $ People += 2
             $ check_bars()
             $ chr_chng("çiftçi","+",1)
         "Köyünüzü korumak için bir de asker mi göndereceğim, git başımdan!":
-            $People -= 2
+            $ People -= 2
             $ check_bars()
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
@@ -2199,3 +2199,4 @@ label dialog88:
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
+
