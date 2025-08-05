@@ -377,31 +377,21 @@ init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
         
         for i in range(0,14):
             chr_data[i]["info"]=5
-
-    çarpanlar_chr={}
-    def check_chr():
-        
-        for i,kişi in enumerate([
-            "ozan","demirci","büyücü","kadı","mhf_baş","hzm_baş",
-            "asker","baş_imam","çiftçi","ktpnc","otacı","soylu",
-            "şifacı","yrl_bkn","zng_tcr"
-        ]):
-            info = chr_data[i]["info"]
-            if info <=0:
-                çarpanlar_chr[kişi] = 2
-            elif info >=10:
-                çarpanlar_chr[kişi] = 0.5
     
-    def chr_chng(name,sign,value):
-        names={
-            "ozan":0,"demirci":1,"büyücü":2,"kadı":3,"mhf_baş":4,"hzm_baş":5,
-            "asker":6,"baş_imam":7,"çiftçi":8,"ktpnc":9,"otacı":10,"soylu":11,
-            "şifacı":12,"yrl_bkn":13,"zng_tcr":14
-        }
-        if sign == "+":
-            chr_data[names[name]]["info"] += value
-        elif sign == "-":
-            chr_data[names[name]]["info"] -= value
+    def chr_chng(name, sign, value):
+	    names = {
+		"ozan": 0, "demirci": 1, "büyücü": 2, "kadı": 3, "mhf_baş": 4, "hzm_baş": 5,
+		"asker": 6, "baş_imam": 7, "çiftçi": 8, "ktpnc": 9, "otacı": 10, "soylu": 11,
+		"şifacı": 12, "yrl_bkn": 13, "zng_tcr": 14
+	    }
+
+	    i = names[name]
+
+	    if sign == "+":
+		chr_data[i]["info"] = min(chr_data[i]["info"] + value, 10)
+	    elif sign == "-":
+		chr_data[i]["info"] = max(chr_data[i]["info"] - value, 0)
+
 
     def mnc_chng(name,sign,value):
         names={
