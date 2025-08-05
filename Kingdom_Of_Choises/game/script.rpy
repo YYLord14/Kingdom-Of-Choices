@@ -16,40 +16,95 @@ define Büyücü = Character("Büyücü")
 define Otacı = Character("Otacı")
 define Şifacı = Character("Şifacı")
 define Hizmetçi_Başı = Character("Hizmetçi Başı")
-
+define Kraliçe = Character("Kraliçe")
 #image ile karakterlere bir resim atıyoruz
-
-image Asker = Transform("asker.png",zoom=0.35,xalign=0.5,yalign=0.3)
-image Kütüphaneci = Transform("kütüphaneci.png",zoom=0.35,xalign=0.5,yalign=0.4)
-image Demirci = Transform("demirci.png",zoom=0.35,xalign=0.5,yalign=1.0)
-image Baş_İmam = Transform("bas_imam.png",zoom=0.3,xalign=0.5,yalign=0.3)
-image Ozan = Transform("ozan.png",zoom=0.55,xalign=0.5,yalign=0.1)
-image Kadı = Transform("kadı.png",zoom=0.3,xalign=0.5,yalign=0.4)
-image Soylu = Transform("soylu.png",zoom=0.45,xalign=0.5,yalign=0.2)
-image Yerel_Bakan = Transform("yerel_bakan.png",zoom=0.55,xalign=0.5,yalign=1.0) 
-image Çiftçi = Transform("çiftçi.png",zoom=0.4,xalign=0.5,yalign=0.05)
-image Büyücü = Transform("büyücü.png",zoom=0.35,xalign=0.5,yalign=0.4)
-image Gizemli_Adam = Transform("gizemli_adam.png",zoom=0.25,xalign=0.5,yalign=0.2)
-image Muhafız_Başı = Transform("muhafız_basi",zoom=0.35,xalign=0.5,yalign=0.5)
-image Şifacı = Transform("şifacı.png",zoom=0.35,xalign=0.5,yalign=0.3)
-image Zengin_Tüccar = Transform("zengin_tüccar.png",zoom=0.35,xalign=0.5,yalign=0.4)
-image Otacı = Transform("Otacı.png",zoom=0.35,xalign=0.5,yalign=0.6)
-image Hizmetçi_Başı = Transform("hizmetci_basi.png",zoom=0.25,xalign=0.5,yalign=0.2)
-
+init:     
+    image Asker:
+        "asker.png"
+        zoom 0.85
+        
+    image Kütüphaneci:
+        "kütüphaneci.png"
+        zoom 0.85
+        
+    image Demirci:
+        "demirci.png"
+        zoom 0.8
+       
+    image Baş_İmam:
+        "bas_imam.png"
+        zoom 0.8
+        
+    image Ozan:
+        "ozan.png"
+        zoom 0.85
+        
+    image Muhafız_Başı:
+        "muhafız_basi.png"
+        zoom 0.85
+        
+init:
+    image Kadı:
+        "Kadı.png"
+        zoom 0.8
+        
+    image Soylu:
+        "soylu.png"
+        zoom 0.85
+        
+    image Yerel_Bakan:
+        "yerel_bakan.png"
+        zoom 0.85
+          
+    image Çiftçi:
+        "çiftçi.png"
+        zoom 0.8
+        
+    image Büyücü:
+        "büyücü.png"
+        zoom 0.85
+        
+    image Gizemli_Adam:
+        "gizemli_adam.png"
+        zoom 0.75
+        
+    image Şifacı:
+        "şifacı.png"
+        zoom 0.85
+        
+    image Zengin_Tüccar:
+        "zengin_tüccar.png"
+        zoom 0.85
+        
+init:
+    image Otacı:
+        "Otacı.png"
+        zoom 0.85
+        
+    image Hizmetçi_Başı:
+        "hizmetci_basi.png"
+        zoom 0.85
+    image Kraliçe:
+        "kraliçe.png"
+        zoom 0.85
+        
 init:
     image startbcg :
-        "game_start_bgd.jpg"
+        "arka_plan.jpg"
         size(config.screen_width, config.screen_height)
+init:
     image style_start :
-        "gui/overlay/style_start.png"
+        "style_start.png"
         size(config.screen_width,100)
         yalign 0.0
 
 label open_preferences:#Esc on clik to open preferences
     call screen preferences
     return
+
 screen esc_listener():#Esc control
     key "escape" action Call("open_preferences")
+
 
 ## Tarih kodları ################################################################
 default current_date = {
@@ -78,8 +133,8 @@ init python:
     def format_date():
         return f"{current_date['day']} {current_date['month_names'][current_date['month']]} {current_date['year']}"
 
-    def managed_day(days_to_add):
-        # Ay günlerini belirle (Artık yılları hesaba katmıyoruz)
+    def advance_date(days_to_add):
+        # hangi ayda kaç gün olduğu 
         month_days = {
             1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
             7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
@@ -97,12 +152,15 @@ init python:
                 current_date["month"] = 1
                 current_date["year"] += 1
  
-screen date_display():
-    text "{color=#FFFFFF}[current_date['day']]  [current_date['month_names'][current_date['month']]]\n   {color=#FFFFFF}[current_date['year']]{/color}":
-        xpos 105
-        ypos 60
-        size 18
+screen date_display(): # burdaki boşlukları cart curt ellemeyelim lütfen tarih ekranı şeysi
+    text "{color=#FFFFFF}[current_date['day']]  [current_date['month_names'][current_date['month']]]\n      {color=#FFFFFF}[current_date['year']]{/color}":
+        font "gui/font/CinzelDecorative-Regular.otf"
+        xpos 107
+        ypos 78
+        size 20
         line_spacing 5
+
+
 
 init: # Başlangıç değerleri
     $ Health = 5
@@ -112,22 +170,34 @@ init: # Başlangıç değerleri
     $ Economy = 5
     $ People = 5
 
-
 ####### sayaçlar ############################
-default dialog_count = 0
-default day_managed = managed_day
+default managed_day = 0
 default minicard_count = 0
 default main_story_count = 0
-
+default daily_visitors = 0
+default demirci_relationship = 0
+default ozan_relationship = 0
+default kütüphaneci_relationship = 0
+default büyücü_relationship = 0
+default hizmetci_basi_relationship = 0
+default kadı_relationship = 0
+default başimam_relationship = 0
+default muhafızbaşı_relationship = 0
+default yerelbakan_relationship = 0
+default soylu_relationship = 0
+default zengintüccar_relationship = 0
+default asker_relationship = 0
+default şifacı_relationship = 0
+default otacı_relationship = 0
+default çiftçi_relationship = 0
 # Diyalog sayısını gösterecek ekran
+
 screen managed_day():
-    text "Yönetilen Gün: [dialog_count]":
+    text "Yönetilen Gün: [managed_day]":
         xpos 90
-        ypos 115
+        ypos 160
         color "#FFFFFF"
         size 15
-
-
 
 transform bar_animation:
     ease 0.5 xsize 400  # Barların geçişlerini akışkan hale getirmek
@@ -237,6 +307,7 @@ screen bars():
 init:#Tanımlamalar
     $ last_dialog = None
     $ in_game = False
+    $ in_main_menu = True
     $ game_over_triggered = False
     $ character_alive = True
     $ chosen_dialog = 0
@@ -252,21 +323,23 @@ init:#Tanımlamalar
     $ silk_trade_income_minicard = 0
     $ blue_cap_mushroom_minicard = 0
     $ loyalty_potion_minicard = 0
-
+    $ visitors_today = 0
+    
 screen choice(items):
     style_prefix "choice"
 
     vbox:
         xalign 0.5
         yalign 0.9  # Seçenekleri ekranın altına taşır.
-        spacing 10
+        spacing 9
 
         for item in items:
             textbutton item.caption action item.action
 
 label zero_point:#0 noktası
-    $ dialog_count = 0
-    $ day_managed = 1
+    $ managed_day = 0
+    $ daily_visitors = 0
+    $ visitors_today = 0
     $ minicard_count = 0
     $ main_story_count = 0
     $ Economy = 5
@@ -275,6 +348,7 @@ label zero_point:#0 noktası
     $ Religion = 5
     $ Health = 5
     $ People = 5
+    $ zero_chr()
     jump in_start
 
 init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
@@ -282,37 +356,62 @@ init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
         for value in [Health,Religion,Politics,Military,Economy,People]:
             if value <= 0 or value >= 10:
                 renpy.jump("minicard")
-        
-    
+            
     def zero_chr_button():
-        renpy.hide_screen("chr_button_asker")
         renpy.hide("Asker")
-        renpy.hide_screen("chr_button_baş_imam")
         renpy.hide("Baş İmam")
-        renpy.hide_screen("chr_button_büyücü")
         renpy.hide("Büyücü")
-        renpy.hide_screen("chr_button_demirci")
         renpy.hide("Demirci")
-        renpy.hide_screen("chr_button_hizmetci")
         renpy.hide("Hizmetçi Başı")
-        renpy.hide_screen("chr_button_kadı")
         renpy.hide("Kadı")
-        renpy.hide_screen("chr_button_kütüphaneci")
         renpy.hide("Kütüphaneci")
-        renpy.hide_screen("chr_button_muhafız_başı")
         renpy.hide("Muhafız Başı")
-        renpy.hide_screen("chr_button_ozan")
         renpy.hide("Ozan")
-        renpy.hide_screen("chr_button_soylu")
         renpy.hide("Soylu")
-        renpy.hide_screen("chr_button_yerel_bakan")
         renpy.hide("Yerel Bakan")
-        renpy.hide_screen("chr_button_zengin_tüccar")
         renpy.hide("Zengin Tüccar")
-        renpy.hide_screen("chr_button_çiftçi")
         renpy.hide("Çiftçi")
-        renpy.hide_screen("chr_button_şifacı")
         renpy.hide("Şifacı")
+
+    def zero_chr():
+        
+        for i in range(0,14):
+            chr_data[i]["info"]=5
+
+    çarpanlar_chr={}
+    def check_chr():
+        
+        for i,kişi in enumerate([
+            "ozan","demirci","büyücü","kadı","mhf_baş","hzm_baş",
+            "asker","baş_imam","çiftçi","ktpnc","otacı","soylu",
+            "şifacı","yrl_bkn","zng_tcr"
+        ]):
+            info = chr_data[i]["info"]
+            if info <=0:
+                çarpanlar_chr[kişi] = 2
+            elif info >=10:
+                çarpanlar_chr[kişi] = 0.5
+    
+    def chr_chng(name,sign,value):
+        names={
+            "ozan":0,"demirci":1,"büyücü":2,"kadı":3,"mhf_baş":4,"hzm_baş":5,
+            "asker":6,"baş_imam":7,"çiftçi":8,"ktpnc":9,"otacı":10,"soylu":11,
+            "şifacı":12,"yrl_bkn":13,"zng_tcr":14
+        }
+        if sign == "+":
+            chr_data[names[name]]["info"] += value
+        elif sign == "-":
+            chr_data[names[name]]["info"] -= value
+
+    def mnc_chng(name,sign,value):
+        names={
+            kosc_mnc:0,hp_mnc:1,bm_mnc:2,gw_mnc:3,al_mnc:4,hr_mnc:5,spsb_mnc:6,sow_mnc:7,
+            rg_mnc:8,sti_mnc:9,bcm_mnc:10,lp_mnc:11
+        }
+        if sign == "+":
+            mnc_data[names[name]]["val"] += value
+        elif sign == "-":
+            mnc_data[names[name]]["val"] -= value
 
 label game_over:
     scene startbcg
@@ -321,12 +420,12 @@ label game_over:
         $ game_over_triggered = True
         $ character_alive=False
     if Health <= 0: 
-        show Otacı at Position(xalign=0.5, yalign=0.9) 
+        show Otacı at otaci_poz
         Otacı "Kralım bulaşıcı bir hastalık çıktı ve engel olamıyoruz."
         menu:
             "Ne?":
                 hide image Otacı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Vakalar arttı ve hastalık en sonunda sarayınızıda kırıp geçirdi."
                 menu:
                     "Yeniden başla":
@@ -336,7 +435,7 @@ label game_over:
                         $ renpy.quit() 
             "Olamaz":
                 hide image Otacı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Vakalar arttı ve hastalık en sonunda sarayınızıda kırıp geçirdi."
                 menu:
                     "Yeniden başla":
@@ -346,12 +445,12 @@ label game_over:
                         $ renpy.quit() 
 
     elif Health >= 10:
-        show Şifacı at Position(xalign=0.5, yalign=0.9) 
+        show Şifacı at sifaci_poz
         Şifacı "Kralım araştırma bölgelerimizin birinde bir hata yaptık." 
         menu:
             "Ne hatası?":
                 hide image Şifacı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Ülkeni mutantlar bastı, sürekli üreyen bu yaratıklar Aquiladaki herkesi öldürdü."
                 menu:
                     "Yeniden başla":
@@ -361,7 +460,7 @@ label game_over:
                         $ renpy.quit() 
             "Neler oluyor?":
                 hide image Şifacı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Ülkeni mutantlar bastı, sürekli üreyen bu yaratıklar Aquiladaki herkesi öldürdü."
                 menu:
                     "Yeniden başla":
@@ -371,12 +470,12 @@ label game_over:
                         $ renpy.quit() 
     elif Religion <= 0:
         
-        show Baş_İmam at Position(xalign=0.5, yalign=0.9) 
+        show Baş_İmam at bas_imam_poz
         Baş_İmam "Kralım siz doğru yoldan ayrıldınız."
         menu:
             "Neler oluyor?":
                 hide image Baş_İmam
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam " Dinsizlikle yargılanarak ülkeden sürgün edildiğiniz yolda suikast e uğradınız."
                 menu:
                     "Yeniden başla":
@@ -386,7 +485,7 @@ label game_over:
                         $ renpy.quit() 
             "Ne?":
                 hide image Baş_İmam
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam " Dinsizlikle yargılanarak ülkeden sürgün edildiğiniz yolda suikast e uğradınız."
                 menu:
                     "Yeniden başla":
@@ -397,12 +496,12 @@ label game_over:
                     
     elif Religion >= 10:
         
-        show Baş_İmam at Position(xalign=0.5, yalign=0.9) 
+        show Baş_İmam at bas_imam_poz
         Baş_İmam "Siz bu ülkeyi yönetçek doğru kişi değilsiniz."
         menu:
             "Ne diyosun be":
                 hide image Baş_İmam
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Çok güçlenen Baş İmam seni tahttan indirerek idam etti ve yerine kendi geçti."
                 menu:
                     "Yeniden başla":
@@ -412,7 +511,7 @@ label game_over:
                         $ renpy.quit()  
             "Ne oluyor":
                 hide image Baş_İmam
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Çok güçlenen Baş İmam seni tahttan indirerek idam etti ve yerine kendi geçti."
                 menu:
                     "Yeniden başla":
@@ -423,12 +522,12 @@ label game_over:
 
     elif Politics <= 0:
         
-        show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+        show Yerel_Bakan at yerel_bakan_poz
         Yerel_Bakan "Kralım meclis üyeleri sizi sattı."
         menu:
             "Nasıl olur?":
                 hide image Yerel_Bakan
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.4)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Ülkenin tüm istihbaratları sızdırılmış düşman ülkeler Aquila yı alt etti."
                 menu:
                     "Yeniden başla":
@@ -438,7 +537,7 @@ label game_over:
                         $ renpy.quit()  
             "Hayır!":
                 hide image Yerel_Bakan
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.4)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Ülkenin tüm istihbaratları sızdırılmış düşman ülkeler Aquila yı alt etti."
                 menu:
                     "Yeniden başla":
@@ -448,12 +547,12 @@ label game_over:
                         $ renpy.quit()  
     elif Politics >= 10:
         
-        show Yerel_Bakan at Position(xalign=0.5, yalign=0.1)
+        show Yerel_Bakan at yerel_bakan_poz
         Yerel_Bakan "Kralım artık zamanın doldu."
         menu:
             "Ne oluyor?":
                 hide image Yerel_Bakan
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.4)
+                show Gizemli_Adam at gizemli_adam_poz 
                 Gizemli_Adam "Kraliyet meclisi sana baş kaldırıp isyan etti halkının önünde idam edildin."
                 menu:
                     "Yeniden başla":
@@ -463,7 +562,7 @@ label game_over:
                         $ renpy.quit()  
             "Ne?":
                 hide image Yerel_Bakan
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.4)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Kraliyet meclisi sana baş kaldırıp isyan etti halkının önünde idam edildin." 
                 menu:
                     "Yeniden başla":
@@ -473,12 +572,12 @@ label game_over:
                         $ renpy.quit()  
     elif Military <= 0:
         
-        show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+        show Muhafız_Başı at muhafiz_basi_poz
         Muhafız_Başı "Diğer ülkeler bize savaş açtı yeterli sayıda askerimiz yok."
         menu:
             "Olamaz!":
                 hide image Muhafız_Başı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz 
                 Gizemli_Adam "Düşman orduları sarayınızı basıyor ve sizi yakalıp öldürüyorlar Aquila Krallığı sizin hükümdarlığınızda yok oluyor."
                 menu:
                     "Yeniden başla":
@@ -488,7 +587,7 @@ label game_over:
                         $ renpy.quit()  
             "Hayır!":
                 hide image Muhafız_Başı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Düşman orduları sarayınızı basıyor ve sizi yakalıp öldürüyorlar Aquila Krallığı sizin hükümdarlığınızda yok oluyor."
                 menu:
                     "Yeniden başla":
@@ -498,12 +597,12 @@ label game_over:
                         $ renpy.quit() 
     elif Military >= 10:
         
-        show Muhafız_Başı at Position(xalign=0.5, yalign=0.9)
+        show Muhafız_Başı at muhafiz_basi_poz
         Muhafız_Başı "Kralım artık sizin bir yetkiniz kalmadı."
         menu:
             "Ne?":
                 hide image Muhafız_Başı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Askerler sarayınızı basıyor ve sizi yakalayıp asarak idam ediyorlar Ülkeniz darbe girişimi ile Ordunun eline geçti."
                 menu:
                     "Yeniden başla":
@@ -513,7 +612,7 @@ label game_over:
                         $ renpy.quit() 
             "Ne saçmalıyorsun?":
                 hide image Muhafız_Başı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Askerler sarayınızı basıyor ve sizi yakalayıp asarak idam ediyorlar Ülkeniz darbe girişimi ile Ordunun eline geçti."
                 menu:
                     "Yeniden başla":
@@ -523,12 +622,12 @@ label game_over:
                         $ renpy.quit()
     elif Economy <= 0:
         
-        show Soylu at Position(xalign=0.5, yalign=0.3)
+        show Soylu at soylu_poz
         Soylu "Efendim hazinemiz tükendi borcumuz olan dış ülkeler yağmaya başladı."
         menu:
             "Olamaz!":
                 hide image Soylu
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Dış ülkeler dört bir yandan saldıraya geçti ve yavaş yavaş ülkeni ele geçirdiler."
                 menu:
                     "Yeniden başla":
@@ -538,7 +637,7 @@ label game_over:
                         $ renpy.quit() 
             "Ne?":
                 hide image Soylu
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Dış ülkeler dört bir yandan saldıraya geçti ve yavaş yavaş ülkeni ele geçirdiler."
                 menu:
                     "Yeniden başla":
@@ -548,12 +647,12 @@ label game_over:
                         $ renpy.quit() 
     elif Economy >= 10:
         
-        show Soylu at Position(xalign=0.5, yalign=0.3)
+        show Soylu at soylu_poz
         Soylu "Kralım artık sizi başımızda istemiyoruz."
         menu:
             "Ne saçmalıyorsun sen?":
                 hide image Soylu
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Ülkende monarşi ortadan kalıyor ve sizi yakalayıp idam ediyorlar Ülkeniz artık zengin kesimin eline geçti."
                 menu:
                     "Yeniden başla":
@@ -563,7 +662,7 @@ label game_over:
                         $ renpy.quit()
             "Aklınımı kaçırdın?":
                 hide image Soylu
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Ülkende monarşi ortadan kalıyor ve sizi yakalayıp idam ediyorlar Ülkeniz artık zengin kesimin eline geçti."
                 menu:
                     "Yeniden başla":
@@ -573,12 +672,12 @@ label game_over:
                         $ renpy.quit()  
     elif People <= 0:
         
-        show Kadı at Position(xalign=0.5, yalign=0.9)
+        show Kadı at kadi_poz
         Kadı "Kralım halktan çalarak yönettiğiniz bu düzen bozuldu."
         menu:
             "Ne?":
                 hide image Kadı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Halk size daha fazla dayanamadı ve sarayınızı basıp sizi kargılarla öldürdüler."
                 menu:
                     "Yeniden başla":
@@ -588,7 +687,7 @@ label game_over:
                         $ renpy.quit() 
             "Ne oluyor?":
                 hide image Kadı
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Halk size daha fazla dayanamadı ve sarayınızı basıp sizi kargılarla öldürdüler."
                 menu:
                     "Yeniden başla":
@@ -598,12 +697,12 @@ label game_over:
                         $ renpy.quit() 
     elif People >= 10:
         
-        show Çiftçi at Position(xalign=0.5, yalign=0.9)
+        show Çiftçi at ciftci_poz
         Çiftçi "Kralım o tahtı hak etmiyorsunuz."
         menu:
             "Ne saçmalıyorsun sen?":
                 hide image Çiftçi
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Doyumsuz halk daha fazlasını istiyor sarayınızı basan isyancılardan kaçarken öldünüz."
                 menu:
                     "Yeniden başla":
@@ -613,7 +712,7 @@ label game_over:
                         $ renpy.quit()
             "Aklınımı kaçırdın?":
                 hide image Çiftçi
-                show Gizemli_Adam at Position(xalign=0.5, yalign=0.7)
+                show Gizemli_Adam at gizemli_adam_poz
                 Gizemli_Adam "Doyumsuz halk daha fazlasını istiyor sarayınızı basan isyancılardan kaçarken öldünüz." 
                 menu:
                     "Yeniden başla":
@@ -806,14 +905,31 @@ label minicard:
         else :
             jump game_over
 
+
+
 init python:# Diyologlar
     import random
 
-    # Tüm diyalogları bir liste içine koyuyoruz
+    # Tüm diyalogları bir liste içine koyuyoruz sonuncusunda virgül olmayacak
     dialogs = [
         "dialog1", "dialog2", "dialog3", "dialog4", "dialog5",
         "dialog6", "dialog7", "dialog8", "dialog9", "dialog10",
-        "dialog11", "dialog12", "dialog13", "dialog14", "dialog15"
+        "dialog11", "dialog12", "dialog13", "dialog14", "dialog15",
+        "dialog16", "dialog17", "dialog18", "dialog19", "dialog20",
+        "dialog21", "dialog22", "dialog23", "dialog24", "dialog25",
+        "dialog26", "dialog27", "dialog28", "dialog29", "dialog30",
+        "dialog30", "dialog31", "dialog32", "dialog33", "dialog34",
+        "dialog35", "dialog36", "dialog37", "dialog38", "dialog39",
+        "dialog40", "dialog41", "dialog42", "dialog43", "dialog44",
+        "dialog45", "dialog46", "dialog47", "dialog48", "dialog49",
+        "dialog50", "dialog51", "dialog52", "dialog53", "dialog54",
+        "dialog55", "dialog56", "dialog57", "dialog58", "dialog59",
+        "dialog60", "dialog61", "dialog62", "dialog63", "dialog64",
+        "dialog65", "dialog66", "dialog67", "dialog68", "dialog69",
+        "dialog70", "dialog71", "dialog72", "dialog73", "dialog74",
+        "dialog75", "dialog76", "dialog77", "dialog78", "dialog79",
+        "dialog80", "dialog81", "dialog82", "dialog83", "dialog84",
+        "dialog85", "dialog86", "dialog87", "dialog88"
     ]
 
     def get_random_dialog():
@@ -830,12 +946,20 @@ init python:# Minicard diyolglar
     
     minicard_used = False
 
+init python:# Hikaye metinleri
+    import random
+
+    stories = [
+        "story1", "story2", "story3", "story4"
+    ]
+
+
 label start:
     stop music 
     queue music[
-        "audio/Bleak_Falls.mp3",
+        "audio/Rite_of_the_Fading_Light.mp3",
         "audio/Lake_of_Light.mp3",
-        "audio/Rite_of_the_Fading_Light.mp3"] loop
+        "audio/Bleak_Falls.mp3"] loop
     show screen bars
     show screen style_start
     show screen sign_hist
@@ -851,8 +975,15 @@ label start:
     $ character_alive=True
     label in_start:
         while True:
+            $ in_main_menu = 0
             $ in_game = True
             show screen esc_listener
+            show Kraliçe at kraliçe_poz
+            Kraliçe "Merhaba Majesteleri… Önünüzde uzun ve zorlu bir hükümdarlık yolu var. Her gün halktan ya da saraydan biri huzurunuza çıkacak ve sizden bir karar vermenizi bekleyecek. Vereceğiniz her karar, ülkemizin din, siyaset, ekonomi, askeriye, sağlık ve halkın refahı gibi hayati dengelerini doğrudan etkileyecek."
+            Kraliçe "Fakat yalnızca bu değil… İnsanların gönülleri de kararlarınızla şekillenecek. Birine sürekli hayır derseniz, kalbinde size karşı bir kin birikebilir. Ama her isteğini kabul ederseniz, size olan bağlılığı artar. Her kişi farklıdır, her kararın bedeli olur…"
+            Kraliçe "Lütfen unutmayın majesteleri; din, sağlık, siyaset, halk, ekonomi ve askerî güç… Bu unsurların biri bile uç noktalara savrulursa, krallığımız tehlikeye girer. Denge... İşte asıl ihtiyacımız olan budur."
+            Kraliçe "Şimdi… Tahtınız sizi bekliyor."
+            hide Kraliçe
             if last_dialog == None:
                 $ zero_chr_button()
                 $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
@@ -861,19 +992,23 @@ label start:
                 $ zero_chr_button()
                 $ chosen_dialog = last_dialog
             jump expression chosen_dialog
-
    
-
 label check_minicard: #bunun yeri ile oynamayın rastgele minicard dialogu atıyor
-    if dialog_count == 15 and not minicard_used:
+    if managed_day == 15 and not minicard_used:
         $ chosen_card = renpy.random.choice(minicard_dialogs)
         $ minicard_used = True 
         jump expression chosen_card
     else:
         jump random_dialog
 
+    $ last_dialog= None
+    jump random_dialog
+    return
 
 label random_dialog:
     $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
-    $ last_dialog = chosen_dialog
-    jump expression chosen_dialog  # Yeni seçilen diyaloga git
+    if main_story_count == 5:
+        jump story1
+    else:
+        $ chosen_dialog = renpy.random.choice(dialogs)
+        jump expression chosen_dialog  # Yeni seçilen diyaloga git

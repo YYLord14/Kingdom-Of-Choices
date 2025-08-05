@@ -5,6 +5,10 @@
 init offset = -1
 
 ################################################################################
+##Default
+################################################################################
+
+################################################################################
 ## Key dinleyici
 ################################################################################
 
@@ -237,7 +241,7 @@ style choice_button_text is default:
 ## Hızlı Menü ekranı ###########################################################
 ##
 ## Hızlı menü, oyun-dışı menülere kolay erişim için oyunda gösterilir.
-
+"""
 screen quick_menu():
 
     ## Bunun diğer ekranlar üzerinde göründüğünden emin olun.
@@ -257,7 +261,6 @@ screen quick_menu():
             textbutton _("H.Yükle") action QuickLoad()
             textbutton _("Tercih") action ShowMenu('preferences')
 
-
 ## Bu kod, oyuncu kasten arayüzü gizlemediği sürece hızlı menünün oyunda
 ## gösterildiğinden emin olmak içindir.
 init python:
@@ -274,7 +277,7 @@ style quick_button:
 style quick_button_text:
     properties gui.text_properties("quick_button")
 
-
+"""
 ################################################################################
 ## Ana Menü ve Oyun Menüsü Ekranları
 ################################################################################
@@ -294,13 +297,11 @@ screen navigation():
 
         spacing gui.navigation_spacing
 
-        if main_menu:
+        if in_main_menu == True:
 
             textbutton _("Yeni Oyun") action Start()
 
         else:
-
-            textbutton _("Geçmiş") action ShowMenu("history")
 
             textbutton _("Kayıt") action ShowMenu("save")
 
@@ -313,15 +314,9 @@ screen navigation():
 
             textbutton _("Yeniden Oynatmayı Durdur") action EndReplay(confirm=True)
 
-        elif not main_menu:
+        elif in_main_menu == False:
 
-            textbutton _("Ana Menü") action MainMenu()
-
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Yardım mobil cihazlarla alakalı ya da gerekli değildir.
-            textbutton _("Yardım") action ShowMenu("help")
+            textbutton _("Ana Menü") action ShowMenu("main_menu")
 
         if renpy.variant("pc"):
 
@@ -349,8 +344,8 @@ style navigation_button_text:
 
 screen main_menu():
 
-    ## Bu diğer herhangi bir menünün aktif olmadığından emin olur.
-    tag menu
+    tag menu## Bu diğer herhangi bir menünün aktif olmadığından emin olur.
+    $ in_main_menu = True
     $ in_game = False
     $ last_dialog = None
     add gui.main_menu_background at Transform(xsize=config.screen_width,ysize=config.screen_height)
@@ -377,13 +372,13 @@ screen main_menu():
         idle Transform("gui/button/button_settings.png",zoom=0.7)
         xpos 0.72
         ypos 0.56
-        action ShowMenu("preferences")
+        action [ShowMenu("preferences"), Hide("main_menu")]
 
     imagebutton:
         idle Transform("gui/button/button_about.png", zoom=0.7)
         xpos 0.72
         ypos 0.68
-        action ShowMenu("about")
+        action [Hide("main_menu"), ShowMenu("about")]
 
     imagebutton:
         idle Transform("gui/button/button_exit.png", zoom=0.7)
@@ -408,19 +403,6 @@ style main_menu_vbox:
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
-
-## Mini cart ekranı ###########################################################
-'''
-screen mini_card():
-    xysize(500,400)
-    xpos 1
-    ypos 0
-    textbutton _("X"):
-        xysize(30,30)
-
-        action Hide("mini_card")'''
-
-
 
 
 ## Oyun Menüsü ekranı ##########################################################
@@ -606,34 +588,30 @@ style about_label_text:
 ## www.renpy.org/doc/html/screen_special.html#load
 
 screen save():
-
     tag menu
-
     use file_slots(_("Kayıt"))
 
-
 screen load():
-
     tag menu
-
     use file_slots(_("Yükle"))
-
 
 screen file_slots(title):
 
-    default page_name_value = FilePageNameInputValue(pattern=_("Sayfa {}"), auto=_("Otomatik kayıtlar"), quick=_("Hızlı kayıtlar"))
-    default sc_name="file_slots"
-    use game_menu(_("file_slots")):
-        fixed:
+    default page_name_value = FilePageNameInputValue(
+        pattern=_("Sayfa {}"),
+        auto=_("Otomatik kayıtlar"),
+        quick=_("Hızlı kayıtlar")
+    )
+    default sc_name = "file_slots"
 
-            ## Bu, girişin diğer bütün düğmelerden önce önce giriş olayını
-            ## almasını sağlar.
+    use game_menu(_("file_slots")):
+
+        fixed:
             order_reverse True
 
-            ## Bir düğmeye basılarak düzenlenebilen sayfa adı.
+            # Sayfa adı düzenleme butonu
             button:
                 style "page_label"
-
                 key_events True
                 xalign 0.5
                 action page_name_value.Toggle()
@@ -642,24 +620,19 @@ screen file_slots(title):
                     style "page_label_text"
                     value page_name_value
 
-            ## Dosya slotları ızgarası.
+            # Kayıt slotları ızgarası
             grid gui.file_slot_cols gui.file_slot_rows:
                 style_prefix "slot"
-
                 xalign 0.5
                 yalign 0.5
-
                 spacing gui.slot_spacing
 
                 for i in range(gui.file_slot_cols * gui.file_slot_rows):
-
                     $ slot = i + 1
 
                     button:
                         action FileAction(slot)
-
                         has vbox
-
                         add FileScreenshot(slot) xalign 0.5
 
                         text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("boş slot")):
@@ -670,16 +643,14 @@ screen file_slots(title):
 
                         key "save_delete" action FileDelete(slot)
 
-            ## Diğer sayfalara ulaşmak için düğmeler.
+            # Sayfa geçiş düğmeleri
             vbox:
                 style_prefix "page"
-
                 xalign 0.5
                 yalign 1.0
 
                 hbox:
                     xalign 0.5
-
                     spacing gui.page_spacing
 
                     textbutton _("<") action FilePagePrevious()
@@ -691,7 +662,6 @@ screen file_slots(title):
                     if config.has_quicksave:
                         textbutton _("{#quick_page}Q") action FilePage("quick")
 
-                    ## range(1, 10) ifadesi 1'den 9'a kadar sayıları verir.
                     for page in range(1, 10):
                         textbutton "[page]" action FilePage(page)
 
@@ -700,32 +670,27 @@ screen file_slots(title):
 
                 if config.has_sync:
                     if CurrentScreenName() == "save":
-                        textbutton _("Yükleme Senkronizasyonu"):
-                            action UploadSync()
-                            xalign 0.5
+                        textbutton _("Yükleme Senkronizasyonu") action UploadSync() xalign 0.5
                     else:
-                        textbutton _("Sync'i İndirin"):
-                            action DownloadSync()
-                            xalign 0.5
+                        textbutton _("Sync'i İndirin") action DownloadSync() xalign 0.5
+
+    # Navigasyon & Geri butonu
     use navigation
     textbutton _("Geri"):
         xpos gui.navigation_xpos
         yalign 1.0
         yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over")
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
+        action (
+            Jump("game_over") if not character_alive else
+            Return() if not in_game else
+            [SetVariable("in_game", False), Jump("in_start")]
+        )
+
+    key "escape" action (
+        Jump("game_over") if not character_alive else
+        Return() if not in_game else
+        [SetVariable("in_game", False), Jump("in_start")]
+    )
 
 style page_label is gui_label
 style page_label_text is gui_label_text
@@ -1593,6 +1558,7 @@ define bubble.expand_area = {
     "top_right" : (0, 22, 0, 0),
     "thought" : (0, 0, 0, 0),
 }
+## Start üstü gözüken yer
 
 screen sign_hist():
     add "gui/sign.png" at Transform(xpos=0.05, ypos=0.05,zoom=0.5)
@@ -1600,18 +1566,47 @@ screen sign_hist():
 screen style_start():
     add "style_start"
 
-## Start üstü gözüken yer
+### Özellik menüsü
 
 screen start_navigation():
     add "gui/overlay/start_nav_bcg.jpg" at Transform(xsize=config.screen_width, ysize=config.screen_height)
     vbox:
         xalign 0.05
         yalign 0.5
-        textbutton _("Karakter") action Show("character")
-        textbutton _("Minicard") action Show("mini_card")
-        textbutton _("Rün") action Show("run")
-        textbutton _("Harita") action Show("map")     
+        textbutton _("Karakter"):
+            style_prefix "start_menu"
+            action Show("character")
+        textbutton _("Minicard"):
+            style "start_menu"
+            action Show("mini_card")
+        textbutton _("Rün"):
+            style "start_menu"
+            action Show("run")
+        textbutton _("Harita"):
+            style "start_menu"
+            action Show("map")     
 
+### Character
+
+init python:
+
+    chr_data = [
+        {"img":"gui/karakter_resim/img1.png","info":5},
+        {"img":"gui/karakter_resim/img2.png","info":5},
+        {"img":"gui/karakter_resim/img3.png","info":5},
+        {"img":"gui/karakter_resim/img4.png","info":5},
+        {"img":"gui/karakter_resim/img5.png","info":5},
+        {"img":"gui/karakter_resim/img6.png","info":5},
+        {"img":"gui/karakter_resim/img7.png","info":5},
+        {"img":"gui/karakter_resim/img8.png","info":5},
+        {"img":"gui/karakter_resim/img9.png","info":5},
+        {"img":"gui/karakter_resim/img10.png","info":5},
+        {"img":"gui/karakter_resim/img11.png","info":5},
+        {"img":"gui/karakter_resim/img12.png","info":5},
+        {"img":"gui/karakter_resim/img13.png","info":5},
+        {"img":"gui/karakter_resim/img14.png","info":5},
+        {"img":"gui/karakter_resim/img15.png","info":5},
+    ]
 
 screen character_button():
     imagebutton:
@@ -1628,22 +1623,50 @@ label open_character():
 screen character():
     tag menu
     use start_navigation
-    frame:
+    default start_index = 0
+    default max_visible = 6
+    default total = len(chr_data)
+    frame :
         style "frame_start"
-        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
-    
-    
+        has vbox
+        hbox:
+            spacing 80
+            for i in range(max_visible):
+                $ real_index = ((start_index + i ) % total)
+                $ img = chr_data[real_index]["img"]
+                $ inf = chr_data[real_index]["info"]
+            
+                frame:## bar için olan Frame
+                    background None
+                    xsize 40
+                    ysize 20
+                    add img xalign -0.9 yalign 0.12 at Transform(zoom=0.49)
+                    bar:
+                        value inf
+                        range 10
+                        xsize 40
+                        ysize 10
+                        xpos 90
+                        ypos 350
+    hbox:
+            yalign 0.98
+            xalign 0.5
+            spacing 30
+            textbutton "←" action SetScreenVariable("start_index", (start_index - 1) % total)
+            textbutton "→" action SetScreenVariable("start_index", (start_index + 1) % total)
+            text "Showing [start_index+1] - [(start_index + max_visible)%total]"
     textbutton _("Oyuna Dön"):
-            xpos 0.05
-            yalign 1.0
-            yoffset -30
-            if character_alive == True:
-                if in_game == False:
-                    action Return()
-                else :
-                    action [SetVariable("in_game", False), Jump("in_start")]
+        style "start_menu"
+        xpos 0.05
+        yalign 1.0
+        yoffset -30
+        if character_alive == True:
+            if in_game == False:
+                action Return()
             else :
-                action Jump("game_over") 
+                action [SetVariable("in_game", False), Jump("in_start")]
+        else :
+            action Jump("game_over") 
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
@@ -1672,18 +1695,18 @@ screen run():
     use start_navigation
     frame:
         style "frame_start"
-        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
     textbutton _("Oyuna Dön"):
-            xpos 0.05
-            yalign 1.0
-            yoffset -30
-            if character_alive == True:
-                if in_game == False:
-                    action Return()
-                else :
-                    action [SetVariable("in_game", False), Jump("in_start")]
+        style "start_menu"
+        xpos 0.05
+        yalign 1.0
+        yoffset -30
+        if character_alive == True:
+            if in_game == False:
+                action Return()
             else :
-                action Jump("game_over") 
+                action [SetVariable("in_game", False), Jump("in_start")]
+        else :
+            action Jump("game_over") 
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
@@ -1693,6 +1716,35 @@ screen run():
         key "escape" action Jump("game_over")
 
 ### Minicard
+
+init python:
+    knight_of_swan_clan_minicard = 0
+    health_potion_minicard = 0
+    black_magic_minicard = 0
+    granary_warehouse_minicard = 0
+    assassin_leagu_minicard = 0
+    holy_relics_minicard = 0
+    superior_political_science_book_minicard = 0
+    spoils_of_war_minicard = 0
+    royal_guard_minicard = 0
+    silk_trade_income_minicard = 0
+    blue_cap_mushroom_minicard = 0
+    loyalty_potion_minicard = 0
+
+    mnc_data = [
+        {"img":"gui/minicard_resim/kosc_mnc.png","val":1},
+        {"img":"gui/minicard_resim/hp_mnc.png","val":1},
+        {"img":"gui/minicard_resim/bm_mnc.png","val":1},
+        {"img":"gui/minicard_resim/gw_mnc.png","val":1},
+        {"img":"gui/minicard_resim/al_mnc.png","val":1},
+        {"img":"gui/minicard_resim/hr_mnc.png","val":1},
+        {"img":"gui/minicard_resim/spcb_mnc.png","val":1},
+        {"img":"gui/minicard_resim/sow_mnc.png","val":1},
+        {"img":"gui/minicard_resim/rg_mnc.png","val":1},
+        {"img":"gui/minicard_resim/sti_mnc.png","val":1},
+        {"img":"gui/minicard_resim/bcm_mnc.png","val":1},
+        {"img":"gui/minicard_resim/lp_mnc.png","val":1},
+    ]
 
 screen minicard_button():
     imagebutton:
@@ -1709,22 +1761,45 @@ label open_mini_card():
 screen mini_card():
     
     tag menu
-
+    default start_index = 0
+    default max_visible = 3
+    default total = len(mnc_data) 
     use start_navigation
     frame:
         style "frame_start"
-        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
+        has vbox
+        hbox:
+            spacing 220
+            for i in range(max_visible):
+                $ real_index = ((start_index + i ) % total)
+                if mnc_data[real_index]["val"]==1:
+                    $ img = mnc_data[real_index]["img"]
+                else:
+                    continue
+                frame:    
+                    background None
+                    xsize 40
+                    ysize 20
+                    add img xalign -0.18 yalign -0.45 at Transform(zoom=0.23)
+    hbox:
+                yalign 0.98
+                xalign 0.5
+                spacing 30
+                textbutton "←" action SetScreenVariable("start_index", (start_index - 1) % total)
+                textbutton "→" action SetScreenVariable("start_index", (start_index + 1) % total)
+                text "Showing [start_index+1] - [(start_index + max_visible)%total]"
     textbutton _("Oyuna Dön"):
-            xpos 0.05
-            yalign 1.0
-            yoffset -30
-            if character_alive == True:
-                if in_game == False:
-                    action Return()
-                else :
-                    action [SetVariable("in_game", False), Jump("in_start")]
+        style "start_menu"
+        xpos 0.05
+        yalign 1.0
+        yoffset -30
+        if character_alive == True:
+            if in_game == False:
+                action Return()
             else :
-                action Jump("game_over") 
+                action [SetVariable("in_game", False), Jump("in_start")]
+        else :
+            action Jump("game_over") 
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
@@ -1752,18 +1827,18 @@ screen map():
     use start_navigation
     frame:
         style "frame_start"
-        at Transform(xsize=config.screen_width,ysize=config.screen_height,zoom=0.57)
     textbutton _("Oyuna Dön"):
-            xpos 0.05
-            yalign 1.0
-            yoffset -30
-            if character_alive == True:
-                if in_game == False:
-                    action Return()
-                else :
-                    action [SetVariable("in_game", False), Jump("in_start")]
+        style "start_menu"
+        xpos 0.05
+        yalign 1.0
+        yoffset -30
+        if character_alive == True:
+            if in_game == False:
+                action Return()
             else :
-                action Jump("game_over") 
+                action [SetVariable("in_game", False), Jump("in_start")]
+        else :
+            action Jump("game_over") 
     if character_alive == True:
         if in_game == False:
             key "escape" action Return()
@@ -1779,7 +1854,115 @@ screen setting_button():
         yalign 0.035
         action Show("preferences")
         at Transform(zoom=0.55)
+
 style frame_start:
     background Frame("gui/overlay/oval_start.png",30,30)
     xalign 0.5
     yalign 0.5
+    xsize 800
+    ysize 500
+
+style start_menu:
+    color "000000"
+
+transform demirci_poz:
+    xalign 0.5
+    yalign 1.04
+    yanchor 1.0
+    zoom 0.45
+
+transform ozan_poz:
+    xalign 0.5
+    yalign 1.04
+    yanchor 1.0
+    zoom 0.64
+
+transform muhafiz_basi_poz:
+    xalign 0.5
+    yalign 1.01
+    yanchor 1.0
+    zoom 0.44
+
+transform asker_poz:
+    xalign 0.55
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.46
+
+transform ciftci_poz:
+    xalign 0.5
+    yalign 1.17
+    yanchor 1.0
+    zoom 0.49
+
+transform bas_imam_poz:
+    xalign 0.5
+    yalign 1.06
+    yanchor 1.0
+    zoom 0.45
+
+transform zengin_tuccar_poz:
+    xalign 0.5
+    yalign 1.1
+    yanchor 1.0
+    zoom 0.46
+
+transform yerel_bakan_poz:
+    xalign 0.5
+    yalign 1.07
+    yanchor 1.0
+    zoom 0.66
+
+transform soylu_poz:
+    xalign 0.5
+    yalign 1.28
+    yanchor 1.0
+    zoom 0.56
+
+transform kadi_poz:
+    xalign 0.5
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.45
+
+transform sifaci_poz:
+    xalign 0.5
+    yalign 1.04
+    yanchor 1.0
+    zoom 0.44
+
+transform hizmetci_basi_poz:
+    xalign 0.5
+    yalign 1.04
+    yanchor 1.0
+    zoom 0.42
+
+transform buyucu_poz:
+    xalign 0.5
+    yalign 1.06
+    yanchor 1.0
+    zoom 0.46
+
+transform otaci_poz:
+    xalign 0.5
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.46
+
+transform kutuphaneci_poz:
+    xalign 0.5
+    yalign 1.05
+    yanchor 1.0
+    zoom 0.45
+
+transform gizemli_adam_poz:
+    xalign 0.5
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.46
+
+transform kraliçe_poz:
+    xalign 0.5 
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.75 

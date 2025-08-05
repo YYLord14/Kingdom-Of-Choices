@@ -51,11 +51,13 @@ define config.has_music = True
 define config.has_voice = True
 
 
-## Ekran keymapleri ###########################################################
+## Kullanıcının ses kanalında bir örnek ses oynatabilmesine izin vermek
+## istiyorsanız, aşağıdaki satırı etkinleştirin ve oynatılacak bir örnek ses
+## seçin.
 
-init -1 python:
-    renpy.config.keymap["escape"]=["K_ESCAPE"]
-    renpy.config.keymap["dismiss"].append("K_SPACE")
+# define config.sample_sound = "sample-sound.ogg"
+# define config.sample_voice = "sample-voice.ogg"
+
 
 ## Oyuncu ana menüdeyken oynatılacak bir ses dosyasını ayarlamak için aşağıdaki
 ## satırı etkinleştirin. Bu dosya oyun başladıktan sonra durdurulana ya da başka
@@ -96,6 +98,8 @@ define config.end_game_transition = None
 
 ##oyun içi keymaplar
 
+init python:
+    config.keymap["escape"]=["K_ESCAPE"]
 
 ## Pencere yönetimi ############################################################
 ##
