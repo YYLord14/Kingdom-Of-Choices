@@ -301,22 +301,17 @@ screen navigation():
 
             textbutton _("Yeni Oyun") action Start()
 
-        else:
+        elif in_main_menu == False:
 
             textbutton _("Kayıt") action ShowMenu("save")
+
+            textbutton _("Ana Menü") action [SetVariable("in_main_menu", True), SetVariable("in_game",False),ShowMenu("main_menu")]
 
         textbutton _("Devam et") action ShowMenu("load")
 
         textbutton _("Ayarlar") action ShowMenu("preferences")
 
         textbutton _("Hakkında") action ShowMenu("about")
-        if _in_replay:
-
-            textbutton _("Yeniden Oynatmayı Durdur") action EndReplay(confirm=True)
-
-        elif in_main_menu == False:
-
-            textbutton _("Ana Menü") action ShowMenu("main_menu")
 
         if renpy.variant("pc"):
 
@@ -1732,18 +1727,18 @@ init python:
     loyalty_potion_minicard = 0
 
     mnc_data = [
-        {"img":"gui/minicard_resim/kosc_mnc.png","val":1},
-        {"img":"gui/minicard_resim/hp_mnc.png","val":1},
-        {"img":"gui/minicard_resim/bm_mnc.png","val":1},
-        {"img":"gui/minicard_resim/gw_mnc.png","val":1},
-        {"img":"gui/minicard_resim/al_mnc.png","val":1},
-        {"img":"gui/minicard_resim/hr_mnc.png","val":1},
-        {"img":"gui/minicard_resim/spcb_mnc.png","val":1},
-        {"img":"gui/minicard_resim/sow_mnc.png","val":1},
-        {"img":"gui/minicard_resim/rg_mnc.png","val":1},
-        {"img":"gui/minicard_resim/sti_mnc.png","val":1},
-        {"img":"gui/minicard_resim/bcm_mnc.png","val":1},
-        {"img":"gui/minicard_resim/lp_mnc.png","val":1},
+        {"img":"gui/minicard_resim/kosc_mnc.png","val":0},
+        {"img":"gui/minicard_resim/hp_mnc.png","val":0},
+        {"img":"gui/minicard_resim/bm_mnc.png","val":0},
+        {"img":"gui/minicard_resim/gw_mnc.png","val":0},
+        {"img":"gui/minicard_resim/al_mnc.png","val":0},
+        {"img":"gui/minicard_resim/hr_mnc.png","val":0},
+        {"img":"gui/minicard_resim/spcb_mnc.png","val":0},
+        {"img":"gui/minicard_resim/sow_mnc.png","val":0},
+        {"img":"gui/minicard_resim/rg_mnc.png","val":0},
+        {"img":"gui/minicard_resim/sti_mnc.png","val":0},
+        {"img":"gui/minicard_resim/bcm_mnc.png","val":0},
+        {"img":"gui/minicard_resim/lp_mnc.png","val":0},
     ]
 
 screen minicard_button():
