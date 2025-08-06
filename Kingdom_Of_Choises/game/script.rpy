@@ -348,16 +348,18 @@ label zero_point:#0 noktası
     $ Religion = 5
     $ Health = 5
     $ People = 5
+    $ zero_chr_scr()
     $ zero_chr()
+    $ zero_mnc()
     jump in_start
 
-init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
+init python:# Bağımsız fonksiyonlar //Check_bars & zero_chr_scr & chr ile alakalı & mnc ile alakalı
     def check_bars():
         for value in [Health,Religion,Politics,Military,Economy,People]:
             if value <= 0 or value >= 10:
                 renpy.jump("minicard")
             
-    def zero_chr_button():
+    def zero_chr_scr():
         renpy.hide("Asker")
         renpy.hide("Baş İmam")
         renpy.hide("Büyücü")
@@ -374,38 +376,37 @@ init python:# Bağımsız fonksiyonlar //Check_bars and zero_chr_button
         renpy.hide("Şifacı")
 
     def zero_chr():
-        
-        for i in range(0,14):
+        for i in range(0,15):
             chr_data[i]["info"]=5
     
     def chr_chng(name, sign, value):
-	    names = {
-		"ozan": 0, "demirci": 1, "büyücü": 2, "kadı": 3, "mhf_baş": 4, "hzm_baş": 5,
-		"asker": 6, "baş_imam": 7, "çiftçi": 8, "ktpnc": 9, "otacı": 10, "soylu": 11,
-		"şifacı": 12, "yrl_bkn": 13, "zng_tcr": 14
-	    }
-
-	    i = names[name]
-
-	    if sign == "+":
-		chr_data[i]["info"] = min(chr_data[i]["info"] + value, 10)
-	    elif sign == "-":
-		chr_data[i]["info"] = max(chr_data[i]["info"] - value, 0)
+        names = {
+            "ozan": 0, "demirci": 1, "büyücü": 2, "kadı": 3, "mhf_baş": 4, "hzm_baş": 5,
+            "asker": 6, "baş_imam": 7, "çiftçi": 8, "ktpnc": 9, "otacı": 10, "soylu": 11,
+            "şifacı": 12, "yrl_bkn": 13, "zng_tcr": 14
+        }
+        i = names[name]
+        if sign == "+":
+            chr_data[i]["info"] = min(chr_data[i]["info"] + value, 10)
+        elif sign == "-":
+            chr_data[i]["info"] = max(chr_data[i]["info"] - value, 0)
 
 
-    def mnc_chng(name,sign,value):
+    def zero_mnc():
+        for i in range(0,12):
+            mnc_data[i]["val"] = 0
+
+    def mnc_chng(name,value):
         names={
             kosc_mnc:0,hp_mnc:1,bm_mnc:2,gw_mnc:3,al_mnc:4,hr_mnc:5,spsb_mnc:6,sow_mnc:7,
             rg_mnc:8,sti_mnc:9,bcm_mnc:10,lp_mnc:11
         }
-        if sign == "+":
-            mnc_data[names[name]]["val"] += value
-        elif sign == "-":
-            mnc_data[names[name]]["val"] -= value
+        mnc_data[names[name]]["val"] = value
+        mnc_data[names[name]]["val"] = max(0,mnc_data[names[name]]["val"],1)
 
 label game_over:
     scene startbcg
-    $ zero_chr_button()
+    $ zero_chr_scr()
     if not game_over_triggered:
         $ game_over_triggered = True
         $ character_alive=False
@@ -713,183 +714,183 @@ label game_over:
 
 label minicard:
     if Health <= 0:
-        if blue_cap_mushroom_minicard > 0:
+        if bmnc_data[10]["val"] == 1:
             $ Health += 3
-            $ blue_cap_mushroom_minicard -= 1
+            $ bmnc_data[10]["val"] = 0
             $ check_bars()
             return
-        elif health_potion_minicard > 0:
+        elif mnc_data[1]["val"] == 1:
             $ Health += 3
-            $ health_potion_minicard -= 1
+            $ mnc_data[1]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Health >= 10:
-        if health_potion_minicard > 0:
+        if mnc_data[1]["val"] == 1:
             $ Health -= 3
-            $ health_potion_minicard -= 1
+            $ mnc_data[1]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Religion <= 0:
-        if holy_relics_minicard > 0:
+        if mnc_data[5]["val"] == 1:
             $ Religion += 3
-            $ holy_relics_minicard -= 1
+            $ mnc_data[5]["val"] = 0
             $ check_bars()
             return
-        elif knight_of_swan_clan_minicard > 0:
+        elif chr_data[0]["val"] == 1:
             $ Religion += 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ chr_data[0]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Religion >= 10:
-        if loyalty_potion_minicard > 0:
+        if mnc_data[11]["val"] == 1:
             $ Religion -= 3
-            $ loyalty_potion_minicard -= 1
+            $ mnc_data[11]["val"] = 0
             $ check_bars()
             return
-        elif holy_relics_minicard > 0:
+        elif mnc_data[5]["val"] == 1:
             $ Religion -= 3
-            $ holy_relics_minicard -= 1
+            $ mnc_data[5]["val"] = 0
             $ check_bars()
             return
-        elif assassin_leagu_minicard > 0:
+        elif mnc_data[4]["val"] == 1:
             $ Religion -= 3
-            $ assassin_leagu_minicard -= 1
+            $ mnc_data[4]["val"] = 0
             $ check_bars()
             return
-        elif knight_of_swan_clan_minicard > 0:
+        elif chr_data[0]["val"] == 1:
             $ Religion -= 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ chr_data[0]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Politics <= 0:
-        if superior_political_science_book_minicard > 0:
+        if mnc_data[6]["val"] == 1:
             $ Politics += 3
-            $ superior_political_science_book_minicard -= 1
+            $ mnc_data[6]["val"] = 0
             $ check_bars()
             return
-        elif knight_of_swan_clan_minicard > 0:
+        elif chr_data[0]["val"] == 1:
             $ Politics += 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ chr_data[0]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Politics >= 10:
-        if assassin_leagu_minicard > 0:
+        if mnc_data[4]["val"] == 1:
             $ Politics -= 3
-            $ assassin_leagu_minicard -= 1
+            $ mnc_data[4]["val"] = 0
             $ check_bars()
             return
-        elif black_magic_minicard > 0:
+        elif mnc_data[2]["val"] == 1:
             $ Politics -= 3
-            $ black_magic_minicard -= 1
+            $ mnc_data[2]["val"] = 0
             $ check_bars()
             return
-        elif royal_guard_minicard > 0:
+        elif mnc_data[8]["val"] == 1:
             $ Politics -= 3
-            $ royal_guard_minicard -= 1
+            $ mnc_data[8]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Military <= 0:
-        if royal_guard_minicard > 0:
+        if mnc_data[8]["val"] == 1:
             $ Military += 3
-            $ royal_guard_minicard -= 1
+            $ mnc_data[8]["val"] = 0
             $ check_bars()
             return
-        elif black_magic_minicard > 0:
+        elif mnc_data[2]["val"] == 1:
             $ Military += 3
-            $ black_magic_minicard -= 1
+            $ mnc_data[2]["val"] = 0
             $ check_bars()
             return
-        elif knight_of_swan_clan_minicard > 0:
+        elif chr_data[0]["val"] == 1:
             $ Military += 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ chr_data[0]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Military >= 10:
-        if knight_of_swan_clan_minicard > 0:
+        if chr_data[0]["val"] == 1:
             $ Military -= 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ chr_data[0]["val"] = 0
             $ check_bars()
             return
-        elif black_magic_minicard > 0:
+        elif mnc_data[2]["val"] == 1:
             $ Military -= 3
-            $ black_magic_minicard -= 1
+            $ mnc_data[2]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Economy <= 0:
-        if spoils_of_war_minicard > 0:
+        if mnc_data[7]["val"] == 1:
             $ Economy += 3
-            $ spoils_of_war_minicard -= 1
+            $ mnc_data[7]["val"] = 0
             $ check_bars()
             return
-        elif silk_trade_income_minicard > 0:
+        elif mnc_data[9]["val"] == 1:
             $ Economy += 3
-            $ silk_trade_income_minicard -= 1
+            $ mnc_data[9]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Economy >= 10:
-        if granary_warehouse_minicard > 0:
+        if mnc_data[3]["val"] == 1:
             $ People += 3
-            $ granary_warehouse_minicard -= 1
+            $ mnc_data[3]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif People <= 0:
-        if spoils_of_war_minicard > 0:
+        if mnc_data[7]["val"] == 1:
             $ People += 3
-            $ spoils_of_war_minicard -= 1
+            $ mnc_data[7]["val"] = 0
             $ check_bars()
             return
-        elif granary_warehouse_minicard > 0:
+        elif mnc_data[3]["val"] == 1:
             $ People += 3
-            $ granary_warehouse_minicard -= 1
+            $ mnc_data[3]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif People >= 10:
-        if knight_of_swan_clan_minicard > 0:
+        if chr_data[0]["val"] == 1:
             $ People -= 3
-            $ knight_of_swan_clan_minicard -= 1
+            $ chr_data[0]["val"] = 0
             $ check_bars()
             return
-        elif holy_relics_minicard > 0:
+        elif mnc_data[5]["val"] == 1:
             $ People -= 3
-            $ holy_relics_minicard -= 1
+            $ mnc_data[5]["val"] = 0
             $ check_bars()
             return
-        elif royal_guard_minicard > 0:
+        elif mnc_data[8]["val"] == 1:
             $ People -= 3
-            $ royal_guard_minicard -= 1
+            $ mnc_data[8]["val"] = 0
             $ check_bars()
             return
         else :
@@ -965,6 +966,7 @@ label start:
     $ character_alive=True
     label in_start:
         while True:
+            $ zero_chr_scr()
             $ in_main_menu = 0
             $ in_game = True
             show screen esc_listener
@@ -975,30 +977,26 @@ label start:
             Kraliçe "Şimdi… Tahtınız sizi bekliyor."
             hide Kraliçe
             if last_dialog == None:
-                $ zero_chr_button()
                 $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
                 $ last_dialog = chosen_dialog
             else :
-                $ zero_chr_button()
                 $ chosen_dialog = last_dialog
             jump expression chosen_dialog
    
 label check_minicard: #bunun yeri ile oynamayın rastgele minicard dialogu atıyor
-    if managed_day == 15 and not minicard_used:
+    if managed_day == 2 and not minicard_used:
         $ chosen_card = renpy.random.choice(minicard_dialogs)
         $ minicard_used = True 
+        $ last_dialog = chosen_card
         jump expression chosen_card
     else:
         jump random_dialog
-
-    $ last_dialog= None
     jump random_dialog
-    return
 
 label random_dialog:
-    $ chosen_dialog = renpy.random.choice(dialogs)  # Yeni rastgele diyalog seç
     if main_story_count == 5:
         jump story1
     else:
         $ chosen_dialog = renpy.random.choice(dialogs)
+        $ last_dialog = chosen_dialog
         jump expression chosen_dialog  # Yeni seçilen diyaloga git
