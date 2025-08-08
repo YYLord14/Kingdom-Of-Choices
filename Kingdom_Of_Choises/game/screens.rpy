@@ -305,7 +305,7 @@ screen navigation():
 
             textbutton _("Kayıt") action ShowMenu("save")
 
-            textbutton _("Ana Menü") action [SetVariable("in_main_menu", True), SetVariable("in_game",False),ShowMenu("main_menu")]
+            textbutton _("Ana Menü") action MainMenu()
 
         textbutton _("Devam et") action ShowMenu("load")
 
@@ -318,6 +318,21 @@ screen navigation():
             ## Çıkış düğmesi iOS'ta yasaklanmıştır ve Android ve Web'de
             ## gereksizdir.
             textbutton _("Çıkış") action Quit(confirm=not main_menu)
+        
+        textbutton _("Geri"):
+            ypos 200
+            yoffset -30
+            action (
+                Jump("game_over") if not character_alive else
+                Return() if not in_game else
+                [SetVariable("in_game", False), Jump("in_start")]
+            )
+
+    key "escape" action (
+        Jump("game_over") if not character_alive else
+        Return() if not in_game else
+        [SetVariable("in_game", False), Jump("in_start")]
+    )
 
 
 style navigation_button is gui_button
@@ -382,12 +397,13 @@ screen main_menu():
         action Quit(confirm=not main_menu)
         
 init python:
-    def check_dragged(drags,drop):
+    def check_dragged(drags, drop):
+        screen_width = config.screen_width
         for d in drags:
-            if d.x < 920:
-                renpy.call_in_new_context("start")
-            elif d.x > 930:
-                renpy.invoke_in_new_context(renpy.call_screen,"load")
+            if d.x < screen_width * 0.6:
+                return Start()  # Oyunu başlat
+            else:
+                return ShowMenu("load")  # Kayıt ekranını aç
 
 style main_menu_vbox:
     xalign 1.0
@@ -545,25 +561,6 @@ screen about():
             text _("PaperWorkStudioPWS@gmail.com \nYoutube hesabı:")
             text _("{a=https://www.youtube.com/@PaperWorkStudiosss}  Paper Works Studios  {/a}")
 
-    use navigation
-    textbutton _("Geri"):
-        xpos gui.navigation_xpos
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over")
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -807,25 +804,6 @@ screen preferences():
                         textbutton _("Hepsini Sustur"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
-    use navigation
-    textbutton _("Geri"):
-        xpos gui.navigation_xpos
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over")
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
 
 
 style pref_label is gui_label
@@ -943,25 +921,6 @@ screen history():
 
         if not _history_list:
             label _("Diyalog geçmişi boş.")
-    use navigation
-    textbutton _("Geri"):
-        xpos gui.navigation_xpos
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over")
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
 
 ## Geçmiş ekranında ne tür etiketlerin gösterilmesine izin verileceğini
 ## belirler.
@@ -1041,25 +1000,6 @@ screen help():
                 use mouse_help
             elif device == "gamepad":
                 use gamepad_help
-    use navigation
-    textbutton _("Geri"):
-        xpos gui.navigation_xpos
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over")
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
 
 
 screen keyboard_help():
