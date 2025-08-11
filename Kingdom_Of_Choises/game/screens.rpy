@@ -312,6 +312,8 @@ screen navigation():
         textbutton _("Ayarlar") action ShowMenu("preferences")
 
         textbutton _("Hakkında") action ShowMenu("about")
+        
+        textbutton _("Yardım") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
@@ -333,6 +335,7 @@ screen navigation():
         Return() if not in_game else
         [SetVariable("in_game", False), Jump("in_start")]
     )
+    
 
 
 style navigation_button is gui_button
@@ -561,6 +564,8 @@ screen about():
             text _("PaperWorkStudioPWS@gmail.com \nYoutube hesabı:")
             text _("{a=https://www.youtube.com/@PaperWorkStudiosss}  Paper Works Studios  {/a}")
 
+    use navigation
+    
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -588,7 +593,6 @@ screen load():
     use file_slots(_("Yükle"))
 
 screen file_slots(title):
-
     default page_name_value = FilePageNameInputValue(
         pattern=_("Sayfa {}"),
         auto=_("Otomatik kayıtlar"),
@@ -596,93 +600,52 @@ screen file_slots(title):
     )
     default sc_name = "file_slots"
 
-    use game_menu(_("file_slots")):
-
+    use game_menu(title):
         fixed:
             order_reverse True
-
-            # Sayfa adı düzenleme butonu
             button:
                 style "page_label"
                 key_events True
                 xalign 0.5
                 action page_name_value.Toggle()
-
                 input:
                     style "page_label_text"
                     value page_name_value
 
-            # Kayıt slotları ızgarası
             grid gui.file_slot_cols gui.file_slot_rows:
                 style_prefix "slot"
                 xalign 0.5
                 yalign 0.5
                 spacing gui.slot_spacing
-
                 for i in range(gui.file_slot_cols * gui.file_slot_rows):
                     $ slot = i + 1
-
                     button:
                         action FileAction(slot)
                         has vbox
                         add FileScreenshot(slot) xalign 0.5
-
                         text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("boş slot")):
                             style "slot_time_text"
-
                         text FileSaveName(slot):
                             style "slot_name_text"
-
                         key "save_delete" action FileDelete(slot)
 
-            # Sayfa geçiş düğmeleri
             vbox:
                 style_prefix "page"
                 xalign 0.5
                 yalign 1.0
-
                 hbox:
                     xalign 0.5
                     spacing gui.page_spacing
-
                     textbutton _("<") action FilePagePrevious()
                     key "save_page_prev" action FilePagePrevious()
-
                     if config.has_autosave:
                         textbutton _("{#auto_page}A") action FilePage("auto")
-
                     if config.has_quicksave:
                         textbutton _("{#quick_page}Q") action FilePage("quick")
-
                     for page in range(1, 10):
                         textbutton "[page]" action FilePage(page)
-
                     textbutton _(">") action FilePageNext()
                     key "save_page_next" action FilePageNext()
-
-                if config.has_sync:
-                    if CurrentScreenName() == "save":
-                        textbutton _("Yükleme Senkronizasyonu") action UploadSync() xalign 0.5
-                    else:
-                        textbutton _("Sync'i İndirin") action DownloadSync() xalign 0.5
-
-    # Navigasyon & Geri butonu
-    use navigation
-    textbutton _("Geri"):
-        xpos gui.navigation_xpos
-        yalign 1.0
-        yoffset -30
-        action (
-            Jump("game_over") if not character_alive else
-            Return() if not in_game else
-            [SetVariable("in_game", False), Jump("in_start")]
-        )
-
-    key "escape" action (
-        Jump("game_over") if not character_alive else
-        Return() if not in_game else
-        [SetVariable("in_game", False), Jump("in_start")]
-    )
 
 style page_label is gui_label
 style page_label_text is gui_label_text
@@ -714,7 +677,6 @@ style slot_button:
 
 style slot_button_text:
     properties gui.text_properties("slot_button")
-
 
 ## Tercihler ekranı ############################################################
 ##
@@ -804,6 +766,8 @@ screen preferences():
                         textbutton _("Hepsini Sustur"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+    use navigation
+    
 
 
 style pref_label is gui_label
@@ -921,6 +885,8 @@ screen history():
 
         if not _history_list:
             label _("Diyalog geçmişi boş.")
+    use navigation
+    
 
 ## Geçmiş ekranında ne tür etiketlerin gösterilmesine izin verileceğini
 ## belirler.
@@ -1000,6 +966,8 @@ screen help():
                 use mouse_help
             elif device == "gamepad":
                 use gamepad_help
+    use navigation
+    
 
 
 screen keyboard_help():
@@ -1509,17 +1477,23 @@ screen start_navigation():
         xalign 0.05
         yalign 0.5
         textbutton _("Karakter"):
-            style_prefix "start_menu"
             action Show("character")
         textbutton _("Minicard"):
-            style "start_menu"
             action Show("mini_card")
         textbutton _("Rün"):
-            style "start_menu"
             action Show("run")
         textbutton _("Harita"):
-            style "start_menu"
-            action Show("map")     
+            action Show("map")
+        textbutton _("Oyuna Dön"):
+            ypos 260
+            if character_alive == True:
+                action [SetVariable("in_game", False), Jump("in_start")]
+            else :
+                action Jump("game_over") 
+        if character_alive == True:
+            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
+        else:
+            key "escape" action Jump("game_over")
 
 ### Character
 
@@ -1559,13 +1533,13 @@ screen character():
     tag menu
     use start_navigation
     default start_index = 0
-    default max_visible = 6
+    default max_visible = 3
     default total = len(chr_data)
     frame :
         style "frame_start"
         has vbox
         hbox:
-            spacing 80
+            spacing 150
             for i in range(max_visible):
                 $ real_index = ((start_index + i ) % total)
                 $ img = chr_data[real_index]["img"]
@@ -1573,42 +1547,22 @@ screen character():
             
                 frame:## bar için olan Frame
                     background None
-                    xsize 40
+                    xsize 60
                     ysize 20
-                    add img xalign -0.9 yalign 0.12 at Transform(zoom=0.49)
+                    add img xalign -1.0 yalign -0.0272 at Transform(zoom=0.73)
                     bar:
                         value inf
                         range 10
-                        xsize 40
+                        xsize 60
                         ysize 10
-                        xpos 90
-                        ypos 350
+                        xpos 190
+                        ypos 400
     hbox:
             yalign 0.98
             xalign 0.5
             spacing 30
             textbutton "←" action SetScreenVariable("start_index", (start_index - 1) % total)
             textbutton "→" action SetScreenVariable("start_index", (start_index + 1) % total)
-            text "Showing [start_index+1] - [(start_index + max_visible)%total]"
-    textbutton _("Oyuna Dön"):
-        style "start_menu"
-        xpos 0.05
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over") 
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
 
 ## Rün
 
@@ -1630,25 +1584,6 @@ screen run():
     use start_navigation
     frame:
         style "frame_start"
-    textbutton _("Oyuna Dön"):
-        style "start_menu"
-        xpos 0.05
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over") 
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
 
 ### Minicard
 
@@ -1722,26 +1657,6 @@ screen mini_card():
                 spacing 30
                 textbutton "←" action SetScreenVariable("start_index", (start_index - 1) % total)
                 textbutton "→" action SetScreenVariable("start_index", (start_index + 1) % total)
-                text "Showing [start_index+1] - [(start_index + max_visible)%total]"
-    textbutton _("Oyuna Dön"):
-        style "start_menu"
-        xpos 0.05
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over") 
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
 
 ## Map
 
@@ -1762,25 +1677,7 @@ screen map():
     use start_navigation
     frame:
         style "frame_start"
-    textbutton _("Oyuna Dön"):
-        style "start_menu"
-        xpos 0.05
-        yalign 1.0
-        yoffset -30
-        if character_alive == True:
-            if in_game == False:
-                action Return()
-            else :
-                action [SetVariable("in_game", False), Jump("in_start")]
-        else :
-            action Jump("game_over") 
-    if character_alive == True:
-        if in_game == False:
-            key "escape" action Return()
-        else :
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-    else:
-        key "escape" action Jump("game_over")
+    
 
 screen setting_button():
     imagebutton:
@@ -1796,9 +1693,6 @@ style frame_start:
     yalign 0.5
     xsize 800
     ysize 500
-
-style start_menu:
-    color "000000"
 
 transform demirci_poz:
     xalign 0.5
@@ -1901,3 +1795,4 @@ transform kraliçe_poz:
     yalign 1.0
     yanchor 1.0
     zoom 0.75 
+
