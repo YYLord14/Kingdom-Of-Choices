@@ -1485,7 +1485,7 @@ screen start_navigation():
         textbutton _("Harita"):
             action Show("map")
         textbutton _("Oyuna Dön"):
-            ypos 260
+            ypos 227
             if character_alive == True:
                 action [SetVariable("in_game", False), Jump("in_start")]
             else :
@@ -1558,11 +1558,17 @@ screen character():
                         xpos 190
                         ypos 400
     hbox:
-            yalign 0.98
+            yalign 1.0
             xalign 0.5
             spacing 30
-            textbutton "←" action SetScreenVariable("start_index", (start_index - 1) % total)
-            textbutton "→" action SetScreenVariable("start_index", (start_index + 1) % total)
+            imagebutton:
+                    idle "gui/button/sol_ok.png"
+                    action SetScreenVariable("start_index", (start_index - 1) % total)
+                    at Transform(zoom=0.35)
+            imagebutton:
+                    idle "gui/button/sağ_ok.png"
+                    action SetScreenVariable("start_index",(start_index + 1) % total)
+                    at Transform(zoom=0.35)
 
 ## Rün
 
@@ -1652,11 +1658,17 @@ screen mini_card():
                     ysize 20
                     add img xalign -0.18 yalign -0.45 at Transform(zoom=0.23)
     hbox:
-                yalign 0.98
-                xalign 0.5
-                spacing 30
-                textbutton "←" action SetScreenVariable("start_index", (start_index - 1) % total)
-                textbutton "→" action SetScreenVariable("start_index", (start_index + 1) % total)
+            yalign 1.0
+            xalign 0.5
+            spacing 30
+            imagebutton:
+                    idle "gui/button/sol_ok.png"
+                    action SetScreenVariable("start_index", (start_index - 1) % total)
+                    at Transform(zoom=0.35)
+            imagebutton:
+                    idle "gui/button/sağ_ok.png"
+                    action SetScreenVariable("start_index",(start_index + 1) % total)
+                    at Transform(zoom=0.35)
 
 ## Map
 
