@@ -1467,7 +1467,7 @@ screen sign_hist():
     add "gui/sign.png" at Transform(xpos=0.05, ypos=0.05,zoom=0.5)
     
 screen style_start():
-    add "style_start"
+    add "gui/overlay/style_start.png"
 
 ### Özellik menüsü
 
@@ -1520,10 +1520,10 @@ init python:
 screen character_button():
     imagebutton:
         idle "gui/button/start_button_character.png"
-        xalign 0.30
-        yalign 0.035
+        xalign 0.40
+        yalign 0.050
         action Call("open_character")
-        at Transform(zoom=0.77)
+        at Transform(zoom=0.90)
 
 label open_character():
     call screen character
@@ -1575,10 +1575,10 @@ screen character():
 screen run_button():
     imagebutton:
         idle "gui/button/start_button_run.png"
-        xalign 0.47
-        yalign 0.035
+        xalign 0.60
+        yalign 0.050
         action Call("open_run")
-        at Transform(zoom=0.77)
+        at Transform(zoom=0.90)
 
 label open_run():
     call screen run
@@ -1625,10 +1625,10 @@ init python:
 screen minicard_button():
     imagebutton:
         idle "gui/button/start_button_minicard.png"
-        xalign 0.64
-        yalign 0.035
+        xalign 0.80
+        yalign 0.050
         action Call("open_mini_card")
-        at Transform(zoom=0.77)
+        at Transform(zoom=0.90)
 
 label open_mini_card():
     call screen mini_card
@@ -1675,10 +1675,10 @@ screen mini_card():
 screen map_button():
     imagebutton:
         idle "gui/button/start_button_map.png"
-        xalign 0.81
-        yalign 0.035
+        xalign 1.0
+        yalign 0.050
         action Call("open_map")
-        at Transform(zoom=0.77)
+        at Transform(zoom=0.90)
 
 label open_map():
     call screen map
@@ -1689,15 +1689,6 @@ screen map():
     use start_navigation
     frame:
         style "frame_start"
-    
-
-screen setting_button():
-    imagebutton:
-        idle "gui/button/start_button_settings.png"
-        xalign 0.98
-        yalign 0.035
-        action Show("preferences")
-        at Transform(zoom=0.55)
 
 style frame_start:
     background Frame("gui/overlay/oval_start.png",30,30)
@@ -1807,4 +1798,5 @@ transform kraliçe_poz:
     yalign 1.0
     yanchor 1.0
     zoom 0.75 
+
 

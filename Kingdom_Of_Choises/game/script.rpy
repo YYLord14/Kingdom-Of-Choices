@@ -90,7 +90,7 @@ init:
         
 init:
     image startbcg :
-        "arka_plan.jpg"
+        "game_start_bgd.jpg"
         size(config.screen_width, config.screen_height)
 init:
     image style_start :
@@ -956,7 +956,6 @@ label start:
     show screen sign_hist
     show screen map_button
     show screen run_button
-    show screen setting_button
     show screen character_button
     show screen minicard_button
     scene startbcg
@@ -1000,3 +999,4 @@ label random_dialog:
         $ chosen_dialog = renpy.random.choice(dialogs)
         $ last_dialog = chosen_dialog
         jump expression chosen_dialog  # Yeni seçilen diyaloga git
+
