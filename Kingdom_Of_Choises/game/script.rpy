@@ -153,7 +153,7 @@ init python:
                 current_date["year"] += 1
  
 screen date_display(): # burdaki boşlukları cart curt ellemeyelim lütfen tarih ekranı şeysi
-    text "{color=#FFFFFF}[current_date['day']]  [current_date['month_names'][current_date['month']]]\n      {color=#FFFFFF}[current_date['year']]{/color}":
+    text "{color=#FFFFFF}[current_date['day']]  [current_date['month_names'][current_date['month']]]\n      [current_date['year']]{/color}":
         font "gui/font/CinzelDecorative-Regular.otf"
         xpos 107
         ypos 78
@@ -311,6 +311,7 @@ init:#Tanımlamalar
     $ game_over_triggered = False
     $ character_alive = True
     $ chosen_dialog = 0
+    $ imagevisable=0
     $ knight_of_swan_clan_minicard = 0
     $ health_potion_minicard = 0
     $ black_magic_minicard = 0
@@ -381,7 +382,7 @@ init python:# Bağımsız fonksiyonlar //Check_bars & zero_chr_scr & chr ile ala
     
     def chr_chng(name, sign, value):
         names = {
-            "ozan": 0, "demirci": 1, "büyücü": 2, "kadı": 3, "mhf_baş": 4, "hzm_baş": 5,
+            "ozan": 0, "demirci": 1, "büyücü": 2, "kadı": 3, "mhf_baş": 4, "hzmt_baş": 5,
             "asker": 6, "baş_imam": 7, "çiftçi": 8, "ktpnc": 9, "otacı": 10, "soylu": 11,
             "şifacı": 12, "yrl_bkn": 13, "zng_tcr": 14
         }
@@ -398,8 +399,8 @@ init python:# Bağımsız fonksiyonlar //Check_bars & zero_chr_scr & chr ile ala
 
     def mnc_chng(name,value):
         names={
-            kosc_mnc:0,hp_mnc:1,bm_mnc:2,gw_mnc:3,al_mnc:4,hr_mnc:5,spsb_mnc:6,sow_mnc:7,
-            rg_mnc:8,sti_mnc:9,bcm_mnc:10,lp_mnc:11
+            "kosc_mnc":0,"hp_mnc":1,"bm_mnc":2,"gw_mnc":3,"al_mnc":4,"hr_mnc":5,"spcb_mnc":6,"sow_mnc":7,
+            "rg_mnc":8,"sti_mnc":9,"bcm_mnc":10,"lp_mnc":11
         }
         mnc_data[names[name]]["val"] = value
         mnc_data[names[name]]["val"] = max(0,mnc_data[names[name]]["val"],1)
@@ -714,9 +715,9 @@ label game_over:
 
 label minicard:
     if Health <= 0:
-        if bmnc_data[10]["val"] == 1:
+        if mnc_data[10]["val"] == 1:
             $ Health += 3
-            $ bmnc_data[10]["val"] = 0
+            $ mnc_data[10]["val"] = 0
             $ check_bars()
             return
         elif mnc_data[1]["val"] == 1:
@@ -742,9 +743,9 @@ label minicard:
             $ mnc_data[5]["val"] = 0
             $ check_bars()
             return
-        elif chr_data[0]["val"] == 1:
+        elif mnc_data[0]["val"] == 1:
             $ Religion += 3
-            $ chr_data[0]["val"] = 0
+            $ mnc_data[0]["val"] = 0
             $ check_bars()
             return
         else:
@@ -766,9 +767,9 @@ label minicard:
             $ mnc_data[4]["val"] = 0
             $ check_bars()
             return
-        elif chr_data[0]["val"] == 1:
+        elif mnc_data[0]["val"] == 1:
             $ Religion -= 3
-            $ chr_data[0]["val"] = 0
+            $ mnc_data[0]["val"] = 0
             $ check_bars()
             return
         else:
@@ -780,9 +781,9 @@ label minicard:
             $ mnc_data[6]["val"] = 0
             $ check_bars()
             return
-        elif chr_data[0]["val"] == 1:
+        elif mnc_data[0]["val"] == 1:
             $ Politics += 3
-            $ chr_data[0]["val"] = 0
+            $ mnc_data[0]["val"] = 0
             $ check_bars()
             return
         else:
@@ -818,18 +819,18 @@ label minicard:
             $ mnc_data[2]["val"] = 0
             $ check_bars()
             return
-        elif chr_data[0]["val"] == 1:
+        elif mnc_data[0]["val"] == 1:
             $ Military += 3
-            $ chr_data[0]["val"] = 0
+            $ mnc_data[0]["val"] = 0
             $ check_bars()
             return
         else:
             jump game_over
 
     elif Military >= 10:
-        if chr_data[0]["val"] == 1:
+        if mnc_data[0]["val"] == 1:
             $ Military -= 3
-            $ chr_data[0]["val"] = 0
+            $ mnc_data[0]["val"] = 0
             $ check_bars()
             return
         elif mnc_data[2]["val"] == 1:
@@ -878,9 +879,9 @@ label minicard:
             jump game_over
 
     elif People >= 10:
-        if chr_data[0]["val"] == 1:
+        if mnc_data[0]["val"] == 1:
             $ People -= 3
-            $ chr_data[0]["val"] = 0
+            $ mnc_data[0]["val"] = 0
             $ check_bars()
             return
         elif mnc_data[5]["val"] == 1:
@@ -895,7 +896,6 @@ label minicard:
             return
         else :
             jump game_over
-
 
 
 init python:# Diyologlar
@@ -934,8 +934,7 @@ init python:# Minicard diyolglar
         "card5", "card6", "card7", "card8",
         "card9", "card10", "card11", "card12"
     ]
-    
-    minicard_used = False
+    minicard_used=False
 
 init python:# Hikaye metinleri
     import random
@@ -943,7 +942,6 @@ init python:# Hikaye metinleri
     stories = [
         "story1", "story2", "story3", "story4"
     ]
-
 
 label start:
     stop music 
@@ -995,8 +993,12 @@ label check_minicard: #bunun yeri ile oynamayın rastgele minicard dialogu atıy
 label random_dialog:
     if main_story_count == 5:
         jump story1
+    elif managed_day == 5 and not minicard_used:
+        $ chosen_card = renpy.random.choice(minicard_dialogs)
+        $ minicard_used = True 
+        $ last_dialog = chosen_card
+        jump expression chosen_card
     else:
         $ chosen_dialog = renpy.random.choice(dialogs)
         $ last_dialog = chosen_dialog
         jump expression chosen_dialog  # Yeni seçilen diyaloga git
-

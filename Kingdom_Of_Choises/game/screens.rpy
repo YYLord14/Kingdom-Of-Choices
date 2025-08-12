@@ -1646,17 +1646,21 @@ screen mini_card():
         has vbox
         hbox:
             spacing 220
-            for i in range(max_visible):
-                $ real_index = ((start_index + i ) % total)
-                if mnc_data[real_index]["val"]==1:
+            $ imagevisable = 0
+            for i in range(total):
+                $ real_index = ((start_index + i) % total)
+
+                if mnc_data[real_index]["val"] == 1:
                     $ img = mnc_data[real_index]["img"]
-                else:
-                    continue
-                frame:    
-                    background None
-                    xsize 40
-                    ysize 20
-                    add img xalign -0.18 yalign -0.45 at Transform(zoom=0.23)
+                    $ imagevisable += 1
+                    frame:
+                        background None
+                        xsize 40
+                        ysize 20
+                        add img xalign -0.18 yalign -0.45 at Transform(zoom=0.23)
+                    if imagevisable == max_visible:
+                        break
+                    
     hbox:
             yalign 1.0
             xalign 0.5
