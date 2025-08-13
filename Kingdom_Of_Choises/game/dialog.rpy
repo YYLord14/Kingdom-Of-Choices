@@ -1,7 +1,6 @@
 
 label dialog1:
     show Demirci at demirci_poz       
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım elimde kaliteli bir maden geçti bununla ne yapmalıyım?"
     $ daily_visitors += 1
     menu:
@@ -20,15 +19,14 @@ label dialog1:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog2:
-    show Ozan at ozan_poz        
-    $ visitors_today = renpy.random.randint(2, 4)
+    show Ozan at ozan_poz
     Ozan "Kralım saray ahalisi çok mutsuz bir eğlence düzenleyelim"
     $ daily_visitors += 1
     menu:
@@ -46,15 +44,14 @@ label dialog2:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
-            $ advance_date(1) 
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog3:
     show Muhafız_Başı at muhafiz_basi_poz    
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Ordumuzun gücünü artırmak için yeni askerler toplamalıyız"
     $ daily_visitors += 1
     menu:
@@ -74,15 +71,14 @@ label dialog3:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1) 
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog4:
     show Asker at asker_poz      
-    $ visitors_today = renpy.random.randint(2, 4)
     Asker "Saygı değer Kralım talimler çok fazla sayısını azaltmalısınız."
     $ daily_visitors += 1
     menu: 
@@ -98,15 +94,14 @@ label dialog4:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1) 
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog5:
     show Çiftçi at ciftci_poz    
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Saygı değer Kralım Köyümüzü fareler bastı lütfen yardım edin"
     $ daily_visitors += 1
     menu:
@@ -125,14 +120,14 @@ label dialog5:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog6:
     show Baş_İmam at bas_imam_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Baş_İmam "Ülkedeki camiler yetersiz halkımız dışarda kalıyor destek talep ediyorum"
     $ daily_visitors += 1
     menu:
@@ -150,15 +145,14 @@ label dialog6:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog7:
     show Zengin_Tüccar at zengin_tuccar_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Zengin_Tüccar "Eğer vergilerde indirim yaparsanız kendi halkımdan gelen tacirleri  ülkenize yönlendiririm kazan kazan ne dersiniz"
     $ daily_visitors += 1
     menu:
@@ -176,14 +170,14 @@ label dialog7:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog8:
     show Yerel_Bakan at yerel_bakan_poz        
-    $ visitors_today = renpy.random.randint(2, 4)
     Yerel_Bakan "Kralım ülkenin bütçesinin büyük bir kısmı askeriye ye harcanıyor inşaatları arttıralım."
     $ daily_visitors += 1
     menu:
@@ -201,14 +195,14 @@ label dialog8:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog9:
     show Soylu at soylu_poz      
-    $ visitors_today = renpy.random.randint(2, 4)
     Soylu "Yeterli sayıda kölem yok yenilerini nerden bulabilirim"
     $ daily_visitors += 1
     menu:
@@ -227,14 +221,14 @@ label dialog9:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog10:
     show Kadı at kadi_poz        
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Majesteleri, bir Soylu ve bir  Tacir , sınırları belirlenmemiş bir arazi yüzünden yıllardır anlaşmazlık içinde. Her ikisi de bu toprakların kendilerine ait olduğunu iddia ediyor."
     $ daily_visitors += 1
     menu:
@@ -253,14 +247,14 @@ label dialog10:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog11:
     show Şifacı at sifaci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Şifacı "Tıp için bir araştırma yapmam gerekiyo bütçeyi nasıl oluşturayım"
     $ daily_visitors += 1
     menu: 
@@ -278,15 +272,14 @@ label dialog11:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog12:
     show Hizmetçi_Başı at hizmetci_basi_poz        
-    $ visitors_today = renpy.random.randint(2, 4)
     Hizmetçi_Başı "Kralım, mutfağınızda kullanılan malzemeler bayat ve kalitesiz. Daha iyi ve taze malzemeler almak için bütçemizi artırmalıyız, yoksa hastalıklar baş gösterebilir."
     $ daily_visitors += 1
     menu:
@@ -304,15 +297,14 @@ label dialog12:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog13:
     show Büyücü at buyucu_poz        
-    $ visitors_today = renpy.random.randint(2, 4)
     Büyücü "Efendim, son zamanlarda kıtlık arttı. Bunun doğal sebeplerle mi, yoksa bir lanet yüzünden mi olduğunu belirlemem için sizden destek istiyorum."
     $ daily_visitors += 1
     menu:
@@ -329,14 +321,14 @@ label dialog13:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog14:
     show Otacı at otaci_poz      
-    $ visitors_today = renpy.random.randint(2, 4)
     Otacı "Yeni bir iksir geliştirdim, hastalıklara karşı çok etkili ama içeriği biraz… alışılmadık."
     $ daily_visitors += 1
     menu:
@@ -356,14 +348,14 @@ label dialog14:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog15:
     show Kütüphaneci at kutuphaneci_poz     
-    $ visitors_today = renpy.random.randint(2, 4)
     Kütüphaneci "Halk kütüphanemiz depremde zarar görmüştü hala tamir edilmedi"
     $ daily_visitors += 1
     menu:
@@ -382,14 +374,14 @@ label dialog15:
     if daily_visitors >= visitors_today:
             $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
+
 label dialog16:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım malzemeler yetersiz sağlık için ayrılına bütçeden madenler için biraz kullanılmasını talep ediyorum"
     $ daily_visitors += 1
     menu:
@@ -404,13 +396,13 @@ label dialog16:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-            $ managed_day += 1
+            $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog17:
     show Demirci at demirci_poz
@@ -430,17 +422,16 @@ label dialog17:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-            $ managed_day += 1
+            $ managed_day += 1  
             $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog18:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım elime değerli bir maden geçti bununla ne yapayım"
     $ daily_visitors += 1
     menu:
@@ -454,17 +445,16 @@ label dialog18:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog19:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım imam camilerde süs için iyi çelik kullanmak istiyor ne yapalım"
     $ daily_visitors += 1
     menu:
@@ -479,17 +469,16 @@ label dialog19:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog20:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım daha çok demir ocağı yapmamız gerek tarım aletleri üretemiyoruz"
     $ daily_visitors += 1
     menu:
@@ -505,17 +494,16 @@ label dialog20:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog21:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Köylülerden biri sinirlenip sabanı kırdı ne ceza verelim?"
     $ daily_visitors += 1
     menu:
@@ -530,17 +518,16 @@ label dialog21:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog22:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım ülkenizdeki askeri gücü arttırmak için bir fikrim var, bana gereken desteği sağlarsanız bunu yaparım"
     $ daily_visitors += 1
     menu:
@@ -555,17 +542,16 @@ label dialog22:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog23:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım, soyluların evinde çok fazla değerli maden var. Bunları eritip tarım aleti yapmalıyız."
     $ daily_visitors += 1
     menu:
@@ -582,17 +568,16 @@ label dialog23:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog24:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Elimde bazı değerli madenler var. Ne yapayım Kralım?"
     $ daily_visitors += 1
     menu:
@@ -606,17 +591,16 @@ label dialog24:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog25:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım, sizdeki iyi bir zırh takımını Bertrumlu bir tacir istiyormuş. Ne yapmak istersiniz?"
     $ daily_visitors += 1
     menu:
@@ -630,17 +614,16 @@ label dialog25:
             $ chr_chng("demirci","-",1)
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog26:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım, halkın silahları eskidi ve düşman sınırlarda geziyor. Yeni silahlar yapmam için bana daha fazla demir ve kömür tahsis edin."
     $ daily_visitors += 1
     menu:
@@ -655,17 +638,16 @@ label dialog26:
             $ check_bars()
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog27:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım, tapınakların kutsal kılıçlarını yenilemek istiyorum. Din adamları bana altın ve gümüş verilmesini talep ediyor."
     $ daily_visitors += 1
     menu:
@@ -680,17 +662,16 @@ label dialog27:
             $ check_bars()
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog28:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım, köylülerin sabanları kırık. Tarım verimi düşecek. Onlara yeni aletler yapmam için bana destek olun!"
     $ daily_visitors += 1
     menu:
@@ -705,17 +686,16 @@ label dialog28:
             $ check_bars()
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog29:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım, sarayın korumaları için daha sağlam zırhlar yapabilirim, ancak bu iş için fazla çalışmam gerekecek. Bana ek ücret ödenmeli."
     $ daily_visitors += 1
     menu:
@@ -729,17 +709,16 @@ label dialog29:
             $ check_bars()
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog30:
     show Demirci at demirci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Demirci "Kralım, vebadan kırılan kasabalar için tıbbi aletler yapmak istiyorum. Bana yardımcı olacak birkaç çırak verin."
     $ daily_visitors += 1
     menu:
@@ -754,17 +733,16 @@ label dialog30:
             $ check_bars()
     hide image Demirci
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog31:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Kralım, sınırda görev yapan askerlerimizin erzakları tükenmek üzere. Yeni ikmal için emir verir misiniz?"
     $ daily_visitors += 1
     menu:
@@ -781,17 +759,16 @@ label dialog31:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog32:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Son zamanlarda askerler arasında hoşnutsuzluk var. Daha iyi şartlar için şikayet ediyorlar."
     $ daily_visitors += 1
     menu:
@@ -809,17 +786,16 @@ label dialog32:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog33:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Sarayınızı koruyan muhafızların sayısını artırmayı öneriyorum. Güvenliğiniz her şeyden önemli."
     $ daily_visitors += 1
     menu:
@@ -833,17 +809,16 @@ label dialog33:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog34:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Komşu topraklardan gelen çapulcular, sınır kasabalarımıza saldırıyor. Ne yapalım?"
     $ daily_visitors += 1
     menu:
@@ -861,17 +836,16 @@ label dialog34:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog35:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Ordumuzun silahları eskiyor. Yeni kılıç ve zırhlar için yatırım yapmalıyız."
     $ daily_visitors += 1
     menu:
@@ -885,17 +859,16 @@ label dialog35:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog36:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Halk arasında huzursuzluk çıkaran bazı kişiler var. Onları gözaltına alalım mı?"
     $ daily_visitors += 1
     menu:
@@ -912,17 +885,16 @@ label dialog36:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog37:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Askerlerimizi formda tutmak için büyük bir tatbikat düzenlemeyi öneriyorum."
     $ daily_visitors += 1
     menu:
@@ -936,17 +908,16 @@ label dialog37:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog38:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Bazı soylular, ordunun desteğini almaya çalışıyor. Bu bir darbe hazırlığı olabilir."
     $ daily_visitors += 1
     menu:
@@ -962,17 +933,16 @@ label dialog38:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog39:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Bazı muhafızlar rüşvet almakla suçlanıyor. Araştırmamı emreder misiniz?"
     $ daily_visitors += 1
     menu:
@@ -988,17 +958,16 @@ label dialog39:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog40:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Yeni savaş stratejileri geliştirmek için daha fazla vakit ve kaynak ayırmalıyız."
     $ daily_visitors += 1
     menu:
@@ -1012,17 +981,16 @@ label dialog40:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog41:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Şehirde suç oranı artıyor. Daha fazla devriye görevlendirelim mi?"
     $ daily_visitors += 1
     menu:
@@ -1039,17 +1007,16 @@ label dialog41:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog42:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Sarayda bir suikast girişimi oldu. Soruşturma başlatılsın mı?"
     $ daily_visitors += 1
     menu:
@@ -1064,17 +1031,16 @@ label dialog42:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog43:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Kale duvarlarımızın bazı bölümleri eskiyor. Onları güçlendirelim mi?"
     $ daily_visitors += 1
     menu:
@@ -1088,17 +1054,16 @@ label dialog43:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog44:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Düşman casuslarının sarayımıza sızdığına dair bilgiler var."
     $ daily_visitors += 1
     menu:
@@ -1114,17 +1079,16 @@ label dialog44:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog45:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Efendim Narga Krallığı sınırlarımızı ihlal ediyor bu bir son vermemiz gerek."
     $ daily_visitors += 1
     menu:
@@ -1143,17 +1107,16 @@ label dialog45:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog46:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Efendim askerler arasında bir husumet çıktı bu sorunu çözmeliyiz."
     $ daily_visitors += 1
     menu:
@@ -1166,17 +1129,16 @@ label dialog46:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog47:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Efendim Kuzey bölgesinden bir grup haydut bir köyü basıp insanları rehin almış."
     $ daily_visitors += 1
     menu:
@@ -1193,17 +1155,16 @@ label dialog47:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog48:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Efendim ordu için ekipman yetersiz, sağlıkçıların aletlerini eritip silah yapalım mı?"
     $ daily_visitors += 1
     menu:
@@ -1219,17 +1180,16 @@ label dialog48:
             $ chr_chng("mhf_baş","-",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog49:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Efendim ordudaki askerlerin sayısı az, buna bir çözüm bulalım."
     $ daily_visitors += 1
     menu:
@@ -1246,17 +1206,16 @@ label dialog49:
             $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog50:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Efendim asker sayımız çok fazla, bazılarını size koruma olarak verebilirim."
     $ daily_visitors += 1
     menu:
@@ -1269,17 +1228,16 @@ label dialog50:
             $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog51:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Bir grup haydut yolumuzu kesmişti, hepsini öldürüp silahlarını aldık. Bunları ne yapalım?"
     $ daily_visitors += 1
     menu:
@@ -1294,17 +1252,16 @@ label dialog51:
             $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog52:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Askerlerimiz savaş ganimetleri arasında bir takım sıhhiye aletleri buldu. Kime verelim?"
     $ daily_visitors += 1
     menu:
@@ -1319,17 +1276,16 @@ label dialog52:
             $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog53:
     show Muhafız_Başı at muhafiz_basi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Muhafız_Başı "Efendim, askerler aileleri için ayrıcalık talep ediyorlar."
     $ daily_visitors += 1
     menu:
@@ -1345,17 +1301,16 @@ label dialog53:
             $ chr_chng("mhf_baş","+",1)
     hide image Muhafız_Başı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog54:
     show Kadı at kadi_poz   
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Majesteleri, bir Soylu ve bir  Tacir , sınırları belirlenmemiş bir arazi yüzünden yıllardır anlaşmazlık içinde. Her ikisi de bu toprakların kendilerine ait olduğunu iddia ediyor. Adaletin tecelli etmesi için kararınızı bekliyorum."
     $ daily_visitors += 1
     menu:
@@ -1369,17 +1324,16 @@ label dialog54:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
-    return
 
 label dialog55:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Efendim, şehirdeki zengin bir tüccar, ödediği vergilerin haksız olduğunu iddia ediyor. Eğer bu konu çözülemezse, diğer tacirler de aynı yola başvurabilir."
     $ daily_visitors += 1
     menu:
@@ -1394,16 +1348,16 @@ label dialog55:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog56:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Majesteleri, köylüler genç bir kadını büyücülükle suçluyor. Kadının suçlu olup olmadığına karar vermek için sizden bir hüküm beklenmektedir."
     $ daily_visitors += 1
     menu:
@@ -1418,16 +1372,16 @@ label dialog56:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog57:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Kralım, muhafızlardan biri düşman krallıkla gizlice haberleşmekle suçlanıyor. Kanıtlar yetersiz ama halk idam edilmesini istiyor. Adaletin sağlanması için kesin bir emir vermelisiniz."
     $ daily_visitors += 1
     menu:
@@ -1441,16 +1395,16 @@ label dialog57:
             $ chr_chng("kadı","+",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog58:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Kralım, adaletin doğru ve hızlı bir şekilde yerine getirilebilmesi için yeni bir mahkeme binasına ihtiyacımız var. Eski bina küçük ve yetersiz kaldı."
     $ daily_visitors += 1
     menu:
@@ -1466,16 +1420,16 @@ label dialog58:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog59:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Efendim, yargıçlar ve mahkeme personelinin maaşları çok düşüktür. Onların maaşlarında bir artış yapılmasını talep ediyorum."
     $ daily_visitors += 1
     menu:
@@ -1493,16 +1447,16 @@ label dialog59:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog60:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Bazı suçlar, halk arasında büyük tartışmalara yol açıyor. Bu durumu önlemek için belirli suçların cezalarında değişiklik yapmamız gerekiyor."
     $ daily_visitors += 1
     menu:
@@ -1518,16 +1472,16 @@ label dialog60:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog61:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Ülkemizin büyüklüğü ve adalet talepleri göz önüne alındığında, daha fazla kadı ve yargıç atanmasına ihtiyaç var."
     $ daily_visitors += 1
     menu:
@@ -1543,16 +1497,16 @@ label dialog61:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog62:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Kralım, halk arasında eşitlik ve adaletin sağlanması adına, köylerde ve kasabalarda da düzenli olarak duruşmalar yapılmalıdır."
     $ daily_visitors += 1
     menu:
@@ -1568,16 +1522,16 @@ label dialog62:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog63:
     show Kadı at kadi_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Kadı "Büyük Kralım, kadınların ve çocukların korunması hususunda daha fazla önlem alınmasını rica ediyorum. Bu, toplumda adalete olan güveni pekiştirecek ve halkın huzurunu sağlayacaktır."
     $ daily_visitors += 1
     menu:
@@ -1593,16 +1547,16 @@ label dialog63:
             $ chr_chng("kadı","-",1)
     hide image Kadı
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog65:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Majesteleri, bu yılın hasadı çok iyi olacak gibi görünüyor. Vergileri biraz hafifletebilir misiniz?"
     $ daily_visitors += 1
     menu:
@@ -1618,9 +1572,10 @@ label dialog65:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
@@ -1628,7 +1583,6 @@ label dialog65:
 
 label dialog66:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Topraklarımız kuruyor, sulama kanalları yapamaz mıyız?"
     $ daily_visitors += 1
     menu:
@@ -1645,9 +1599,10 @@ label dialog66:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
@@ -1655,7 +1610,6 @@ label dialog66:
 
 label dialog67:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Köyümüzde veba var! Doktorlar gönderir misiniz?"
     $ daily_visitors += 1
     menu:
@@ -1671,16 +1625,16 @@ label dialog67:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1  
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog68:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Yabancı tüccarlar mallarımızı ucuza alıyor, onlara karşı bir şey yapacak mısınız?"
     $ daily_visitors += 1
     menu:
@@ -1696,16 +1650,16 @@ label dialog68:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog69:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Vergi memurları haksız yere fazladan para alıyor!"
     $ daily_visitors += 1
     menu:
@@ -1721,16 +1675,16 @@ label dialog69:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog70:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Sürüdeki domuzlarımız kayboldu, hırsızlar mı aldı bilemiyoruz…"
     $ daily_visitors += 1
     menu:
@@ -1746,16 +1700,16 @@ label dialog70:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog71:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Yeni araziler açarsak daha fazla mahsul yetiştirebiliriz."
     $ daily_visitors += 1
     menu:
@@ -1769,16 +1723,16 @@ label dialog71:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog72:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Baş İmam, kutsal dualarla hasadın bereketli olacağını söylüyor. Bir ayin düzenleyelim mi?"
     $ daily_visitors += 1
     menu:
@@ -1794,16 +1748,16 @@ label dialog72:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog73:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Ürünlerimizin çoğu şehre gidiyor, köydekiler aç kalıyor!"
     $ daily_visitors += 1
     menu:
@@ -1819,16 +1773,16 @@ label dialog73:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog74:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Askerlerimiz eğitim yaparken ekinlerimizi eziyor, buna bir çözüm bulunabilir mi?"
     $ daily_visitors += 1
     menu:
@@ -1844,16 +1798,16 @@ label dialog74:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog75:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Gençlerimiz köyleri terk edip şehre gidiyor, tarım zayıflıyor…"
     $ daily_visitors += 1
     menu:
@@ -1869,16 +1823,16 @@ label dialog75:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog76:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Tohum bulmak zorlaştı, ekim yapamazsak kıtlık başlar!"
     $ daily_visitors += 1
     menu:
@@ -1894,16 +1848,16 @@ label dialog76:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog77:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Geleneksel hasat festivalimizi düzenleyelim mi?"
     $ daily_visitors += 1
     menu:
@@ -1919,16 +1873,16 @@ label dialog77:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog78:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Şiddetli bir fırtına yüzünden tarlalarımız mahvoldu!"
     $ daily_visitors += 1
     menu:
@@ -1945,16 +1899,16 @@ label dialog78:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog79:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Kendimizi haydutlara karşı koruyabilmek için silah taşıyabilir miyiz?"
     $ daily_visitors += 1
     menu:
@@ -1970,16 +1924,16 @@ label dialog79:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog80:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Saygı değer Kralım bana güneydeki arsalarınızı verirseniz onları sizin için ekebilirim."
     $ daily_visitors += 1
     menu:
@@ -1994,16 +1948,16 @@ label dialog80:
             Çiftçi "Haklısınız efendim."
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog81:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Saygı değer Kralımız, biz vergilerimizi ödeyen kısım askerlerden yeteri korumayı sağlamıyorlar."
     $ daily_visitors += 1
     menu:
@@ -2020,16 +1974,16 @@ label dialog81:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog82:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Saygı değer Kralımız, köylüler olarak taleplerimizi bildirmek için sizinle bir görüşme yapmak istiyoruz."
     $ daily_visitors += 1
     menu:
@@ -2047,16 +2001,16 @@ label dialog82:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog83:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Saygı değer Kralımız, köyümüze hiç yağmur yağmadı. Çok zarar ettik, lütfen bu sene vergi almayın."
     $ daily_visitors += 1
     menu:
@@ -2072,16 +2026,16 @@ label dialog83:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog84:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Saygı değer Kralımız, köyümüzde yeterli insan gücü kalmadı. Tarım yaparken zorlanıyoruz. Bize hayvan desteği verir misiniz?"
     $ daily_visitors += 1
     menu:
@@ -2097,16 +2051,16 @@ label dialog84:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
-    label dialog85:
+label dialog85:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Majesteleri, bu yıl kuraklık hasatlarımızı mahvetti. Vergileri azaltmazsanız ailelerimiz aç kalacak. Lütfen bizden alınan vergiyi bu yıl için düşürün."
     $ daily_visitors += 1
     menu:
@@ -2121,16 +2075,16 @@ label dialog84:
             $ chr_chng("çiftçi","+",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog86:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Kralım, yıllardır lordumun topraklarında çalışıyorum ama kendi ailem için hiçbir şeyim yok. Bana ve aileme işleyebileceğimiz küçük bir arazi bağışlamanızı dilerim."
     $ daily_visitors += 1
     menu:
@@ -2145,16 +2099,16 @@ label dialog86:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog87:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Efendimiz, köyümüzden çok fazla genç erkek askere alındı. Tarlalarımızı ekecek kimse kalmadı. Daha fazla adam almamanız için yalvarıyorum."
     $ daily_visitors += 1
     menu:
@@ -2169,16 +2123,16 @@ label dialog87:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
 
 label dialog88:
     show Çiftçi at ciftci_poz
-    $ visitors_today = renpy.random.randint(2, 4)
     Çiftçi "Efendim, haydutlar ve paralı askerler köylerimizi talan ediyor. Kadınlarımız ve çocuklarımız korku içinde yaşıyor. Bizi koruyacak bir grup asker gönderir misiniz?"
     $ daily_visitors += 1
     menu:
@@ -2193,10 +2147,10 @@ label dialog88:
             $ chr_chng("çiftçi","-",1)
     hide image Çiftçi
     if daily_visitors >= visitors_today:
-        $ managed_day += 1
-        $ daily_visitors = 0
-        $ advance_date(1)
+            $ managed_day += 1  
+            $ daily_visitors = 0
+            $ visitors_today = renpy.random.randint(2, 4)
+            $ advance_date(1)
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
-
