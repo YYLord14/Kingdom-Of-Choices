@@ -326,14 +326,12 @@ screen navigation():
             yoffset -30
             action (
                 Jump("game_over") if not character_alive else
-                Return() if not in_game else
-                [SetVariable("in_game", False), Jump("in_start")]
+                Return() if not in_game else [SetVariable("in_game", False), Jump("in_start")]
             )
 
     key "escape" action (
         Jump("game_over") if not character_alive else
-        Return() if not in_game else
-        [SetVariable("in_game", False), Jump("in_start")]
+        Return() if not in_game else [SetVariable("in_game", False), Jump("in_start")]
     )
     
 
@@ -403,10 +401,10 @@ init python:
     def check_dragged(drags, drop):
         screen_width = config.screen_width
         for d in drags:
-            if d.x < screen_width * 0.6:
-                return Start()  # Oyunu başlat
-            else:
-                return ShowMenu("load")  # Kayıt ekranını aç
+            if d.x < 920:
+                renpy.call_in_new_context("start")
+            elif d.x > 930:
+                renpy.invoke_in_new_context(renpy.call_screen,"load")
 
 style main_menu_vbox:
     xalign 1.0
@@ -592,26 +590,27 @@ screen load():
     tag menu
     use file_slots(_("Yükle"))
 
-screen file_slots(title):
-    default page_name_value = FilePageNameInputValue(
-        pattern=_("Sayfa {}"),
-        auto=_("Otomatik kayıtlar"),
-        quick=_("Hızlı kayıtlar")
-    )
+screen file_slots(title): 
+    default page_name_value = FilePageNameInputValue( pattern=_("Sayfa {}"),
+    auto=_("Otomatik kayıtlar"),
+    quick=_("Hızlı kayıtlar") )
     default sc_name = "file_slots"
-
-    use game_menu(title):
+    
+    use game_menu(_("file_slots")):
         fixed:
-            order_reverse True
+            order_reverse True 
+            # Sayfa adı düzenleme butonu
             button:
                 style "page_label"
                 key_events True
-                xalign 0.5
+                xalign 0.5 
                 action page_name_value.Toggle()
+            
                 input:
                     style "page_label_text"
-                    value page_name_value
-
+                    value page_name_value 
+        
+            # Kayıt slotları ızgarası
             grid gui.file_slot_cols gui.file_slot_rows:
                 style_prefix "slot"
                 xalign 0.5
@@ -622,18 +621,20 @@ screen file_slots(title):
                     button:
                         action FileAction(slot)
                         has vbox
-                        add FileScreenshot(slot) xalign 0.5
+                        add FileScreenshot(slot)
+                        xalign 0.5
+                        
                         text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("boş slot")):
                             style "slot_time_text"
                         text FileSaveName(slot):
                             style "slot_name_text"
                         key "save_delete" action FileDelete(slot)
-
+            # Sayfa geçiş düğmeleri
             vbox:
                 style_prefix "page"
                 xalign 0.5
                 yalign 1.0
-                hbox:
+                hbox: 
                     xalign 0.5
                     spacing gui.page_spacing
                     textbutton _("<") action FilePagePrevious()
@@ -646,7 +647,12 @@ screen file_slots(title):
                         textbutton "[page]" action FilePage(page)
                     textbutton _(">") action FilePageNext()
                     key "save_page_next" action FilePageNext()
-
+                if config.has_sync:
+                    if CurrentScreenName() == "save":
+                        textbutton _("Yükleme Senkronizasyonu") action UploadSync() xalign 0.5
+                    else:
+                        textbutton _("Sync'i İndirin") action DownloadSync() xalign 0.5
+    use navigation
 style page_label is gui_label
 style page_label_text is gui_label_text
 style page_button is gui_button

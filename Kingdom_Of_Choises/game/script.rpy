@@ -102,8 +102,9 @@ label open_preferences:#Esc on clik to open preferences
     call screen preferences
     return
 
-screen esc_listener():#Esc control
+screen key_listener():#key control
     key "escape" action Call("open_preferences")
+    key "sag_tik" action Call("open_preferences")
 
 
 ## Tarih kodları ################################################################
@@ -915,7 +916,7 @@ init python:# Diyologlar
         "dialog45", "dialog46", "dialog47", "dialog48", "dialog49",
         "dialog50", "dialog51", "dialog52", "dialog53", "dialog54",
         "dialog55", "dialog56", "dialog57", "dialog58", "dialog59",
-        "dialog60", "dialog61", "dialog62", "dialog63", "dialog64",
+        "dialog60", "dialog61", "dialog62", "dialog63",
         "dialog65", "dialog66", "dialog67", "dialog68", "dialog69",
         "dialog70", "dialog71", "dialog72", "dialog73", "dialog74",
         "dialog75", "dialog76", "dialog77", "dialog78", "dialog79",
@@ -963,10 +964,10 @@ label start:
     $ character_alive=True
     label in_start:
         while True:
+            show screen key_listener
             $ zero_chr_scr()
             $ in_main_menu = 0
             $ in_game = True
-            show screen esc_listener
             show Kraliçe at kraliçe_poz
             Kraliçe "Merhaba Majesteleri… Önünüzde uzun ve zorlu bir hükümdarlık yolu var. Her gün halktan ya da saraydan biri huzurunuza çıkacak ve sizden bir karar vermenizi bekleyecek. Vereceğiniz her karar, ülkemizin din, siyaset, ekonomi, askeriye, sağlık ve halkın refahı gibi hayati dengelerini doğrudan etkileyecek."
             Kraliçe "Fakat yalnızca bu değil… İnsanların gönülleri de kararlarınızla şekillenecek. Birine sürekli hayır derseniz, kalbinde size karşı bir kin birikebilir. Ama her isteğini kabul ederseniz, size olan bağlılığı artar. Her kişi farklıdır, her kararın bedeli olur…"
@@ -993,7 +994,7 @@ label check_minicard: #bunun yeri ile oynamayın rastgele minicard dialogu atıy
 label random_dialog:
     if main_story_count == 5:
         jump story1
-    elif managed_day == 5 and not minicard_used:
+    elif managed_day == 0 and not minicard_used:
         $ chosen_card = renpy.random.choice(minicard_dialogs)
         $ minicard_used = True 
         $ last_dialog = chosen_card
