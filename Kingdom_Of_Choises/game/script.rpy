@@ -950,24 +950,23 @@ label start:
         "audio/Rite_of_the_Fading_Light.mp3",
         "audio/Lake_of_Light.mp3",
         "audio/Bleak_Falls.mp3"] loop
-    show screen bars
-    show screen style_start
-    show screen sign_hist
-    show screen map_button
-    show screen run_button
-    show screen character_button
-    show screen minicard_button
-    scene startbcg
-    show screen managed_day
-    show screen date_display
-    
     $ character_alive=True
     label in_start:
+        show screen bars
+        show screen style_start
+        show screen sign_hist
+        show screen map_button
+        show screen run_button
+        show screen character_button
+        show screen minicard_button
+        scene startbcg
+        show screen managed_day
+        show screen date_display
         while True:
-            show screen key_listener
             $ zero_chr_scr()
             $ in_main_menu = 0
             $ in_game = True
+            show screen key_listener
             show Kraliçe at kraliçe_poz
             Kraliçe "Merhaba Majesteleri… Önünüzde uzun ve zorlu bir hükümdarlık yolu var. Her gün halktan ya da saraydan biri huzurunuza çıkacak ve sizden bir karar vermenizi bekleyecek. Vereceğiniz her karar, ülkemizin din, siyaset, ekonomi, askeriye, sağlık ve halkın refahı gibi hayati dengelerini doğrudan etkileyecek."
             Kraliçe "Fakat yalnızca bu değil… İnsanların gönülleri de kararlarınızla şekillenecek. Birine sürekli hayır derseniz, kalbinde size karşı bir kin birikebilir. Ama her isteğini kabul ederseniz, size olan bağlılığı artar. Her kişi farklıdır, her kararın bedeli olur…"

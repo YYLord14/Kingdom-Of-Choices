@@ -301,15 +301,16 @@ screen navigation():
 
             textbutton _("Yeni Oyun") action Start()
 
-        elif in_main_menu == False:
+        textbutton _("Ayarlar") action ShowMenu("preferences")
+
+        if in_main_menu == False:
 
             textbutton _("Kayıt") action ShowMenu("save")
 
-            textbutton _("Ana Menü") action MainMenu()
-
         textbutton _("Devam et") action ShowMenu("load")
+        if in_main_menu == False:
 
-        textbutton _("Ayarlar") action ShowMenu("preferences")
+            textbutton _("Ana Menü") action MainMenu()
 
         textbutton _("Hakkında") action ShowMenu("about")
         
@@ -402,9 +403,9 @@ init python:
         screen_width = config.screen_width
         for d in drags:
             if d.x < 920:
-                renpy.call_in_new_context("start")
+                return Start()
             elif d.x > 930:
-                renpy.invoke_in_new_context(renpy.call_screen,"load")
+                return ShowMenu("load")
 
 style main_menu_vbox:
     xalign 1.0
