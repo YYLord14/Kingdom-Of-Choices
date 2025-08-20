@@ -98,14 +98,6 @@ init:
         size(config.screen_width,100)
         yalign 0.0
 
-label open_preferences:#Esc on clik to open preferences
-    call screen preferences
-    return
-
-screen key_listener():#key control
-    key "escape" action Call("open_preferences")
-    key "sag_tik" action Call("open_preferences")
-
 
 ## Tarih kodları ################################################################
 default current_date = {
@@ -966,7 +958,6 @@ label start:
             $ zero_chr_scr()
             $ in_main_menu = 0
             $ in_game = True
-            show screen key_listener
             show Kraliçe at kraliçe_poz
             Kraliçe "Merhaba Majesteleri… Önünüzde uzun ve zorlu bir hükümdarlık yolu var. Her gün halktan ya da saraydan biri huzurunuza çıkacak ve sizden bir karar vermenizi bekleyecek. Vereceğiniz her karar, ülkemizin din, siyaset, ekonomi, askeriye, sağlık ve halkın refahı gibi hayati dengelerini doğrudan etkileyecek."
             Kraliçe "Fakat yalnızca bu değil… İnsanların gönülleri de kararlarınızla şekillenecek. Birine sürekli hayır derseniz, kalbinde size karşı bir kin birikebilir. Ama her isteğini kabul ederseniz, size olan bağlılığı artar. Her kişi farklıdır, her kararın bedeli olur…"

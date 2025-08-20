@@ -100,7 +100,6 @@ define config.end_game_transition = None
 
 init python:
     config.keymap["escape"]=["K_ESCAPE"]
-    config.keymap["sag_tik"]=["mouseup_3"]
 
 ## Pencere yönetimi ############################################################
 ##

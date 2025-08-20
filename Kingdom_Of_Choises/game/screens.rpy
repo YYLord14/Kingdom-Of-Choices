@@ -362,7 +362,7 @@ screen main_menu():
     $ last_dialog = None
     add gui.main_menu_background at Transform(xsize=config.screen_width,ysize=config.screen_height)
     add "gui/logo_beyaz.png" at Transform(xpos=0.05, ypos=0.8,zoom=0.35)
-    
+    key "escape" action ShowMenu("preferences")
     text _("Kingdom of Choices"):
         font "gui/font/CinzelDecorative-Regular.otf"
         xalign 0.5
