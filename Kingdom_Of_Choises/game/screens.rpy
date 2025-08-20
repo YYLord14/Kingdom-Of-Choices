@@ -1562,8 +1562,11 @@ screen character():
                         range 10
                         xsize 60
                         ysize 10
+                        left_bar Frame("#912707e5")
+                        right_bar Frame("#00000000")
                         xpos 190
                         ypos 400
+                    add "gui/bar/borders_chr.png" xsize 105 ysize 25 xpos 175 ypos 395
     hbox:
             yalign 1.0
             xalign 0.5
