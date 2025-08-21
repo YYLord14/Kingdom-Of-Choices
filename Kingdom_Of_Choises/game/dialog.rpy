@@ -21,7 +21,6 @@ label dialog1:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -46,7 +45,6 @@ label dialog2:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -73,7 +71,6 @@ label dialog3:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1) 
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -96,7 +93,6 @@ label dialog4:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1) 
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -122,7 +118,6 @@ label dialog5:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -147,7 +142,6 @@ label dialog6:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -172,7 +166,6 @@ label dialog7:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -197,7 +190,6 @@ label dialog8:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -223,7 +215,6 @@ label dialog9:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -249,7 +240,6 @@ label dialog10:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -274,7 +264,6 @@ label dialog11:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -299,7 +288,6 @@ label dialog12:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -323,7 +311,6 @@ label dialog13:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -350,7 +337,6 @@ label dialog14:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -376,7 +362,6 @@ label dialog15:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -400,7 +385,6 @@ label dialog16:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -426,7 +410,6 @@ label dialog17:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -449,7 +432,6 @@ label dialog18:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -473,7 +455,6 @@ label dialog19:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -498,7 +479,6 @@ label dialog20:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -522,7 +502,6 @@ label dialog21:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -546,7 +525,6 @@ label dialog22:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -572,7 +550,6 @@ label dialog23:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -595,7 +572,6 @@ label dialog24:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -618,7 +594,6 @@ label dialog25:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -642,7 +617,6 @@ label dialog26:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -666,7 +640,6 @@ label dialog27:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -690,7 +663,6 @@ label dialog28:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -713,7 +685,6 @@ label dialog29:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -737,7 +708,6 @@ label dialog30:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -1328,7 +1298,6 @@ label dialog54:
             $ daily_visitors = 0
             $ visitors_today = renpy.random.randint(2, 4)
             $ advance_date(1)
-    $ last_dialog= None
     $ main_story_count += 1
     jump random_dialog
 
@@ -2154,3 +2123,4 @@ label dialog88:
     $ last_dialog = None
     $ main_story_count += 1
     jump random_dialog
+

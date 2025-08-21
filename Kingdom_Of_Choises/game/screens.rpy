@@ -297,18 +297,18 @@ screen navigation():
 
         spacing gui.navigation_spacing
 
-        if in_main_menu == True:
+        if  main_menu:
 
             textbutton _("Yeni Oyun") action Start()
 
         textbutton _("Ayarlar") action ShowMenu("preferences")
 
-        if in_main_menu == False:
+        if not main_menu:
 
             textbutton _("Kayıt") action ShowMenu("save")
 
         textbutton _("Devam et") action ShowMenu("load")
-        if in_main_menu == False:
+        if not main_menu:
 
             textbutton _("Ana Menü") action MainMenu()
 
@@ -321,19 +321,12 @@ screen navigation():
             ## Çıkış düğmesi iOS'ta yasaklanmıştır ve Android ve Web'de
             ## gereksizdir.
             textbutton _("Çıkış") action Quit(confirm=not main_menu)
-        
-        textbutton _("Geri"):
-            ypos 200
-            yoffset -30
-            action (
-                Jump("game_over") if not character_alive else
-                Return() if not in_game else [SetVariable("in_game", False), Jump("in_start")]
-            )
 
-    key "escape" action (
-        Jump("game_over") if not character_alive else
-        Return() if not in_game else [SetVariable("in_game", False), Jump("in_start")]
-    )
+        textbutton _("Geri"):
+            ypos 230
+            yoffset -30
+            action Return()
+        key "escape" action Return()
     
 
 
@@ -357,9 +350,6 @@ style navigation_button_text:
 screen main_menu():
 
     tag menu## Bu diğer herhangi bir menünün aktif olmadığından emin olur.
-    $ in_main_menu = True
-    $ in_game = False
-    $ last_dialog = None
     add gui.main_menu_background at Transform(xsize=config.screen_width,ysize=config.screen_height)
     add "gui/logo_beyaz.png" at Transform(xpos=0.05, ypos=0.8,zoom=0.35)
     key "escape" action ShowMenu("preferences")
@@ -596,7 +586,7 @@ screen file_slots(title):
     auto=_("Otomatik kayıtlar"),
     quick=_("Hızlı kayıtlar") )
     default sc_name = "file_slots"
-    
+    tag menu
     use game_menu(_("file_slots")):
         fixed:
             order_reverse True 
@@ -1491,32 +1481,27 @@ screen start_navigation():
             action Show("run")
         textbutton _("Harita"):
             action Show("map")
-        textbutton _("Oyuna Dön"):
-            ypos 227
-            if character_alive == True:
-                action [SetVariable("in_game", False), Jump("in_start")]
-            else :
-                action Jump("game_over") 
-        if character_alive == True:
-            key "escape" action [SetVariable("in_game", False), Jump("in_start")]
-        else:
-            key "escape" action Jump("game_over")
+        textbutton _("Geri"):
+            ypos 230
+            yoffset -30
+            action Return()
+        key "escape" action Return()
 
 ### Character
 
 init python:
 
     chr_data = [
-        {"img":"gui/karakter_resim/img1.png","info":5},
+        {"img":"gui/karakter_resim/img1.png","info":10},
         {"img":"gui/karakter_resim/img2.png","info":5},
         {"img":"gui/karakter_resim/img3.png","info":5},
         {"img":"gui/karakter_resim/img4.png","info":5},
         {"img":"gui/karakter_resim/img5.png","info":5},
         {"img":"gui/karakter_resim/img6.png","info":5},
-        {"img":"gui/karakter_resim/img7.png","info":5},
+        {"img":"gui/karakter_resim/img7.png","info":10},
         {"img":"gui/karakter_resim/img8.png","info":5},
         {"img":"gui/karakter_resim/img9.png","info":5},
-        {"img":"gui/karakter_resim/img10.png","info":5},
+        {"img":"gui/karakter_resim/img10.png","info":10},
         {"img":"gui/karakter_resim/img11.png","info":5},
         {"img":"gui/karakter_resim/img12.png","info":5},
         {"img":"gui/karakter_resim/img13.png","info":5},
@@ -1546,7 +1531,7 @@ screen character():
         style "frame_start"
         has vbox
         hbox:
-            spacing 150
+            spacing 140
             for i in range(max_visible):
                 $ real_index = ((start_index + i ) % total)
                 $ img = chr_data[real_index]["img"]
@@ -1554,19 +1539,19 @@ screen character():
             
                 frame:## bar için olan Frame
                     background None
-                    xsize 60
-                    ysize 20
+                    xsize 120
+                    ysize 40
                     add img xalign -1.0 yalign -0.0272 at Transform(zoom=0.73)
                     bar:
                         value inf
                         range 10
-                        xsize 60
-                        ysize 10
-                        left_bar Frame("#912707e5")
+                        xsize 120
+                        ysize 20
+                        left_bar Frame("#800000")
                         right_bar Frame("#00000000")
-                        xpos 190
+                        xpos 100
                         ypos 400
-                    add "gui/bar/borders_chr.png" xsize 105 ysize 25 xpos 175 ypos 395
+                    add "gui/bar/borders_chr.png" xsize 215 ysize 50 xpos 68 ypos 390
     hbox:
             yalign 1.0
             xalign 0.5
@@ -1812,5 +1797,6 @@ transform kraliçe_poz:
     yalign 1.0
     yanchor 1.0
     zoom 0.75 
+
 
 

@@ -98,6 +98,13 @@ init:
         size(config.screen_width,100)
         yalign 0.0
 
+label open_preferences:#Esc on clik to open preferences
+    call screen preferences
+    return
+
+screen key_listener():#key control
+    key "escape" action Call("open_preferences")
+
 
 ## Tarih kodları ################################################################
 default current_date = {
@@ -298,11 +305,7 @@ screen bars():
             add "gui/bar/bars_borders.png" xsize 550 ysize 50 align (0.5, 0.5)
 
 init:#Tanımlamalar
-    $ last_dialog = None
-    $ in_game = False
-    $ in_main_menu = True
     $ game_over_triggered = False
-    $ character_alive = True
     $ chosen_dialog = 0
     $ imagevisable=0
     $ knight_of_swan_clan_minicard = 0
@@ -345,7 +348,7 @@ label zero_point:#0 noktası
     $ zero_chr_scr()
     $ zero_chr()
     $ zero_mnc()
-    jump in_start
+    jump start
 
 init python:# Bağımsız fonksiyonlar //Check_bars & zero_chr_scr & chr ile alakalı & mnc ile alakalı
     def check_bars():
@@ -403,7 +406,6 @@ label game_over:
     $ zero_chr_scr()
     if not game_over_triggered:
         $ game_over_triggered = True
-        $ character_alive=False
     if Health <= 0: 
         show Otacı at otaci_poz
         Otacı "Kralım bulaşıcı bir hastalık çıktı ve engel olamıyoruz."
@@ -942,54 +944,35 @@ label start:
         "audio/Rite_of_the_Fading_Light.mp3",
         "audio/Lake_of_Light.mp3",
         "audio/Bleak_Falls.mp3"] loop
-    $ character_alive=True
-    label in_start:
-        show screen bars
-        show screen style_start
-        show screen sign_hist
-        show screen map_button
-        show screen run_button
-        show screen character_button
-        show screen minicard_button
-        scene startbcg
-        show screen managed_day
-        show screen date_display
-        while True:
-            $ zero_chr_scr()
-            $ in_main_menu = 0
-            $ in_game = True
-            show Kraliçe at kraliçe_poz
-            Kraliçe "Merhaba Majesteleri… Önünüzde uzun ve zorlu bir hükümdarlık yolu var. Her gün halktan ya da saraydan biri huzurunuza çıkacak ve sizden bir karar vermenizi bekleyecek. Vereceğiniz her karar, ülkemizin din, siyaset, ekonomi, askeriye, sağlık ve halkın refahı gibi hayati dengelerini doğrudan etkileyecek."
-            Kraliçe "Fakat yalnızca bu değil… İnsanların gönülleri de kararlarınızla şekillenecek. Birine sürekli hayır derseniz, kalbinde size karşı bir kin birikebilir. Ama her isteğini kabul ederseniz, size olan bağlılığı artar. Her kişi farklıdır, her kararın bedeli olur…"
-            Kraliçe "Lütfen unutmayın majesteleri; din, sağlık, siyaset, halk, ekonomi ve askerî güç… Bu unsurların biri bile uç noktalara savrulursa, krallığımız tehlikeye girer. Denge... İşte asıl ihtiyacımız olan budur."
-            Kraliçe "Şimdi… Tahtınız sizi bekliyor."
-            hide Kraliçe
-            if last_dialog == None:
-                $ chosen_dialog = get_random_dialog()  # Yeni bir rastgele diyalog al
-                $ last_dialog = chosen_dialog
-            else :
-                $ chosen_dialog = last_dialog
-            jump expression chosen_dialog
-   
-label check_minicard: #bunun yeri ile oynamayın rastgele minicard dialogu atıyor
-    if managed_day == 2 and not minicard_used:
-        $ chosen_card = renpy.random.choice(minicard_dialogs)
-        $ minicard_used = True 
-        $ last_dialog = chosen_card
-        jump expression chosen_card
-    else:
-        jump random_dialog
-    jump random_dialog
+    show screen bars
+    show screen style_start
+    show screen sign_hist
+    show screen map_button
+    show screen run_button
+    show screen character_button
+    show screen minicard_button
+    scene startbcg
+    show screen managed_day
+    show screen date_display
+    while True:
+        $ zero_chr_scr()
+        show Kraliçe at kraliçe_poz
+        Kraliçe "Merhaba Majesteleri… Önünüzde uzun ve zorlu bir hükümdarlık yolu var. Her gün halktan ya da saraydan biri huzurunuza çıkacak ve sizden bir karar vermenizi bekleyecek. Vereceğiniz her karar, ülkemizin din, siyaset, ekonomi, askeriye, sağlık ve halkın refahı gibi hayati dengelerini doğrudan etkileyecek."
+        Kraliçe "Fakat yalnızca bu değil… İnsanların gönülleri de kararlarınızla şekillenecek. Birine sürekli hayır derseniz, kalbinde size karşı bir kin birikebilir. Ama her isteğini kabul ederseniz, size olan bağlılığı artar. Her kişi farklıdır, her kararın bedeli olur…"
+        Kraliçe "Lütfen unutmayın majesteleri; din, sağlık, siyaset, halk, ekonomi ve askerî güç… Bu unsurların biri bile uç noktalara savrulursa, krallığımız tehlikeye girer. Denge... İşte asıl ihtiyacımız olan budur."
+        Kraliçe "Şimdi… Tahtınız sizi bekliyor."
+        hide Kraliçe
+        $ chosen_dialog = get_random_dialog()
+        jump expression chosen_dialog
 
 label random_dialog:
     if main_story_count == 5:
         jump story1
-    elif managed_day == 0 and not minicard_used:
+    elif managed_day == 2 and not minicard_used:
         $ chosen_card = renpy.random.choice(minicard_dialogs)
-        $ minicard_used = True 
-        $ last_dialog = chosen_card
+        $ minicard_used = True
         jump expression chosen_card
     else:
         $ chosen_dialog = renpy.random.choice(dialogs)
-        $ last_dialog = chosen_dialog
         jump expression chosen_dialog  # Yeni seçilen diyaloga git
+
