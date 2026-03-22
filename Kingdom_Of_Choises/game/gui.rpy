@@ -88,8 +88,8 @@ define gui.title_text_size = 50
 ## Ana ve Oyun Menüleri ########################################################
 
 ## Ana menü ve oyun menüsü için kullanılan resimler.
-define gui.main_menu_background = "gui/main_menu.jpeg"
-define gui.game_menu_background = "gui/main_menu.jpeg"
+define gui.main_menu_background = "gui/main_menu.jpg"
+define gui.game_menu_background = "gui/main_menu.jpg"
 
 
 ## Diyalog #####################################################################
@@ -108,6 +108,7 @@ define gui.textbox_yalign = 1.0
 ## üstten herhangi sayıda piksel olabilir, ya da 0.5 ile ortalanabilir.
 define gui.name_xpos = 240
 define gui.name_ypos = 0
+
 
 ## Karakter adının yatay hizalanması. 0.0 ile sola yapıştırılabilir, 0.5 ile
 ## ortalanabilir ve 1.0 ile sağa yapıştırılabilir.

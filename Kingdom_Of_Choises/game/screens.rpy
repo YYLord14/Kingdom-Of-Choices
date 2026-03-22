@@ -1,4 +1,4 @@
-################################################################################
+﻿################################################################################
 ## Başlatma
 ################################################################################
 
@@ -87,7 +87,6 @@ style frame:
 ################################################################################
 ## Oyun içi ekranlar
 ################################################################################
-
 
 ## Söyleme ekranı ##############################################################
 ##
@@ -320,7 +319,7 @@ screen navigation():
 
             ## Çıkış düğmesi iOS'ta yasaklanmıştır ve Android ve Web'de
             ## gereksizdir.
-            textbutton _("Çıkış") action Quit(confirm=not main_menu)
+            textbutton _("Diller") action ShowMenu("language")
 
         textbutton _("Geri"):
             ypos 230
@@ -351,7 +350,7 @@ screen main_menu():
 
     tag menu## Bu diğer herhangi bir menünün aktif olmadığından emin olur.
     add gui.main_menu_background at Transform(xsize=config.screen_width,ysize=config.screen_height)
-    add "gui/logo_beyaz.png" at Transform(xpos=0.05, ypos=0.8,zoom=0.35)
+    add "gui/logo_beyaz.png" at Transform(xpos=0.075, ypos=0.8,zoom=0.35)
     key "escape" action ShowMenu("preferences")
     text _("Kingdom of Choices"):
         font "gui/font/CinzelDecorative-Regular.otf"
@@ -362,31 +361,131 @@ screen main_menu():
         color "#cc9933"
         outlines [(4, "#000000")]
 
-    draggroup:
-        drag:
-            xpos 0.72
-            ypos 0.44
-            child Transform("gui/button/button_game.png", zoom=0.7)
-            draggable True
-            droppable False
-            dragged check_dragged
-    imagebutton:
-        idle Transform("gui/button/button_settings.png",zoom=0.7)
+    fixed:
+        xpos 0.02
+        ypos 0.72
+
+        add Transform("gui/button/button_language.png", zoom=0.7)
+
+        button:
+            background None
+            action [Hide("main_menu"), ShowMenu("language")]
+
+            xsize 300
+            ysize 120
+
+            text _("Diller"):
+                font "gui/font/CinzelDecorative-Regular.otf"
+                size 25
+                color "#898989fe"
+                outlines [(2, "#000000")]
+                xalign 0.5
+                yalign 0.2
+
+    fixed:
+        xpos 0.72
+        ypos 0.35
+
+        add Transform("gui/button/button_game.png", zoom=0.7)
+
+        button:
+            background None
+            action Start()
+
+            xsize 300
+            ysize 120
+
+            text _("Yeni Oyun"):
+                font "gui/font/CinzelDecorative-Regular.otf"
+                size 25
+                color "#898989fe"
+                outlines [(2, "#000000")]
+                xalign 0.5
+                yalign 0.2
+
+    fixed:
         xpos 0.72
         ypos 0.56
-        action [ShowMenu("preferences"), Hide("main_menu")]
 
-    imagebutton:
-        idle Transform("gui/button/button_about.png", zoom=0.7)
+        add Transform("gui/button/button_settings.png", zoom=0.7)
+
+        button:
+            background None
+            action [ShowMenu("preferences"), Hide("main_menu")]
+
+            xsize 300
+            ysize 120
+
+            text _("Ayarlar"):
+                font "gui/font/CinzelDecorative-Regular.otf"
+                size 25
+                color "#898989fe"
+                outlines [(2, "#000000")]
+                xalign 0.5
+                yalign 0.2
+        
+    fixed:
         xpos 0.72
         ypos 0.68
-        action [Hide("main_menu"), ShowMenu("about")]
 
-    imagebutton:
-        idle Transform("gui/button/button_exit.png", zoom=0.7)
+        add Transform("gui/button/button_about.png", zoom=0.7)
+
+        button:
+            background None
+            action [Hide("main_menu"), ShowMenu("about")]
+
+            xsize 300
+            ysize 120
+
+            text _("Hakkında"):
+                font "gui/font/CinzelDecorative-Regular.otf"
+                size 25
+                color "#898989fe"
+                outlines [(2, "#000000")]
+                xalign 0.5
+                yalign 0.2
+    
+    fixed:
         xpos 0.72
         ypos 0.80
-        action Quit(confirm=not main_menu)
+
+        add Transform("gui/button/button_exit.png", zoom=0.7)
+
+        button:
+            background None
+            action Quit(confirm=not main_menu)
+
+            xsize 300
+            ysize 120
+
+            text _("Çıkış"):
+                font "gui/font/CinzelDecorative-Regular.otf"
+                size 25
+                color "#898989fe"
+                outlines [(2, "#000000")]
+                xalign 0.48
+                yalign 0.16
+
+    fixed:
+        xpos 0.72
+        ypos 0.45
+
+        add Transform("gui/button/button_load.png", zoom=0.7)
+
+        button:
+            background None
+            action ShowMenu("load")
+
+            xsize 300
+            ysize 120
+
+            text _("Yükle"):
+                font "gui/font/CinzelDecorative-Regular.otf"
+                size 25
+                color "#898989fe"
+                outlines [(2, "#000000")]
+                xalign 0.5
+                yalign 0.2
         
 init python:
     def check_dragged(drags, drop):
@@ -406,7 +505,6 @@ style main_menu_vbox:
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
-
 
 ## Oyun Menüsü ekranı ##########################################################
 ##
@@ -553,8 +651,121 @@ screen about():
             text _("PaperWorkStudioPWS@gmail.com \nYoutube hesabı:")
             text _("{a=https://www.youtube.com/@PaperWorkStudiosss}  Paper Works Studios  {/a}")
 
+            text _("PaperWork Studio resmi instagram hesabı:\n")
+            text _("{a=https://www.instagram.com/paper_work_studios?igsh=dmxxb3FvZDFraGVx}  Paper Works Studios  {/a}")
+
+            text _("Lake of Light by Vindsvept – released under CC-BY 4.0. \n")
+            text _("{a=https://www.youtube.com/Vindsvept}  Vindsvept, fantasy music youtube channel  {/a}")
+
+            null height 100
+        # --- EMEĞİ GEÇENLER BUTONU (BAĞIMSIZ VE ORTALANMIŞ) ---
+            textbutton _("EMEĞİ GEÇENLER"):
+                action ShowMenu("credits")
+                
+                # Konumlandırma
+                xalign 0.5    # Yatayda tam orta
+                yalign 0.95   # Sayfanın en altından biraz yukarıda
+                
+                # Görünüm (Stil)
+                text_size 40              # Yazıyı büyüttük
+                text_hover_color "#ffcc00" # Üzerine gelince parlaması için (Altın sarısı)
+                text_font "gui/font/CinzelDecorative-Regular.otf"
+
     use navigation
+
+screen credits():
+    tag menu
     
+    ## Bu satır, bu ekranın da oyun menüsü çerçevesinde görünmesini sağlar
+    use game_menu(_("Paper Work Studios"), scroll="viewport"):
+        
+        style_prefix "about" # About stilini kullanarak tasarım bütünlüğü sağlar
+
+        vbox:
+            # Oyunun Adı
+            label "[config.name!t]":
+                text_size 45        # Başlığı büyüttük
+                text_color "#ffcc00" # Altın sarısı (vurgu için)
+
+            # PAPER WORK STUDIOS - Özel Başlık
+            text _("PAPER WORK STUDIOS"):
+                font "gui/font/CinzelDecorative-Regular.otf"
+                size 50                      # Diğer yazılardan daha büyük
+                color "#ffffff"              # Beyaz veya istediğin bir renk
+                outlines [(2, "#000000", 0, 0)] # Yazının etrafına siyah ince bir çerçeve
+                xalign 0.0                   # Sola yaslı (ortalamak istersen 0.5 yap)
+            
+            null height 20 # Diğer yazılarla arasına boşluk koyduk
+            
+            text _("Versiyon [config.version!t]\n")
+
+            spacing 10 # Satırlar arası boşluk
+        
+            label _("Creative Directors")
+            text _("Yusuf Yazan & Arif Güneş Usta")
+            
+            null height 10
+            
+            label _("Design")
+            text _("Arif Güneş Usta & Bilal Sarıtaş")
+            
+            null height 10
+            
+            label _("Programing and Software")
+            text _("Yusuf Yazan & Bilal Sarıtaş")
+
+            null height 10
+            
+            label _("Art Director")
+            text _("Arif Güneş Usta")
+
+            null height 10
+            
+            label _("Music and Sound")
+            text _("Yusuf Talha Şahintürk & Arif Güneş Usta")
+
+            null height 10
+            
+            label _("Creative Contens")
+            text _("Yusuf Yazan")
+
+            null height 10
+            
+            label _("Publishing and Marketing")
+            text _("Yusuf Talha Şahintürk & Arif Güneş Usta & Yusuf Yazan")
+
+            null height 10
+            
+            label _("UI / UX")
+            text _("Bilal Sarıtaş & Yusuf Yazan")
+
+            null height 10
+            
+            label _("Testers")
+            text _("Yusuf Yazan")
+            text _("Arif Güneş Usta")
+            text _("Alperen Aydın")
+            text _("Yusuf Talha Şahintürk")
+            text _("Can Özçamur")
+            text _("Mahmut Taha Bingöl")
+            text _("Gökhan Mert Canlı")
+            text _("Fatih Ceyhan")
+            text _("Alituna Ergin")
+# --- SOLA SABİTLENMİŞ GERİ DÖN BUTONU ---
+    textbutton _("« Geri Dön"):
+        action ShowMenu("about")
+        
+        # Konumlandırma
+        xalign 0.05    # Ekranın solundan %5 içeride
+        yalign 0.95    # Ekranın altından %5 yukarıda (Sabit durur)
+        
+        # Görünüm Ayarları
+        text_size 30
+        text_hover_color "#ffcc00" # Üzerine gelince sarı yanar
+        
+        # Estetik dokunuş: Butonun arkasına hafif bir gölge veya belirginlik eklemek istersen
+        background Frame(Solid("#00000050"), 4, 4) 
+        padding (10, 5)
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -702,12 +913,6 @@ screen preferences():
                         textbutton _("Pencere") action Preference("display", "window")
                         textbutton _("Tam ekran") action Preference("display", "fullscreen")
 
-                vbox:
-                    style_prefix "check"
-                    label _("Atlanmak istenilen yerler")
-                    textbutton _("Görülmemiş Metin") action Preference("skip", "toggle")
-                    textbutton _("Seçim Sonrası") action Preference("after choices", "toggle")
-                    textbutton _("Geçişler") action InvertSelected(Preference("transitions", "toggle"))
 
                 ## "radio_pref" veya "check_pref" türündeki ek vbox'lar,
                 ## yaratıcı tarafından belirlenmiş tercihlere burada
@@ -718,16 +923,6 @@ screen preferences():
             hbox:
                 style_prefix "slider"
                 box_wrap True
-
-                vbox:
-
-                    label _("Metin Hızı")
-
-                    bar value Preference("text speed")
-
-                    label _("Zamanı Oto İleri Sar")
-
-                    bar value Preference("auto-forward time")
 
                 vbox:
 
@@ -747,16 +942,6 @@ screen preferences():
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
-
-                    if config.has_voice:
-                        label _("Konuşma Düzeyi")
-
-                        hbox:
-                            bar value Preference("voice volume")
-
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
-
                     if config.has_music or config.has_sound or config.has_voice:
                         null height gui.pref_spacing
 
@@ -765,7 +950,6 @@ screen preferences():
                             style "mute_all_button"
     use navigation
     
-
 
 style pref_label is gui_label
 style pref_label_text is gui_label_text
@@ -965,24 +1149,33 @@ screen help():
                 use gamepad_help
     use navigation
     
+screen language():
+
+    tag menu
+
+    default device = "keyboard"
+    default sc_name = "language"
+    use game_menu(_("Diller"), scroll="viewport"):
+
+        style_prefix "language"
+
+        hbox:
+            textbutton _("İngilizce") action Language("english")
+
+        hbox:
+            textbutton _("Türkçe") action Language(None)
+
+    use navigation
 
 
 screen keyboard_help():
 
     hbox:
-        label _("Girin")
+        label _("Enter")
         text _("Diyalogu ilerletir ve arayüzü aktifleştirir.")
 
     hbox:
-        label _("Boşluk")
-        text _("Seçim yapmadan diyalogu ilerletir.")
-
-    hbox:
-        label _("Ok Tuşları")
-        text _("Arayüzde gezinmeyi sağlar.")
-
-    hbox:
-        label _("Kaçış")
+        label _("Esc")
         text _("Oyun menüsüne erişir.")
 
     hbox:
@@ -992,30 +1185,9 @@ screen keyboard_help():
     hbox:
         label _("Tab")
         text _("Diyalog atlamayı etkinleştirir ya da devre dışı bırakır.")
-
-    hbox:
-        label _("Sayfa Yukarı")
-        text _("Önceki diyaloga geri sarar.")
-
-    hbox:
-        label _("Sayfa Aşağı")
-        text _("Daha yeni diyaloga ileri sarar.")
-
     hbox:
         label "H"
         text _("Kullanıcı arayüzünü gizler.")
-
-    hbox:
-        label "S"
-        text _("Ekran görüntüsü kaydeder.")
-
-    hbox:
-        label "V"
-        text _("Yardımcı {a=https://www.renpy.org/l/voicing}kendiliğniden-seslendirme{/a}yi açar veya kapatır.")
-
-    hbox:
-        label "Shift+A"
-        text _("Erişilebilirlik menüsünü açar.")
 
 
 screen mouse_help():
@@ -1032,15 +1204,6 @@ screen mouse_help():
         label _("Sağ Tıklama")
         text _("Oyun menüsüne erişir.")
 
-    hbox:
-        label _("Fare Tekerleği Yukarı")
-        text _("Önceki diyaloga geri sarar.")
-
-    hbox:
-        label _("Fare Tekerleği Aşağı")
-        text _("Daha yeni diyaloga ileri sarar.")
-
-
 screen gamepad_help():
 
     hbox:
@@ -1050,10 +1213,6 @@ screen gamepad_help():
     hbox:
         label _("Sol Trigger\nSol Omuz")
         text _("Önceki diyaloga geri sarar.")
-
-    hbox:
-        label _("Sağ Omuz")
-        text _("Daha yeni diyaloga ileri sarar.")
 
     hbox:
         label _("D-Pad, Çubuklar")
@@ -1467,54 +1626,87 @@ screen style_start():
     add "gui/overlay/style_start.png"
 
 ### Özellik menüsü
-
 screen start_navigation():
     add "gui/overlay/start_nav_bcg.jpg" at Transform(xsize=config.screen_width, ysize=config.screen_height)
+    modal True 
+
     vbox:
-        xalign 0.05
+        xalign 0.04
         yalign 0.5
+        spacing 20 # Butonlar arasındaki boşluğu buradan ayarlayabilirsin
+
+        # Stil özelliklerini doğrudan butona ekliyoruz
         textbutton _("Karakter"):
-            action Show("character")
+            text_font "gui/font/CinzelDecorative-Regular.otf"
+            text_size 25
+            text_color "#FFFFFF"
+            text_hover_color "#FFD700" # Üzerine gelince renk değişsin istersen
+            action [Show("character"), NullAction()]
+
         textbutton _("Minicard"):
-            action Show("mini_card")
+            text_font "gui/font/CinzelDecorative-Regular.otf"
+            text_size 25
+            text_color "#FFFFFF"
+            text_hover_color "#FFD700"
+            action [Show("mini_card"), NullAction()]
+
         textbutton _("Rün"):
-            action Show("run")
+            text_font "gui/font/CinzelDecorative-Regular.otf"
+            text_size 25
+            text_color "#FFFFFF"
+            text_hover_color "#FFD700"
+            action [Show("run"), NullAction()]
+
         textbutton _("Harita"):
-            action Show("map")
+            text_font "gui/font/CinzelDecorative-Regular.otf"
+            text_size 25
+            text_color "#FFFFFF"
+            text_hover_color "#FFD700"
+            action [Show("map"), NullAction()]
+
         textbutton _("Geri"):
-            ypos 230
-            yoffset -30
-            action Return()
-        key "escape" action Return()
+            ypos 50 # Diğerlerinden biraz daha aşağıda dursun
+            text_font "gui/font/CinzelDecorative-Regular.otf"
+            text_size 25
+            text_color "#FFFFFF"
+            text_hover_color "#FFD700"
+            action [Hide("character"), Hide("mini_card"), Hide("run"), Hide("map"), NullAction()]
+        
+    key "escape" action [Hide("character"), Hide("mini_card"), Hide("run"), Hide("map"), NullAction()]
+
 
 ### Character
-
 init python:
-
     chr_data = [
-        {"img":"gui/karakter_resim/img1.png","info":10},
-        {"img":"gui/karakter_resim/img2.png","info":5},
-        {"img":"gui/karakter_resim/img3.png","info":5},
-        {"img":"gui/karakter_resim/img4.png","info":5},
-        {"img":"gui/karakter_resim/img5.png","info":5},
-        {"img":"gui/karakter_resim/img6.png","info":5},
-        {"img":"gui/karakter_resim/img7.png","info":10},
-        {"img":"gui/karakter_resim/img8.png","info":5},
-        {"img":"gui/karakter_resim/img9.png","info":5},
-        {"img":"gui/karakter_resim/img10.png","info":10},
-        {"img":"gui/karakter_resim/img11.png","info":5},
-        {"img":"gui/karakter_resim/img12.png","info":5},
-        {"img":"gui/karakter_resim/img13.png","info":5},
-        {"img":"gui/karakter_resim/img14.png","info":5},
-        {"img":"gui/karakter_resim/img15.png","info":5},
+        # İsimleri _("İsim") şeklinde tanımlıyoruz ki Ren'Py çeviri aracı bunları yakalasın.
+        {"img":"gui/karakter_resim/img1.png", "info":5, "name": _("Ozan")},
+        {"img":"gui/karakter_resim/img2.png", "info":5, "name": _("Demirci")},
+        {"img":"gui/karakter_resim/img3.png", "info":5, "name": _("Büyücü")},
+        {"img":"gui/karakter_resim/img4.png", "info":5, "name": _("Kadı")},
+        {"img":"gui/karakter_resim/img5.png", "info":5, "name": _("Muhafız başı")},
+        {"img":"gui/karakter_resim/img6.png", "info":5, "name": _("Hizmetçi başı")},
+        {"img":"gui/karakter_resim/img7.png", "info":5, "name": _("Asker")},
+        {"img":"gui/karakter_resim/img8.png", "info":5, "name": _("Baş imam")},
+        {"img":"gui/karakter_resim/img9.png", "info":5, "name": _("Çiftçi")},
+        {"img":"gui/karakter_resim/img10.png", "info":5, "name": _("Kütüphaneci")},
+        {"img":"gui/karakter_resim/img11.png", "info":5, "name": _("Otacı")},
+        {"img":"gui/karakter_resim/img12.png", "info":5, "name": _("Soylu")},
+        {"img":"gui/karakter_resim/img13.png", "info":5, "name": _("Şifacı")},
+        {"img":"gui/karakter_resim/img14.png", "info":5, "name": _("Yerel bakan")},
+        {"img":"gui/karakter_resim/img15.png", "info":5, "name": _("Zengin tüccar")},
+        {"img":"gui/karakter_resim/img16.png", "info":5, "name": _("Tacir")},
+        {"img":"gui/karakter_resim/img17.png", "info":5, "name": _("Komutan")},
+        {"img":"gui/karakter_resim/img18.png", "info":5, "name": _("Elçi")},
+        {"img":"gui/karakter_resim/img19.png", "info":5, "name": _("Haznedar")},
+        {"img":"gui/karakter_resim/img20.png", "info":5, "name": _("Baş danışman")}
     ]
 
 screen character_button():
     imagebutton:
         idle "gui/button/start_button_character.png"
         xalign 0.40
-        yalign 0.050
-        action Call("open_character")
+        yalign 0.005
+        action [Show("character"), NullAction()]
         at Transform(zoom=0.90)
 
 label open_character():
@@ -1523,11 +1715,13 @@ label open_character():
 
 screen character():
     tag menu
+    modal True
     use start_navigation
     default start_index = 0
     default max_visible = 3
     default total = len(chr_data)
-    frame :
+    
+    frame:
         style "frame_start"
         has vbox
         hbox:
@@ -1536,12 +1730,21 @@ screen character():
                 $ real_index = ((start_index + i ) % total)
                 $ img = chr_data[real_index]["img"]
                 $ inf = chr_data[real_index]["info"]
+                $ chr_name = chr_data[real_index]["name"] # İsmi veriden çekiyoruz
             
-                frame:## bar için olan Frame
+                frame:
                     background None
                     xsize 120
                     ysize 40
                     add img xalign -1.0 yalign -0.0272 at Transform(zoom=0.73)
+                    
+                    # 1. Değişkeni çevirerek yazdırmak için !t kullanıyoruz.
+                    text "[chr_name!t]" xpos 100 ypos 300 size 22 bold True
+                    
+                    # 2. Sabit metni senin bahsettiğin gibi _("") ile yazıyoruz.
+                    text _("İlişki") xpos 100 ypos 370 size 18
+                    # ---------------------------
+
                     bar:
                         value inf
                         range 10
@@ -1552,18 +1755,19 @@ screen character():
                         xpos 100
                         ypos 400
                     add "gui/bar/borders_chr.png" xsize 215 ysize 50 xpos 68 ypos 390
+                    
     hbox:
-            yalign 1.0
-            xalign 0.5
-            spacing 30
-            imagebutton:
-                    idle "gui/button/sol_ok.png"
-                    action SetScreenVariable("start_index", (start_index - 1) % total)
-                    at Transform(zoom=0.35)
-            imagebutton:
-                    idle "gui/button/sağ_ok.png"
-                    action SetScreenVariable("start_index",(start_index + 1) % total)
-                    at Transform(zoom=0.35)
+        yalign 1.0
+        xalign 0.5
+        spacing 30
+        imagebutton:
+            idle "gui/button/sol_ok.png"
+            action SetScreenVariable("start_index", (start_index - 1) % total)
+            at Transform(zoom=0.35)
+        imagebutton:
+            idle "gui/button/sağ_ok.png"
+            action SetScreenVariable("start_index",(start_index + 1) % total)
+            at Transform(zoom=0.35)
 
 ## Rün
 
@@ -1571,8 +1775,8 @@ screen run_button():
     imagebutton:
         idle "gui/button/start_button_run.png"
         xalign 0.60
-        yalign 0.050
-        action Call("open_run")
+        yalign 0.005
+        action [Show("run"), NullAction()]
         at Transform(zoom=0.90)
 
 label open_run():
@@ -1580,11 +1784,167 @@ label open_run():
     return
 
 screen run():
-    
     tag menu
+    modal True
     use start_navigation
+
     frame:
         style "frame_start"
+        xsize 780         # Gri alan genişliği
+        ysize 520         # Gri alan yüksekliği
+        align (0.58, 0.48) # Gri alanın tam üzerine oturtma
+
+        # Grid yapısı öğeleri kutucuklara hapseder, kayma yapmaz
+        grid 4 3: 
+            allow_underfull True
+            spacing 15
+            xalign 0.5
+            yalign 0.5
+
+            # --- RÜN 1 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune1.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.1
+                text _("Lanet Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 2 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune2.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Yardımcı Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 3 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune3.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Hırsız Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 4 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune4.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Adalet Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 5 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune5.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.1
+                text _("Balta Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 6 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune6.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Kitap Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 7 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune7.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Zehir Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 8 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune8.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Kalkan Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 9 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune9.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.15
+                text _("Burjuva Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 10 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune10.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Altın Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 11 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune11.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.1
+                text _("Meclis Rünü"):
+                    size 20
+                    xalign 0.5
+
+            # --- RÜN 12 ---
+            vbox:
+                imagebutton:
+                    idle "gui/rune/rune12.png"
+                    action NullAction()
+                    xalign 0.5
+                    at transform:
+                        zoom 0.05
+                text _("Bitki Rünü"):
+                    size 20
+                    xalign 0.5
+                        
 
 ### Minicard
 
@@ -1602,27 +1962,12 @@ init python:
     blue_cap_mushroom_minicard = 0
     loyalty_potion_minicard = 0
 
-    mnc_data = [
-        {"img":"gui/minicard_resim/kosc_mnc.png","val":0},
-        {"img":"gui/minicard_resim/hp_mnc.png","val":0},
-        {"img":"gui/minicard_resim/bm_mnc.png","val":0},
-        {"img":"gui/minicard_resim/gw_mnc.png","val":0},
-        {"img":"gui/minicard_resim/al_mnc.png","val":0},
-        {"img":"gui/minicard_resim/hr_mnc.png","val":0},
-        {"img":"gui/minicard_resim/spcb_mnc.png","val":0},
-        {"img":"gui/minicard_resim/sow_mnc.png","val":0},
-        {"img":"gui/minicard_resim/rg_mnc.png","val":0},
-        {"img":"gui/minicard_resim/sti_mnc.png","val":0},
-        {"img":"gui/minicard_resim/bcm_mnc.png","val":0},
-        {"img":"gui/minicard_resim/lp_mnc.png","val":0},
-    ]
-
 screen minicard_button():
     imagebutton:
         idle "gui/button/start_button_minicard.png"
         xalign 0.80
-        yalign 0.050
-        action Call("open_mini_card")
+        yalign 0.005
+        action [Show("mini_card"), NullAction()]
         at Transform(zoom=0.90)
 
 label open_mini_card():
@@ -1630,53 +1975,86 @@ label open_mini_card():
     return
 
 screen mini_card():
-    
     tag menu
+    modal True
     default start_index = 0
     default max_visible = 3
-    default total = len(mnc_data) 
+    
+    $ owned_cards = [key for key, val in mnc_info.items() if val["val"] == 1]
+    $ total_owned = len(owned_cards)
+
     use start_navigation
+    
     frame:
         style "frame_start"
-        has vbox
-        hbox:
-            spacing 220
-            $ imagevisable = 0
-            for i in range(total):
-                $ real_index = ((start_index + i) % total)
+        has vbox # Frame içindeki her şeyi alt alta dizer
+        if total_owned == 0:
+            null height 200
+            text "        Envanterinizde hiç mini kart bulunmamaktadır.":
+                size 25
+                color "#FFFFFF"
+                outlines [(1, "#000000", 0, 0)]
+            null height 20
+            text "       You do not have any mini cards in your inventory.":
+                size 25
+                color "#FFFFFF"
+                outlines [(1, "#000000", 0, 0)]
+        
+        else:
+            
+            # Kartlar varsa bu Hbox çalışsın
+            hbox:
+                spacing 120
+                # Burada sadece kart döngüsü var
+                for i in range(min(max_visible, total_owned)):
+                    $ current_ptr = (start_index + i) % total_owned
+                    $ card_key = owned_cards[current_ptr]
+                    $ current_card = mnc_info[card_key]
 
-                if mnc_data[real_index]["val"] == 1:
-                    $ img = mnc_data[real_index]["img"]
-                    $ imagevisable += 1
                     frame:
                         background None
-                        xsize 40
-                        ysize 20
-                        add img xalign -0.18 yalign -0.45 at Transform(zoom=0.23)
-                    if imagevisable == max_visible:
-                        break
-                    
-    hbox:
+                        xsize 320 
+                        ysize 600
+                        
+                        vbox:
+                            xalign 0.8
+                            spacing 10
+                            
+                            imagebutton:
+                                idle current_card["img"]
+                                xalign 0.5
+                                at Transform(zoom=0.20)
+                                action NullAction() 
+                            
+                            text current_card["ad"] style "minicard_name_style":
+                                xalign 0.5
+                                xsize 225
+                            text current_card["etki"] style "minicard_desc_style":
+                                xalign 0.5
+                                xsize 200 
+
+    # Ok tuşları
+    if total_owned > 0:
+        hbox:
             yalign 1.0
             xalign 0.5
             spacing 30
             imagebutton:
                     idle "gui/button/sol_ok.png"
-                    action SetScreenVariable("start_index", (start_index - 1) % total)
+                    action SetScreenVariable("start_index", (start_index - 1) % total_owned)
                     at Transform(zoom=0.35)
             imagebutton:
                     idle "gui/button/sağ_ok.png"
-                    action SetScreenVariable("start_index",(start_index + 1) % total)
+                    action SetScreenVariable("start_index", (start_index + 1) % total_owned)
                     at Transform(zoom=0.35)
-
 ## Map
 
 screen map_button():
     imagebutton:
         idle "gui/button/start_button_map.png"
         xalign 1.0
-        yalign 0.050
-        action Call("open_map")
+        yalign 0.005
+        action [Show("map"), NullAction()]
         at Transform(zoom=0.90)
 
 label open_map():
@@ -1685,9 +2063,16 @@ label open_map():
 
 screen map():
     tag menu
+    modal True
     use start_navigation
     frame:
         style "frame_start"
+        has vbox # Frame içindeki her şeyi alt alta dizer
+        null height 200
+        text "                    Yakında eklenecek - Will be added soon":
+            size 25
+            color "#FFFFFF"
+            outlines [(1, "#000000", 0, 0)]
 
 style frame_start:
     background Frame("gui/overlay/oval_start.png",30,30)
@@ -1716,7 +2101,7 @@ transform muhafiz_basi_poz:
 
 transform asker_poz:
     xalign 0.55
-    yalign 1.0
+    yalign 1.05
     yanchor 1.0
     zoom 0.46
 
@@ -1760,13 +2145,13 @@ transform sifaci_poz:
     xalign 0.5
     yalign 1.04
     yanchor 1.0
-    zoom 0.44
+    zoom 0.70
 
 transform hizmetci_basi_poz:
     xalign 0.5
     yalign 1.04
     yanchor 1.0
-    zoom 0.42
+    zoom 0.72
 
 transform buyucu_poz:
     xalign 0.5
@@ -1792,11 +2177,239 @@ transform gizemli_adam_poz:
     yanchor 1.0
     zoom 0.46
 
+transform tukan_poz:
+    xalign 0.5
+    yalign 1.09
+    yanchor 1.0
+    zoom 0.66
+
 transform kraliçe_poz:
+    xalign 0.5 
+    yalign 1.045
+    yanchor 1.0
+    zoom 0.75 
+
+transform Lider_yardimcisi_poz:
     xalign 0.5 
     yalign 1.0
     yanchor 1.0
     zoom 0.75 
 
+transform komutan_poz:
+    xalign 0.5 
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.60
+
+transform elci_poz:
+    xalign 0.5 
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.78
+
+transform tacir_poz:
+    xalign 0.5 
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.82 
+
+transform bas_danisman_poz:
+    xalign 0.5 
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.64 
+
+transform Haznedar_poz:
+    xalign 0.5 
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.75 
+
+transform Kogan_poz:
+    xalign 0.5 
+    yalign 1.0
+    yanchor 1.0
+    zoom 0.75
+##########################################################################################
+transform al_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform kosc_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform hp_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform bm_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform gw_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform hr_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform spcb_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform sow_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform rg_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform sti_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform bcm_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+transform lp_mnc_poz:
+    xalign 0.25
+    yalign 0.16
+    zoom 0.14
+#####################################################################
+transform rune1_poz: #lanet rünü
+    xalign 0.65
+    yalign 0.2
+    zoom 0.12
+
+transform rune2_poz: # yardımcı rünü
+    xalign 0.65
+    yalign 0.2
+    zoom 0.04
+
+transform rune3_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.04
+
+transform rune4_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.03
+
+transform rune5_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.12
+
+transform rune6_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.06
+
+transform rune7_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.06
+
+transform rune8_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.06
+
+transform rune9_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.11
+
+transform rune10_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.06
+
+transform rune11_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.11
+
+transform rune12_poz:
+    xalign 0.65
+    yalign 0.2
+    zoom 0.06
+
+screen kart_oyunu():
+
+    add "board_game.png"
+
+    draggroup:
+
+        # 3x4 TAHTA (SLOTLAR)
+        for row in range(BOARD_ROWS):
+            for col in range(BOARD_COLS):
+                $ xpos = 650 + col * 170
+                $ ypos = 180 + row * 170
+                $ slot_data = board_slots[row][col]
+
+                drag:
+                    drag_name f"slot_{row}_{col}"
+                    droppable True
+                    draggable False
+                    xpos xpos
+                    ypos ypos
+
+                    if slot_data is None:
+                        add Transform("slot_empty.png", zoom=0.1, alpha=0.9)
+                    
+                    # Kart yerleştirilmişse
+                    else:
+                        $ card_file_name, is_placed = slot_data
+                        if is_placed:
+                            add Transform(card_file_name, zoom=0.05)
+                        else:
+                            add Transform("slot_empty.png", zoom=0.1, alpha=0.9)
+
+        # OYUNCU KARTLARI (ELDEN SÜRÜKLENECEK KARTLAR)
+        for i, card_name in enumerate(player_cards):
+            $ current_drag_name = f"card_{card_name}" 
+
+            drag:
+                # KART ADINI drag_name olarak ayarlıyoruz
+                drag_name current_drag_name 
+                draggable True
+                droppable False
+                xpos 100
+                ypos 250 + i * 120
+                child Transform(card_name, zoom=0.05)
+                on "drag_drop" action If(is_card_placed(card_name), Hide(current_drag_name))
 
 
+    # DRAG OLAYI 
+    on "drag_drop" action Function(drop_card)
+
+    # MANA BAR (alt ortada)
+    frame:
+        xalign 0.5
+        yalign 0.95
+        xsize 400
+        ysize 50
+        background "#0008"
+        text f"Mana: [player_mana]/10" xalign 0.5 yalign 0.5 size 30 color "#FFFFFF"
+
+    frame:
+        xalign 0.5
+        yalign 0.05
+        xsize 300
+        ysize 70
+        
+        fixed:
+            
+            label "Kart Oyunu":
+                xalign 0.5
+                ypos 20
+
+    textbutton "Kapat" action Return(None):
+        xalign 0.95
+        yalign 0.05

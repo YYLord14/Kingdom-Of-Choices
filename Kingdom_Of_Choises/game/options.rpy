@@ -1,4 +1,4 @@
-﻿## Bu dosya oyununuzu özelleştirmek için değiştirlebilecek ayarları içerir.
+## Bu dosya oyununuzu özelleştirmek için değiştirlebilecek ayarları içerir.
 ##
 ## İki '#' ile başlayan satırlar yorumdur, öyle kalmalıdırlar. Tek '#' ile
 ## başlayan satırlar etkin olmayan kodlardır, gerekli olduğunda '#' işareti
@@ -12,14 +12,17 @@
 ##
 ## Stringi çevreleyen _(), stringin çeviriye uygun olduğu anlamına gelir.
 
-define config.name = _("Kingdom of Choise")
+
+
+define config.name = _("Kingdom of Choices")
+define config.window_icon = "icon.ico"
+define config.steam_appid = 4076160
 
 
 ## Yukarıda yazılan başlığı ana menüde görünüp görünmeyeceğini belirler. Başlığı
 ## gizlemek için bunu etkinleştirmeyin.
 
 define gui.show_name = False
-
 
 ## Oyunun versiyonu.
 
@@ -37,7 +40,7 @@ define gui.about = _p("""
 ## kısa ismi. Bu sadece ASCII karakterleri içermeli; boşluk, iki nokta ya da
 ## noktalı virgül içermemeli.
 
-define build.name = "kingdom_of_choise"
+define build.name = "kingdom_of_choices"
 
 
 ## Sesler ve müzik #############################################################
@@ -98,8 +101,6 @@ define config.end_game_transition = None
 
 ##oyun içi keymaplar
 
-init python:
-    config.keymap["escape"]=["K_ESCAPE"]
 
 ## Pencere yönetimi ############################################################
 ##
@@ -126,7 +127,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## gösterir, eğer başka bir sayı girilirse bu sayı saniye başına yazılan
 ## karakter hızını belirler.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 75
 
 
 ## Varsayılan oto-ileri-sarma beklemesi. Uzun sayılar daha uzun beklemeye yol
@@ -149,7 +150,7 @@ default preferences.afm_time = 15
 ## Bu genelde değiştirilmemelidir, ancak değiştirilecekse mutlaka bir string
 ## olmalı, bir ifade değil.
 
-define config.save_directory = "kingdom_of_choise-1742912719"
+define config.save_directory = "kingdom_of_choices-1742912719"
 
 
 ## İkon ########################################################################
@@ -158,6 +159,8 @@ define config.save_directory = "kingdom_of_choise-1742912719"
 
 define config.window_icon = "gui/window_icon.png"
 
+init python:
+    config.keymap["escape"] = ["K_ESCAPE"]
 
 ## Derleme yapılandırması ######################################################
 ##
@@ -185,11 +188,26 @@ init python:
     ## Dosyaları derlenmiş dağıtımlardan ayırmak için 'Hiçbiri (None)' olarak
     ## sınıflandırın.
 
-    build.classify('**~', None)
-    build.classify('**.bak', None)
-    build.classify('**/.**', None)
-    build.classify('**/#**', None)
-    build.classify('**/thumbs.db', None)
+    # build.classify('**~', None)
+    # build.classify('**.bak', None)
+    # build.classify('**/.**', None)
+    # build.classify('**/#**', None)
+    # build.classify('**/thumbs.db', None)
+    # build.archive("script_archive", "script_files")
+    # build.classify("game/**.rpy", "script_files")
+    # build.classify("game/**.rpyc", "script_files") 
+
+    
+
+
+    
+    # Varlıkları (görsel, ses) arşivin içine yerleştir.
+    # build.archive("assets")
+
+    # Tüm .rpy ve .rpyc dosyalarını arşivden hariç tut (None ile sınıflandır).
+    # Bu, 'start' etiketinin bulunmasını sağlar.
+    # build.classify("game/**.rpy", None)
+    # build.classify("game/**.rpyc", None)
 
     ## Dosyaları arşivlemek için 'arşiv' olarak sınıflandırın.
 
@@ -213,3 +231,11 @@ init python:
 ## itch.io projesine bağlı, eğik çizgi ile ayrılmış kullanıcı adı ve proje adı.
 
 # define build.itch_project = "renpytom/test-project"
+
+define config.rollback_enabled = False
+
+init python:
+
+    config.keymap['dismiss'] = ['mouseup_1', 'K_RETURN', 'joy_dismiss']
+
+    
